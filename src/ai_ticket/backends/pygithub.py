@@ -31,7 +31,9 @@ def get_existing_ticket(event):
 
 def create_new_ticket(event):
     # repo = g.get_repo("PyGithub/PyGithub")
-    return repo.create_issue(**event)
+    body = event.get("content")
+    title = "Auto issue"
+    return repo.create_issue(title=title, body=body)
     #Issue(title="This is a new issue", number=XXX)
     
 # To close connections after use
