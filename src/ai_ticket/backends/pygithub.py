@@ -1,6 +1,6 @@
 import os
 import re
-
+import json
 from dotenv import load_dotenv
 from github import Github
 from github import Auth
@@ -22,11 +22,12 @@ def get_issues():
         yield issue
 
 def get_existing_ticket(event):
+    """Find the first ticket that matches"""
     body = event.get("content")
-    print("DEBUG get ",event)
+    #print("DEBUG get ",event)
     for issue in get_issues():
         data = issue.body
-        print("DEBUG check ",data)
+        #print("DEBUG check ",data)
         name = find_name(data)
         if name:
             return issue
@@ -34,7 +35,7 @@ def get_existing_ticket(event):
     return None
 
 def create_new_ticket(event):
-    raise Exception(str(event))
+
     # repo = g.get_repo("PyGithub/PyGithub")
     body = event.get("content")
     title = "Auto issue"
@@ -43,6 +44,19 @@ def create_new_ticket(event):
     except Exception as e:
         print(e)
     return repo.create_issue(title=title, body=body)
+    #Issue(title="This is a new issue", number=XXX)
+    
+def create_new_comment(ticket, event):
+    body = event.get("content")
+    print("DEBUG",body)
+    #try:
+    body = "```" + json.dumps(json.loads(body),indent=2)  + "```"
+    #except Exception as e:
+    #print(e)
+    ticket_object = ticket#repo.get_issue(int(ticket.split("/")[-1]))
+    comment =  ticket_object.create_comment(body)
+    print(comment)
+
     #Issue(title="This is a new issue", number=XXX)
     
 # To close connections after use
