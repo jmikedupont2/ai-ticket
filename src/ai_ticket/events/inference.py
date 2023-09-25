@@ -1,6 +1,7 @@
 # ai_ticket.events.inference
 
 import ai_ticket.backends.pygithub
+ai_ticket.backends.pygithub.load_env() #setup standard env
 
 def get_existing_ticket(event):
     return get_backend().get_existing_ticket(event)

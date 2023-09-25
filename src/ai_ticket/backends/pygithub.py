@@ -8,13 +8,22 @@ from ai_ticket import find_name
 
 # FIXME move this to a context object
 # Load environment variables from .env
-load_dotenv()
-git_hub_pat = os.getenv("GITHUB_PAT")
-git_hub_repo = os.getenv("GITHUB_REPO")
-auth = Auth.Token(git_hub_pat)
-g = Github(auth=auth)
-repo = g.get_repo(git_hub_repo)
+repo = None
+g = None
 
+def load_env():
+    load_dotenv()
+    git_hub_pat = os.getenv("GITHUB_PAT")
+    git_hub_repo = os.getenv("GITHUB_REPO")
+    load_repo(git_hub_repo,git_hub_pat)
+
+def load_repo(git_hub_repo,git_hub_pat):
+    global g
+    global repo
+    auth = Auth.Token(git_hub_pat)
+    g = Github(auth=auth)
+    repo = g.get_repo(git_hub_repo)
+    return (g,repo)
 
 def get_issues():
     issues = repo.get_issues()
@@ -55,9 +64,12 @@ def create_new_comment(ticket, event):
     #print(e)
     ticket_object = ticket#repo.get_issue(int(ticket.split("/")[-1]))
     comment =  ticket_object.create_comment(body)
-    print(comment)
-
+    print("created comment",comment)
+    #print(dir(comment))
+    return comment.url
     #Issue(title="This is a new issue", number=XXX)
     
 # To close connections after use
 #g.close()
+
+
