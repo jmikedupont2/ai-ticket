@@ -1,0 +1,12 @@
+[submodule "vendor/openai-python"]
+	path = vendor/openai-python
+	url = https://github.com/openai/openai-python
+[submodule "vendor/lollms"]
+	path = vendor/lollms
+	url = https://github.com/meta-introspector/lollms.git
+[submodule "vendor/Auto-GPT-Plugin-Template"]
+	path = vendor/Auto-GPT-Plugin-Template
+	url = https://github.com/Significant-Gravitas/Auto-GPT-Plugin-Template
+[submodule "vendor/Auto-GPT"]
+	path = vendor/Auto-GPT
+	url = https://github.com/jmikedupont2/Auto-GPT
