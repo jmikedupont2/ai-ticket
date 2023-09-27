@@ -12,38 +12,19 @@ services:
     build:
       #context: vendor/Auto-GPT/
       context: vendor/Auto-GPT/autogpts/autogpt/
-    environment:
-      - GITHUB_PAT=your-github-pat
+    #environment:
+      #- GITHUB_PAT="${GITHUB_PAT}"
     # Add other configuration as needed
     depends_on:
       - mockopenai
 
   mockopenai:
     #image: your-mockopenai-image:tag
+    #environment:
+    #  - GITHUB_PAT="cat  ~/.pat"
+    #  - GITHUB_REPO='jmikedupont2/ai-ticket'
+
     build:
       context: vendor/lollms/
 
 
-
-# version: '3.8'
-# services:
-#   web:
-#     image: nginx
-#     volumes:
-#       - web_data:/var/www/html
-#   web-test:
-#     image: nginx
-#     volumes:
-#       - web_data:/var/www/html # Web and web test share the web_data volume
-#   db:
-#     image: mysql
-#     volumes:
-#       - db_data:/var/lib/mysql
-# # volumes:
-
-# #   db_data:
-# #     driver: local # Define the driver and options under the volume name
-# #     driver_opts:
-# #       type: none
-# #       device: /data/db_data
-# #       o: bind
