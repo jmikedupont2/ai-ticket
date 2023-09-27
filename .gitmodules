@@ -10,3 +10,6 @@
 [submodule "vendor/Auto-GPT"]
 	path = vendor/Auto-GPT
 	url = https://github.com/jmikedupont2/Auto-GPT
+[submodule "vendor/Auto-GPT-Benchmarks"]
+	path = vendor/Auto-GPT-Benchmarks
+	url = https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks

@@ -1,0 +1,49 @@
+version: '3'
+services:
+  autogpt:
+    working_dir: ./vendor/Auto-GPT/autogpts/autogpt
+    #volumes:
+    #  - ./vendor/Auto-GPT/autogpts/autogpt/benchmark:/benchmark
+     # - ./vendor/Auto-GPT-Benchmarks/agbenchmark/:/app/agbenchmark
+     # - ./docker-compose.yml:/app/docker-compose.yml
+     # - ./vendor/Auto-GPT/autogpts/autogpt/Dockerfile:/app/Dockerfile
+
+    #image: your-autogpt-image:tag
+    build:
+      #context: vendor/Auto-GPT/
+      context: vendor/Auto-GPT/autogpts/autogpt/
+    environment:
+      - GITHUB_PAT=your-github-pat
+    # Add other configuration as needed
+    depends_on:
+      - mockopenai
+
+  mockopenai:
+    #image: your-mockopenai-image:tag
+    build:
+      context: vendor/lollms/
+
+
+
+# version: '3.8'
+# services:
+#   web:
+#     image: nginx
+#     volumes:
+#       - web_data:/var/www/html
+#   web-test:
+#     image: nginx
+#     volumes:
+#       - web_data:/var/www/html # Web and web test share the web_data volume
+#   db:
+#     image: mysql
+#     volumes:
+#       - db_data:/var/lib/mysql
+# # volumes:
+
+# #   db_data:
+# #     driver: local # Define the driver and options under the volume name
+# #     driver_opts:
+# #       type: none
+# #       device: /data/db_data
+# #       o: bind
