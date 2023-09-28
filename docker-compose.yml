@@ -20,9 +20,9 @@ services:
 
   mockopenai:
     #image: your-mockopenai-image:tag
-    #environment:
-    #  - GITHUB_PAT="cat  ~/.pat"
-    #  - GITHUB_REPO='jmikedupont2/ai-ticket'
+    environment:
+      - GITHUB_PAT=${GITHUB_PAT}
+      - GITHUB_REPO=${GITHUB_REPO}
 
     build:
       context: vendor/lollms/
