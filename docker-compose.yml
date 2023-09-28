@@ -5,10 +5,11 @@ services:
     volumes:
       - ./vendor/Auto-GPT/benchmark:/benchmark
       - ./vendor/Auto-GPT/autogpts/autogpt/:/app/autogpt
-      
+     #volumes:
+     #  - ./vendor/Auto-GPT/autogpts/autogpt/benchmark:/benchmark
      # - ./vendor/Auto-GPT-Benchmarks/agbenchmark/:/app/agbenchmark
      # - ./docker-compose.yml:/app/docker-compose.yml
-     # 
+
     #image: your-autogpt-image:tag
     build:
       #context: vendor/Auto-GPT/
