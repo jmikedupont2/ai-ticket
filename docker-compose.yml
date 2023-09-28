@@ -1,13 +1,14 @@
 version: '3'
 services:
   autogpt:
-    working_dir: ./vendor/Auto-GPT/autogpts/autogpt
-    #volumes:
-    #  - ./vendor/Auto-GPT/autogpts/autogpt/benchmark:/benchmark
+    #working_dir: ./vendor/Auto-GPT/autogpts/autogpt
+    volumes:
+      - ./vendor/Auto-GPT/benchmark:/benchmark
+      - ./vendor/Auto-GPT/autogpts/autogpt/:/app/autogpt
+      
      # - ./vendor/Auto-GPT-Benchmarks/agbenchmark/:/app/agbenchmark
      # - ./docker-compose.yml:/app/docker-compose.yml
-     # - ./vendor/Auto-GPT/autogpts/autogpt/Dockerfile:/app/Dockerfile
-
+     # 
     #image: your-autogpt-image:tag
     build:
       #context: vendor/Auto-GPT/
