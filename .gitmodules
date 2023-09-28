@@ -16,9 +16,6 @@
 [submodule "vendor/smol-developer"]
 	path = vendor/smol-developer
 	url = https://github.com/e2b-dev/smol-developer.git
-[submodule "vendor/SuperAGI"]
-	path = vendor/SuperAGI
-	url = https://github.com/SilenNaihin/SuperAGI.git
 [submodule "vendor/beebot"]
 	path = vendor/beebot
 	url = https://github.com/AutoPackAI/beebot.git
