@@ -1,10 +1,10 @@
 version: '3'
 services:
   autogpt:
-    working_dir: ./vendor/Auto-GPT
-    volumes:
-      - ./vendor/Auto-GPT/benchmark:/benchmark
-      - ./vendor/Auto-GPT/autogpts/autogpt/:/app/autogpt
+    #working_dir: ./vendor/Auto-GPT
+    #volumes:
+    #  - ./vendor/Auto-GPT/benchmark:/benchmark
+    #  - ./vendor/Auto-GPT/autogpts/autogpt/:/app/autogpt
      #volumes:
      #  - ./vendor/Auto-GPT/autogpts/autogpt/benchmark:/benchmark
      # - ./vendor/Auto-GPT-Benchmarks/agbenchmark/:/app/agbenchmark
@@ -13,7 +13,7 @@ services:
     #image: your-autogpt-image:tag
     build:
       #context: vendor/Auto-GPT/
-      context: vendor/Auto-GPT/autogpts/autogpt/
+      context: vendor/Auto-GPT/
     #environment:
       #- GITHUB_PAT="${GITHUB_PAT}"
     # Add other configuration as needed
