@@ -13,18 +13,3 @@
 [submodule "vendor/Auto-GPT-Benchmarks"]
 	path = vendor/Auto-GPT-Benchmarks
 	url = https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks
-[submodule "vendor/smol-developer"]
-	path = vendor/smol-developer
-	url = https://github.com/e2b-dev/smol-developer.git
-[submodule "vendor/beebot"]
-	path = vendor/beebot
-	url = https://github.com/AutoPackAI/beebot.git
-[submodule "vendor/PolyGPT"]
-	path = vendor/PolyGPT
-	url = https://github.com/polywrap/PolyGPT.git
-[submodule "vendor/babyagi"]
-	path = vendor/babyagi
-	url = https://github.com/SilenNaihin/babyagi.git
-[submodule "vendor/Auto-GPT-Turbo"]
-	path = vendor/Auto-GPT-Turbo
-	url = https://github.com/lc0rp/Auto-GPT-Turbo.git
