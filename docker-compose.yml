@@ -1,7 +1,7 @@
 version: '3'
 services:
   autogpt:
-    #working_dir: ./vendor/Auto-GPT/autogpts/autogpt
+    working_dir: ./vendor/Auto-GPT
     volumes:
       - ./vendor/Auto-GPT/benchmark:/benchmark
       - ./vendor/Auto-GPT/autogpts/autogpt/:/app/autogpt
