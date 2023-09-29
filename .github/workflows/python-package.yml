@@ -41,5 +41,7 @@ jobs:
     #    pytest
     - name: Docker Compose Action
       uses: isbang/compose-action@v1.5.1
-            
+      env:
+        GITHUB_PAT: ${{ secrets.PAT }}
+	GITHUB_REPO=jmikedupont2/ai-ticket
 
