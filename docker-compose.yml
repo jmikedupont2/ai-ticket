@@ -5,17 +5,17 @@ services:
     image: ai_ticket
     build:
       context: .
-    entrypoint: /bin/bash
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
+    #entrypoint: /bin/bash
+    #stdin_open: true # docker run -i
+    #tty: true        # docker run -t
 
   autogpt:
-    #entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news"
+    entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y"
 
     # uncomment thse next 3 lines for debugging
-    entrypoint: /bin/bash
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
+    #entrypoint: /bin/bash
+    #stdin_open: true # docker run -i
+    #tty: true        # docker run -t
     environment:
       - GITHUB_PAT="${GITHUB_PAT}"
       - GITHUB_REPO="jmikedupont2/ai-ticket"
