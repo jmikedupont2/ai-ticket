@@ -1,6 +1,20 @@
 version: '3'
 services:
   autogpt:
+    entrypoint: poetry run autogpt --install-plugin-deps --skip-news
+    #entrypoint: curl  http://mockopenai:5000/v1
+
+    # uncomment thse next 3 lines for debugging
+    #entrypoint: /bin/bash
+    #stdin_open: true # docker run -i
+    #tty: true        # docker run -t
+    
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    #    "poetry", "run", "autogpt", "--install-plugin-deps"]
     #working_dir: ./vendor/Auto-GPT
     #volumes:
     #  - ./vendor/Auto-GPT/benchmark:/benchmark
@@ -14,19 +28,17 @@ services:
     build:
       #context: vendor/Auto-GPT/
       context: vendor/Auto-GPT/
-    #environment:
-      #- GITHUB_PAT="${GITHUB_PAT}"
     # Add other configuration as needed
     depends_on:
       - mockopenai
 
   mockopenai:
-    #image: your-mockopenai-image:tag
     environment:
       - GITHUB_PAT=${GITHUB_PAT}
       - GITHUB_REPO=${GITHUB_REPO}
 
     build:
       context: vendor/lollms/
-
+    ports:
+      -  "5000:5000"
 
