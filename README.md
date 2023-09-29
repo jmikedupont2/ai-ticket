@@ -1,5 +1,6 @@
 # ai-ticket
-The ai ticket system to handle the AI with tickets
+The AI Ticket system to handle the AI with tickets.
+Human Powered AI-Ops to Help you with the last mile of your AI code generated system.
 
 
 **Summary: User-Driven Ticket-Based Workflow**
