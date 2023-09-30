@@ -2,9 +2,9 @@ version: '3'
 services:
 
   ai_ticket:
-    image: ai_ticket
-    build:
-      context: .
+    #image: ai_ticket
+    build: .
+    #  context: .
     #entrypoint: /bin/bash
     #stdin_open: true # docker run -i
     #tty: true        # docker run -t
@@ -25,6 +25,7 @@ services:
     build:
       context: vendor/Auto-GPT/
     depends_on:
+      - ai_ticket
       - mockopenai
 
   mockopenai:

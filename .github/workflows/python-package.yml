@@ -5,22 +5,25 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  build:
+  python-package-build:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.10"]
+        python-version: [
+        #"3.10",
+        "3.x"] 
     steps:
     - uses: actions/checkout@v3
     - name: Checkout repository
       uses: actions/checkout@master
       with:
         submodules: 'true'
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
+    #- name: Set up Python ${{ matrix.python-version }}
+    #3  uses: actions/setup-python@v3
+    #  with:
+    #    architecture: x64
+    #    python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -31,7 +34,7 @@ jobs:
     #    flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     #    flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Docker Compose Action
-      uses: isbang/compose-action@v1.5.1
+      uses: meta-introspector/compose-action@main
       env:
        GITHUB_PAT: ${{ secrets.PAT }}
        GITHUB_REPO: "jmikedupont2/ai-ticket"
