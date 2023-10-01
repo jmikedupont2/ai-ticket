@@ -2,8 +2,10 @@ version: '3'
 services:
 
   ai_ticket:
-    #image: ai_ticket
-    build: .
+    
+    image: h4ckermike/ai-ticket:ai_ticket   
+    
+    #build: .
     #  context: .
     #entrypoint: /bin/bash
     #stdin_open: true # docker run -i
@@ -21,13 +23,17 @@ services:
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
       - OPENAI_API_BASE=http://mockopenai:5000/v1
-    build:
-      context: vendor/Auto-GPT/
+
+    image: h4ckermike/ai-ticket:autogpt
+
+    #build:
+    #  context: vendor/Auto-GPT/
     depends_on:
       - ai_ticket
       - mockopenai
 
   mockopenai:
+    image: h4ckermike/ai-ticket:mockopenai 
     depends_on:
       - ai_ticket
 
@@ -35,8 +41,14 @@ services:
       - GITHUB_PAT=${GITHUB_PAT}
       - GITHUB_REPO=${GITHUB_REPO}
 
-    build:
-      context: vendor/lollms/
+    
+
+
+    #build:
+    #  context: vendor/lollms/
     ports:
       -  "5000:5000"
 
+
+  #todo the act runner
+      #h4ckermike/ai-ticket:my_local_act
