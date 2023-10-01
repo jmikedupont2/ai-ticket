@@ -21,6 +21,8 @@ jobs:
         #"3.10",
         "3.x"] 
     steps:
+
+
     - uses: actions/checkout@v3
     - name: Checkout repository
       uses: actions/checkout@master
@@ -36,12 +38,30 @@ jobs:
         python -m pip install --upgrade pip
         #python -m pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install podman-compose
     #- name: Lint with flake8
     #  run: |
     #    flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     #    flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Docker Compose Action
-      uses: meta-introspector/compose-action@main
+    - name: Docker Compose Action build
+      #uses: meta-introspector/compose-action@main
       env:
        GITHUB_PAT: ${{ secrets.PAT }}
        GITHUB_REPO: "jmikedupont2/ai-ticket"
+      run:         docker-compose build
+      
+    - name: Docker Compose Action echo
+      env:
+        GITHUB_PAT: ${{ secrets.PAT }}
+        GITHUB_REPO: "jmikedupont2/ai-ticket"
+      run: echo  pat ${{ secrets.PAT }}
+#      run: echo docker-compose up -e GITHUB_PAT=${{ secrets.PAT }} -e GITHUB_REPO="jmikedupont2/ai-ticket"
+
+    - name: Docker Compose Action do it
+      #uses: meta-introspector/compose-action@main
+      env:
+        GITHUB_PAT: ${{ secrets.PAT }}
+        GITHUB_REPO: "jmikedupont2/ai-ticket"
+      run: |
+        GITHUB_PAT=${{ secrets.PAT }} GITHUB_REPO="jmikedupont2/ai-ticket" docker-compose up 
+        
