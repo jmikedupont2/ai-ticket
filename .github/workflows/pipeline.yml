@@ -30,11 +30,11 @@ jobs:
       - name: pylint
         run: |
           source .venv/bin/activate          
-          pylint build tests || echo ignore for now
+          pylint build tests
       - name: black
         run: |
-#         source .venv/bin/activate
-#         black --check . ||skip
+          source .venv/bin/activate
+          black --check .
 
   run-tests:
     needs: code-quality
