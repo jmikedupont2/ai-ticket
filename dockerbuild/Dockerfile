@@ -6,8 +6,9 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 ARG APPLICATION_SERVER_PORT
 
-LABEL maintainer="Mike DuPont <jmikedupont2@gmail.com>"
+LABEL maintainer="Max Pfeiffer <max@maxpfeiffer.ch>"
 
+    # https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUNBUFFERED
 ENV PYTHONUNBUFFERED=1 \
     # https://docs.python.org/3/using/cmdline.html#envvar-PYTHONDONTWRITEBYTECODE
     PYTHONDONTWRITEBYTECODE=1 \
@@ -17,6 +18,7 @@ ENV PYTHONUNBUFFERED=1 \
     POETRY_CACHE_DIR="/application_root/.cache" \
     VIRTUAL_ENVIRONMENT_PATH="/application_root/.venv" \
     APPLICATION_SERVER_PORT=$APPLICATION_SERVER_PORT
+
 # Adding the virtual environment to PATH in order to "activate" it.
 # https://docs.python.org/3/library/venv.html#how-venvs-work
 ENV PATH="$VIRTUAL_ENVIRONMENT_PATH/bin:$PATH"
@@ -36,16 +38,12 @@ RUN chown python_application:python_application ${PYTHONPATH}
 # https://python-poetry.org/docs/configuration/#cache-directory
 RUN mkdir ${POETRY_CACHE_DIR} && chown python_application:python_application ${POETRY_CACHE_DIR}
 
+# Document the exposed port
+# https://docs.docker.com/engine/reference/builder/#expose
+EXPOSE ${APPLICATION_SERVER_PORT}
+
 # Use the unpriveledged user to run the application
 USER 1001
 
-WORKDIR /opt/ai-ticket
-COPY pyproject.toml /opt/ai-ticket/
-COPY setup.cfg /opt/ai-ticket/
-COPY requirements.txt /opt/ai-ticket/
-COPY ./src/ /opt/ai-ticket/src/
-RUN pip install /opt/ai-ticket/
-
-RUN apt update
-RUN apt install -y git
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+# Run the uvicorn application server.
+CMD exec uvicorn --workers 1 --host 0.0.0.0 --port $APPLICATION_SERVER_PORT app.main:app
