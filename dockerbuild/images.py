@@ -63,16 +63,27 @@ class ExampleApplicationImage(DockerImage):
         target: str,
         base_image_tag: str,
     ) -> Image:
+        
         self.image_tag = f"{self.version}-{self.target_architecture}"
 
         buildargs: dict[str, str] = {
             "BASE_IMAGE": base_image_tag,
         }
-        image: Image = self.docker_client.images.build(
+        print("buildargs",dict(
+            args=buildargs,                               
             path=str(self.dockerfile_directory),
             dockerfile=self.dockerfile_name,
             tag=f"{self.image_name}:{self.image_tag}",
-            target=target,
+            #target=target,
+            buildargs=buildargs,
+        ))
+        
+        image: Image = self.docker_client.images.build(
+            
+            path=str(self.dockerfile_directory),
+            dockerfile=self.dockerfile_name,
+            tag=f"{self.image_name}:{self.image_tag}",
+            #target=target,
             buildargs=buildargs,
         )[0]
         return image
@@ -89,7 +100,7 @@ class ActBaseImage(ExampleApplicationImage):
         # An image name is made up of slash-separated name components,
         # optionally prefixed by a registry hostname.
         # see: https://docs.docker.com/engine/reference/commandline/tag/
-        self.image_name: str = "act_base"
+        self.image_name: str = "h4ckermike/act_base"
         self.dockerfile_directory: Path = (
             Path(__file__).parent.parent.resolve()
             / "vendor"
