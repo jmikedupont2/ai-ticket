@@ -20,7 +20,7 @@ services:
       - GITHUB_PAT="${GITHUB_PAT}"
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
-      - OPENAI_API_BASE=http://mockopenai:8080/v1
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
     build:
       context: vendor/Auto-GPT/
     depends_on:
