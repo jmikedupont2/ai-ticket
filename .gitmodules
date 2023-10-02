@@ -13,3 +13,6 @@
 [submodule "vendor/Auto-GPT-Benchmarks"]
 	path = vendor/Auto-GPT-Benchmarks
 	url = https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks
+[submodule "vendor/act_base"]
+	path = vendor/act_base
+	url = https://github.com/meta-introspector/act_base/
