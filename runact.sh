@@ -9,6 +9,8 @@
 # use .secrets PAT And DOCKER
 act    -P ubuntu-latest=localhost/my_local_act \
        --verbose \
-    --job python-package-build
+       --job code-quality
+
+#    --job python-package-build
 
 #    --pull=false \

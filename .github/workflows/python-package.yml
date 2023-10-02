@@ -50,18 +50,19 @@ jobs:
        GITHUB_REPO: "jmikedupont2/ai-ticket"
       run:         docker-compose build
       
-    - name: Docker Compose Action echo
-      env:
-        GITHUB_PAT: ${{ secrets.PAT }}
-        GITHUB_REPO: "jmikedupont2/ai-ticket"
-      run: echo  pat ${{ secrets.PAT }}
-#      run: echo docker-compose up -e GITHUB_PAT=${{ secrets.PAT }} -e GITHUB_REPO="jmikedupont2/ai-ticket"
 
-    - name: Docker Compose Action do it
-      #uses: meta-introspector/compose-action@main
+    - name: create openai
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
         GITHUB_REPO: "jmikedupont2/ai-ticket"
       run: |
-        GITHUB_PAT=${{ secrets.PAT }} GITHUB_REPO="jmikedupont2/ai-ticket" docker-compose up 
+        GITHUB_PAT=${{ secrets.PAT }} GITHUB_REPO="jmikedupont2/ai-ticket" docker-compose up -d mockopenai
+        
+    - name: run autogpt
+      env:
+        GITHUB_PAT: ${{ secrets.PAT }}
+        GITHUB_REPO: "jmikedupont2/ai-ticket"
+      run: |
+        GITHUB_PAT=${{ secrets.PAT }} GITHUB_REPO="jmikedupont2/ai-ticket" docker-compose run autogpt
+        
         
