@@ -1,5 +1,6 @@
 import click
 import docker
+BASE_IMAGE="nikolaik/python-nodejs:python3.10-nodejs20"
 from docker.client import DockerClient
 from dockerbuild.constants import (
     TARGET_ARCHITECTURES,
@@ -39,9 +40,13 @@ def main(
             new_uvicorn_gunicorn_poetry_image.image_name
         ):
             for tag in old_image.tags:
+                print("tag",tag)
                 docker_client.images.remove(tag, force=True)
 
-        #new_uvicorn_gunicorn_poetry_image.build()
+        new_uvicorn_gunicorn_poetry_image.build(
+            target=target_architecture,
+            base_image_tag=BASE_IMAGE,
+        )
 
         # https://docs.docker.com/engine/reference/commandline/push/
         # https://docs.docker.com/engine/reference/commandline/tag/
