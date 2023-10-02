@@ -1,13 +1,10 @@
 version: '3'
 services:
-
   ai_ticket:
-    #image: ai_ticket
     build: .
-    #  context: .
-    #entrypoint: /bin/bash
-    #stdin_open: true # docker run -i
-    #tty: true        # docker run -t
+  act_base:
+    # the base image of github action
+    build: vendor/act_base
 
   autogpt:
 
