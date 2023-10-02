@@ -161,3 +161,5 @@ cython_debug/
 #.idea/
 
 *~
+/dckr_pat_.txt
+/github_pat.txt
