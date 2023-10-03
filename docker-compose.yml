@@ -1,16 +1,49 @@
 version: '3'
 services:
-  ai_ticket:
-    build: .
-  act_base:
-    # the base image of github action
+    
+  act_base: #root base of action
     build: vendor/act_base
+    
+  poetry_base: # use poetry
+    build:
+      context: vendor/python-poetry/build
+      args:
+        OFFICIAL_PYTHON_IMAGE: act_base
+        POETRY_VERSION: 1.6.1
+    depends_on:
+      - act_base
+    
+  ai_ticket: # the ticket to unite
+    build:
+      context: .
+      args:
+        BASE_IMAGE: act_base
+    depends_on:
+      - poetry_base
+    
+  basic_agent: #basic agnet 
+    build:
+      context: vendor/basic_agent/
+      args:
+        OFFICIAL_PYTHON_IMAGE: act_base
+    depends_on:
+      - ai_ticket
 
-  autogpt:
+  mockopenai: # interface
+    depends_on:
+      - ai_ticket
+    environment:
+      - GITHUB_PAT=${GITHUB_PAT}
+      - GITHUB_REPO=${GITHUB_REPO}
+    build:
+      context: vendor/lollms/
+      args:
+        OFFICIAL_PYTHON_IMAGE: localhost/ai-ticket_ai_ticket:latest
+    ports:
+      -  "5000:8080"
 
-   #entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y"
-    entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment' "
-
+  autogpt: #the beast
+    entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment'  "
 
 
     # uncomment thse next 3 lines for debugging
@@ -24,20 +57,10 @@ services:
       - OPENAI_API_BASE=http://mockopenai:8080/v1
     build:
       context: vendor/Auto-GPT/
+      dockerfile: slim/Dockerfile
+      args:
+        OFFICIAL_PYTHON_IMAGE: localhost/ai-ticket_ai_ticket:latest
+
     depends_on:
-      - ai_ticket
+      - basic_agent
       - mockopenai
-
-  mockopenai:
-    depends_on:
-      - ai_ticket
-
-    environment:
-      - GITHUB_PAT=${GITHUB_PAT}
-      - GITHUB_REPO=${GITHUB_REPO}
-
-    build:
-      context: vendor/lollms/
-    ports:
-      -  "5000:8080"
-
