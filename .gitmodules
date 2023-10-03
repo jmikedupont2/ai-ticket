@@ -16,3 +16,9 @@
 [submodule "vendor/act_base"]
 	path = vendor/act_base
 	url = https://github.com/meta-introspector/act_base/
+[submodule "vendor/python-poetry"]
+	path = vendor/python-poetry
+	url = https://github.com/meta-introspector/python-poetry
+[submodule "vendor/basic_agent"]
+	path = vendor/basic_agent
+	url = https://github.com/meta-introspector/basic_agent
