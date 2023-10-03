@@ -17,11 +17,10 @@ services:
     
   ai_ticket: # the ticket to unite
     image: h4ckermike/ai_ticket
-    build:
-      
+    build:      
       context: .
       args:
-        BASE_IMAGE: act_base
+        BASE_IMAGE: poetry_base
     depends_on:
       - poetry_base
     
