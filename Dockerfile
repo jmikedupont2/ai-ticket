@@ -31,7 +31,6 @@ ENV PATH="$VIRTUAL_ENVIRONMENT_PATH/bin:$PATH"
 WORKDIR ${PYTHONPATH}
 
 # https://python-poetry.org/docs/configuration/#cache-directory
-RUN mkdir ${POETRY_CACHE_DIR}
 
 WORKDIR /opt/ai-ticket
 COPY pyproject.toml /opt/ai-ticket/
