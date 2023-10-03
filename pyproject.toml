@@ -1,5 +1,5 @@
 [build-system]
-python = "^3.7"
+#python = "^3.11"
 requires = [
     "setuptools>=42",
     "wheel",
@@ -40,7 +40,7 @@ classifiers = [
 # [tool.poetry.scripts]
 # [tool.poetry.dependencies]
 [tool.poetry.dependencies]
-python = "3.11.4"
+#python = "3.11.4"
 click = "8.1.7"
 docker = "6.1.3"
 
