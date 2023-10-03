@@ -1,28 +1,34 @@
 version: '3'
 services:
-    
+
   act_base: #root base of action
     build: vendor/act_base
-    
+    image: h4ckermike/act_base
+  #h4ckermike/
   poetry_base: # use poetry
-    build:
+    image: h4ckermike/poetry_base
+    build:      
       context: vendor/python-poetry/build
       args:
-        OFFICIAL_PYTHON_IMAGE: act_base
+        OFFICIAL_PYTHON_IMAGE: h4ckermike/act_base:latest
         POETRY_VERSION: 1.6.1
     depends_on:
       - act_base
     
   ai_ticket: # the ticket to unite
+    image: h4ckermike/ai_ticket
     build:
+      
       context: .
       args:
         BASE_IMAGE: act_base
     depends_on:
       - poetry_base
     
-  basic_agent: #basic agnet 
+  basic_agent: #basic agnet
+    image: h4ckermike/basic_agent
     build:
+      
       context: vendor/basic_agent/
       args:
         OFFICIAL_PYTHON_IMAGE: act_base
@@ -35,10 +41,12 @@ services:
     environment:
       - GITHUB_PAT=${GITHUB_PAT}
       - GITHUB_REPO=${GITHUB_REPO}
+    image: h4ckermike/mockopenai
     build:
+      
       context: vendor/lollms/
       args:
-        OFFICIAL_PYTHON_IMAGE: localhost/ai-ticket_ai_ticket:latest
+        OFFICIAL_PYTHON_IMAGE: h4ckermike/ai_ticket:latest
     ports:
       -  "5000:8080"
 
@@ -55,11 +63,13 @@ services:
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
       - OPENAI_API_BASE=http://mockopenai:8080/v1
+    image: h4ckermike/autogpt
     build:
+      
       context: vendor/Auto-GPT/
       dockerfile: slim/Dockerfile
       args:
-        OFFICIAL_PYTHON_IMAGE: localhost/ai-ticket_ai_ticket:latest
+        OFFICIAL_PYTHON_IMAGE: h4ckermike/ai_ticket:latest
 
     depends_on:
       - basic_agent
