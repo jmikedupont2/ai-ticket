@@ -12,9 +12,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker imaage
-      run: docker-compose build 
+      run: docker-compose build
+      env:
+       GITHUB_PAT: ${{ secrets.PAT }}
+       GITHUB_REPO: "jmikedupont2/ai-ticket"
+
     - name: Build the Docker imaage
       run: docker-compose push
       env:
         DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER }}
