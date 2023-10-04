@@ -78,7 +78,7 @@ services:
     image: h4ckermike/docker-compose-viz
 
     volumes:
-      - ./output/:/output/:rw
-      - ./docker-compose.yml:/input/docker-compose.yml
+      - .:/input:rw
+#      - ./docker-compose.yml:/input/docker-compose.yml
 
     command: render -m image /input/docker-compose.yml -vvv --ansi -o /input/docker-compose.png --force
