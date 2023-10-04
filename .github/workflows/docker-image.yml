@@ -10,8 +10,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
-    #only for h4ckermike/act_base:latest
+    runs-on: h4ckermike/act_base:latest
 
     steps:
     - uses: actions/checkout@v3
