@@ -10,7 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@master
+      with:
+        submodules: 'true'
+
     - name: Build the Docker imaage
       run: docker-compose build
       env:
