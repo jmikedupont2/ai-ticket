@@ -22,3 +22,6 @@
 [submodule "vendor/basic_agent"]
 	path = vendor/basic_agent
 	url = https://github.com/meta-introspector/basic_agent
+[submodule "vendor/docker-compose-viz"]
+	path = vendor/docker-compose-viz
+	url = https://github.com/meta-introspector/docker-compose-viz
