@@ -1,9 +1,13 @@
 [build-system]
+
 requires = [
     "setuptools>=42",
-    "wheel"
+    "wheel",
+    "poetry-core"
 ]
-build-backend = "setuptools.build_meta"
+#build-backend = "setuptools.build_meta"
+build-backend = "poetry.core.masonry.api"
+
 
 [tool.black]
 line-length = 120
@@ -16,3 +20,41 @@ combine_as_imports = true
 combine_star = true
 known_local_folder = ["tests", "cli"]
 known_first_party = ["test_utils"]
+
+[tool.poetry]
+name = "ai-ticket"
+version = "0.0.1"
+authors = [
+  "Mike Dupont <jmikedupont2@gmail.com>",
+]
+readme = "README.md"
+description = "AI ticket"
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+#packages = .
+
+# [tool.poetry.scripts]
+# [tool.poetry.dependencies]
+[tool.poetry.dependencies]
+python = ">=3.10"
+click = "8.1.7"
+docker = "6.1.3"
+pygithub = "^2.1.1"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+python = "^3.7"
+pytest = "7.4.0"
+pytest-cov = "4.1.0"
+coverage = "7.3.1"
+requests = "2.31.0"
+black = "23.7.0"
+pre-commit = "3.3.3"
+semver = "3.0.1"
+pylint = "2.17.5"
+testcontainers = "3.7.1"
+
