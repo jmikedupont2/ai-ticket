@@ -30,7 +30,7 @@ jobs:
       - name: Push the Docker imaage
         run: docker-compose push
         env:
-          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_USERNAME: "h4ckermike"
           DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER }}
           GITHUB_PAT: ${{ secrets.PAT }}
           GITHUB_REPO: "jmikedupont2/ai-ticket"
