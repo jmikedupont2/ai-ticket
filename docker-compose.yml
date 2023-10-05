@@ -20,7 +20,7 @@ services:
     build:      
       context: .
       args:
-        BASE_IMAGE: poetry_base
+        BASE_IMAGE: h4ckermike/poetry_base
     depends_on:
       - poetry_base
     
@@ -30,7 +30,7 @@ services:
       
       context: vendor/basic_agent/
       args:
-        OFFICIAL_PYTHON_IMAGE: act_base
+        OFFICIAL_PYTHON_IMAGE: h4ckermike/act_base:latest
     depends_on:
       - ai_ticket
 
