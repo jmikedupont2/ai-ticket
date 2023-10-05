@@ -51,7 +51,7 @@ services:
     #   args:
     #     OFFICIAL_PYTHON_IMAGE: h4ckermike/ai_ticket:latest
     ports:
-      -  "5000:8080"
+      -  "8080:5000"
 
   autogpt: #the beast
     entrypoint: bash -c "poetry run autogpt --install-plugin-deps --skip-news --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment' -y --continuous --continuous-limit 1 "
