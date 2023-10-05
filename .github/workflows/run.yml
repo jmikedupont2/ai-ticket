@@ -24,24 +24,9 @@ jobs:
       
     - name: docker inspect
       run: docker inspect ai-ticket_mockopenai_1 || fail
-    - name: Run ip address
-      run: ip address ||echo no
-    - name: Run ip address
-      run: apt install -y net-tools  || echo ok
-    - name: Run ifconfig
-      run: ifconfig ||echo ok
-
-    - name: Run curl
-      run: curl --fail http://mockopenai:8080/v1/models || echo ignore
-    - name: Run curl
-      run: curl --fail http://ai-ticket_mockopenai_1:8080/v1/models || echo ignore
-    - name: Run curl
-      run: curl --fail http://mockopenai_1:8080/v1/models || echo ignore
-    - name: Run curl
-      run: curl --fail http://localhost:8080/v1/models || echo ignore
 
     - name: Run autogpt in docker
-      run: curl --fail http://mockopenai:8080/v1/models && docker-compose up --no-build --abort-on-container-exit autogpt || 
+      run: curl --fail http://localhost:8080/v1/models && docker-compose up --no-build --abort-on-container-exit autogpt || 
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
         GITHUB_REPO: "jmikedupont2/ai-ticket"
