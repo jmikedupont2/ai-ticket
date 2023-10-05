@@ -2,8 +2,8 @@ version: '3'
 services:
 
   act_base: #root base of action
-  #build: vendor/act_base
-  image: h4ckermike/act_base
+    image: h4ckermike/act_base
+    #build: vendor/act_base
   #h4ckermike/
   poetry_base: # use poetry
     image: h4ckermike/poetry_base
