@@ -9,7 +9,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    if: contains(github.event.comment.body, '/agent-action)
+    if: contains(github.event.comment.body, '/agent-action')
 
     steps:
       - name: Checkout latest code
