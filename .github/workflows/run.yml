@@ -15,6 +15,16 @@ jobs:
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
         GITHUB_REPO: "jmikedupont2/ai-ticket"
+    
+    - name: docker ps
+      run: docker ps -a --no-trunc
+      
+    - name: docker inspect
+      run: docker inspect $(docker ps  --noheading -f label=com.docker.compose.project.working_dir="$PWD" -f label=com.docker.compose.service)
+
+    - name: docker compose
+      run: docker-compose logs -t mockopenai
+
     - name: Run autogpt in docker
       run: curl --fail http://mockopenai:8080/v1/models && docker-compose up --no-build --abort-on-container-exit autogpt
       env:
