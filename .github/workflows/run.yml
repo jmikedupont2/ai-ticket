@@ -26,7 +26,7 @@ jobs:
       run: docker inspect ai-ticket_mockopenai_1 || fail
 
     - name: Run autogpt in docker
-      run: curl --fail http://localhost:8080/v1/models && docker-compose up --no-build --abort-on-container-exit autogpt || 
+      run: curl --fail http://localhost:8080/v1/models && docker-compose up --no-build --abort-on-container-exit autogpt
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
         GITHUB_REPO: "jmikedupont2/ai-ticket"
