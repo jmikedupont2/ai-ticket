@@ -36,4 +36,4 @@ jobs:
       uses: isbang/compose-action@v1.5.1
       env:
        GITHUB_PAT: ${{ secrets.PAT }}
-       GITHUB_REPO: "jmikedupont2/ai-ticket"
+       GITHUB_REPO: "MuhammadSaadSiddique/ai-ticket"

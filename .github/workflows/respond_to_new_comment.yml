@@ -1,0 +1,21 @@
+name: Respond to New Comments
+
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  respond:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Comment
+        id: check-comment
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.CUSTOM_TOKEN }}
+          script: |
+            const comment = context.payload.comment.body.toLowerCase();
+            // Add your logic here to respond to the new comment
+            console.log('New comment:', comment);
