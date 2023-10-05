@@ -10,9 +10,16 @@ jobs:
       uses: actions/checkout@master
       with:
         submodules: 'true'        
-    - name: Run autogpt in docker with mock openai server
-      run: docker-compose up --no-build --abort-on-container-exit mockopenai autogpt
+    - name: Run  mock openai server
+      run: docker-compose up --no-build -d mockopenai 
+      env:
+        GITHUB_PAT: ${{ secrets.PAT }}
+        GITHUB_REPO: "jmikedupont2/ai-ticket"
+    - name: Run autogpt in docker
+      run: curl --fail http://mockopenai:8080/v1/models && docker-compose up --no-build --abort-on-container-exit autogpt
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
         GITHUB_REPO: "jmikedupont2/ai-ticket"
           
+    - name: stop mock openai server, just in case
+      run: docker-compose down mockopenai 
