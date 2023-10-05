@@ -29,10 +29,10 @@ jobs:
         with:
           context: .
           load: true
-          tags: ${{ env.TEST_TAG }}
+          tags: ${{ secrets.TEST_TAG }}
       - name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }}
+          docker run --rm ${{ secrets.TEST_TAG }}
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
