@@ -14,7 +14,7 @@ jobs:
         id: check-comment
         uses: actions/github-script@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.CUSTOM_TOKEN }}
           script: |
             const comment = context.payload.comment.body.toLowerCase();
             // Add your logic here to respond to the new comment
