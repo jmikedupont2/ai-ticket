@@ -18,11 +18,22 @@ jobs:
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
         GITHUB_REPO: "jmikedupont2/ai-ticket"
+        
     - name: wait for openai
-      uses: thegabriele97/dockercompose-health-action@main
-      with:
-        timeout: '30'
-        workdir: "nobuilds"
+      run: |
+        for x in 1 2 3 4 5 6 7 9 0 1 2 3 4 5 6 7 9 0;
+        do        
+        docker-compose -f nobuilds/docker-compose.yml ps
+        docker-compose -f nobuilds/docker-compose.yml inspect mockopenai 
+        curl https://localhost:8080/v1/models || echo ok
+        curl https://127.0.0.1:8080/v1/models || echo ok
+        curl https://host.docker.internal:8080/v1/models || echo ok
+        curl https://host-gateway:8080/v1/models || echo ok
+        echo step
+        sleep 5
+        done
+        #timeout 300 bash -c 'while [[ "$(curl --insecure -s -o /dev/null -w ''%{http_code}'' https://localhost:8080/v1/models)" != "200" ]]; do sleep 5; done'
+
     - name: Autogpt
       uses: meta-introspector/agent-action@master
       env:

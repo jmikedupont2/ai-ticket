@@ -37,11 +37,10 @@ services:
     depends_on:
       - ai_ticket
     healthcheck:
-      test: curl --fail http://mockopenai:8080/v1/models
+      test: curl --fail http://localhost:5000/v1/models
       interval: 5s
       timeout: 5s
-      retries: 5
-      
+      retries: 5      
     environment:
       - GITHUB_PAT=${GITHUB_PAT}
       - GITHUB_REPO=${GITHUB_REPO}
