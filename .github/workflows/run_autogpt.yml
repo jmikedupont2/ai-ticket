@@ -17,7 +17,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      submodules: 'true'
+      with:
+        submodules: 'true'
       
     - name: Autogpt
       uses: meta-introspector/agent-action@master
