@@ -18,8 +18,13 @@ jobs:
         image: h4ckermike/mockopenai
         ports:
           - 8080:5000
+          
     if: contains(github.event.comment.body, '/agent-action')
+    
     steps:
+    - name: recursive update
+      run: |
+        curl http://mockopenai:8080/v1 || echo nope
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: recursive update
@@ -34,10 +39,10 @@ jobs:
         AI_GOAL_4: 'control pests'
         GITHUB_REPO: jmikedupont2/ai-ticket
         OPENAI_API_KEY: your-openai-api-key
-        OPENAI_API_BASE: http://127.0.0.1:8080/v1
+        OPENAI_API_BASE: http://mockopenai:8080/v1
       run: |
-        apt update || echo nope
-        apt install -y curl git || echo nope
+        #apt update || echo nope
+        #apt install -y curl git || echo nope
         curl http://127.0.0.1:8080/v1  || echo nope
         curl http://localhost:8080/v1  || echo nope
         curl http://mockopenai:8080/v1 || echo nope
