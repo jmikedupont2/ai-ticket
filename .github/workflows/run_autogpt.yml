@@ -21,7 +21,7 @@ jobs:
         GITHUB_REPO: "jmikedupont2/ai-ticket"
         
   autogpt:
-    depends_on:
+    needs:
       - mock_openai
     runs-on: ubuntu-latest
     if: contains(github.event.comment.body, '/agent-action')
