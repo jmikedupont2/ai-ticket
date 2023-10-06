@@ -30,10 +30,11 @@ jobs:
            echo $dpid;
            docker inspect  $dpid || echo fail
         done
-        curl https://localhost:8080/v1/models || echo ok
-        curl https://127.0.0.1:8080/v1/models || echo ok
-        curl https://host.docker.internal:8080/v1/models || echo ok
-        curl https://host-gateway:8080/v1/models || echo ok
+        curl http://localhost:8080/v1/models || echo ok
+        curl http://127.0.0.1:8080/v1/models || echo ok
+        curl http://172.18.0.3:8080/v1/models || echo ok
+        curl http://172.18.0.2:8080/v1/models || echo ok
+        curl http://172.18.0.1:8080/v1/models || echo ok
         echo step
         sleep 5
         done
