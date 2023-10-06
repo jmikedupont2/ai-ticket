@@ -25,6 +25,7 @@ jobs:
     - name: recursive update
       run: |
         curl http://mockopenai:8080/v1 || echo nope
+        git config --global --add safe.directory /__w/ai-ticket/ai-ticket
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: recursive update
