@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  build:
+  build-and-publish-docker:
 
     runs-on: h4ckermike/act_base:latest
 

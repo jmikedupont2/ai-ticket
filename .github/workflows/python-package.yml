@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ "runautogpt-main" ]
 jobs:
-  build:
+  run-autogpt-in-githubaction:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
