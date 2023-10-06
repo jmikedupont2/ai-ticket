@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mockopenai: # interface
+    healthcheck:
+      test: curl --fail http://mockopenai:8080/v1/models
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      - GITHUB_PAT=${GITHUB_PAT}
+      - GITHUB_REPO=${GITHUB_REPO}
+    image: h4ckermike/mockopenai
+    ports:
+      -  "8080:5000"
+  autogpt: #the beast
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    entrypoint: bash -c "poetry run autogpt --install-plugin-deps --skip-news \
+                --ai-name "${AI_NAME}"  \
+                --ai-role "${AI_ROLE}"  \
+                "${AI_GOALS}" \
+                -y --continuous --continuous-limit 1 "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://host.docker.internal:8080/v1
+    image: h4ckermike/autogpt
+    depends_on:
+      - mockopenai
