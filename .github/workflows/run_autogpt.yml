@@ -22,7 +22,7 @@ jobs:
         
   autogpt:
     depends_on:
-      - mockopenai
+      - mock_openai
     runs-on: ubuntu-latest
     if: contains(github.event.comment.body, '/agent-action')
     steps:
