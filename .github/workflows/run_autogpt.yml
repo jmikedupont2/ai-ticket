@@ -30,13 +30,14 @@ jobs:
            echo $dpid;
            docker inspect  $dpid || echo fail
         done
-        curl http://localhost:8080/v1/models || echo ok
-        curl http://127.0.0.1:8080/v1/models || echo ok
-        curl http://172.18.0.3:8080/v1/models || echo ok
-        curl http://172.18.0.2:8080/v1/models || echo ok
-        curl http://172.18.0.1:8080/v1/models || echo ok
+        for url in http://localhost:8080/v1/models http://127.0.0.1:8080/v1/models http://172.18.0.3:8080/v1/models http://172.18.0.2:8080/v1/models http://172.18.0.1:8080/v1/models;
+        do
+          echo $url
+          curl --verbose $url 
+        done
+        
         echo step
-        sleep 5
+        sleep 10
         done
         #timeout 300 bash -c 'while [[ "$(curl --insecure -s -o /dev/null -w ''%{http_code}'' https://localhost:8080/v1/models)" != "200" ]]; do sleep 5; done'
 
