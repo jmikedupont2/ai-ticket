@@ -21,8 +21,8 @@ jobs:
     - name: wait for openai
       uses: thegabriele97/dockercompose-health-action@main
       with:
-        timeout: '160'
-        src: "nobuilds"
+        timeout: '30'
+        workdir: "nobuilds"
     - name: Autogpt
       uses: meta-introspector/agent-action@master
       env:
