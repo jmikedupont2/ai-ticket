@@ -14,7 +14,7 @@ jobs:
       with:
         submodules: 'true'        
     - name: Run autogpt in docker with mock openai server
-      run: docker-compose --detach  -f nobuilds/docker-compose.yml  up --no-build mockopenai 
+      run: docker-compose -f nobuilds/docker-compose.yml up --detach --no-build mockopenai
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
         GITHUB_REPO: "jmikedupont2/ai-ticket"
