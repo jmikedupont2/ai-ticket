@@ -27,5 +27,5 @@ jobs:
           AI_GOAL_4: 'control pests'
           GITHUB_REPO: jmikedupont2/ai-ticket
           OPENAI_API_KEY: your-openai-api-key
-          OPENAI_API_BASE: http://mockopenai:8080/v1
+          OPENAI_API_BASE: http://127.0.0.1:8080/v1
 
