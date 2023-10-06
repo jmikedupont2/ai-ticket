@@ -14,18 +14,7 @@ jobs:
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v4.1.0
-
-      - name: Set up Python 
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.10"
-
-
-      - uses: adambirds/docker-compose-action@v1.3.0
-        with:
-          compose-file: "docker-compose-run.yml"
-      
       - name: Autogpt
-        uses: meta-introspector/agent-action@v0.0.1
+        uses: meta-introspector/agent-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
