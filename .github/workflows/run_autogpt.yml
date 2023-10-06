@@ -20,6 +20,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
           AI_ROLE : 'saviour'
-          AI_NAME : 'autogen'
-          AI_GOALS : "--ai-goal='solve world hunger' --ai-goal='stop war' " 
+          AI_NAME : 'AI saint'
+          AI_GOAL_1 : "feed the masses"
+          AI_GOAL_2: 'reduce conflict'
+          AI_GOAL_3: 'improve health'
+          AI_GOAL_4: 'control pests'
           GITHUB_REPO: jmikedupont2/ai-ticket
