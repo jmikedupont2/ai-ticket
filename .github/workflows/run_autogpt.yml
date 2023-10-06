@@ -16,10 +16,16 @@ jobs:
       with:
         submodules: 'true'        
     - name: Run autogpt in docker with mock openai server
-      run: docker-compose -f docker-compose-no-build.yml  up --no-build mockopenai --detach --wait --wait-timeout 180
+      run: docker-compose --detach  -f nobuilds/docker-compose.yml  up --no-build mockopenai 
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
-        GITHUB_REPO: "jmikedupont2/ai-ticket"
+        GITHUB_REPO: "jmikedupont2/ai-ticket
+    
+    - name: Check services healthiness
+      uses: thegabriele97/dockercompose-health-action@main
+      with:
+        timeout: '160'
+        src: "nobuilds"
 
     - name: Autogpt
       uses: meta-introspector/agent-action@master
