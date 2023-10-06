@@ -18,3 +18,8 @@ jobs:
         uses: meta-introspector/agent-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+          AI_ROLE : 'saviour'
+          AI_NAME : 'autogen'
+          AI_GOALS : "--ai-goal='solve world hunger' --ai-goal='stop war' " 
+          GITHUB_REPO: jmikedupont2/ai-ticket
