@@ -3,9 +3,10 @@ on:
 
   workflow_dispatch :  
   push:
-    branches: [ "main" ]
+    # for now link to a branch to prevent triggering by accident while fixing the comment job
+    branches: [ "runautogpt-main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "runautogpt-main" ]
 jobs:
   build:
     runs-on: ubuntu-latest

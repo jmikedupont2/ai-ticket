@@ -3,9 +3,9 @@ name: BuildDockerImage
 on:
   workflow_dispatch :  
   push:
-    branches: [ "main" ]
+    branches: [ "docker-main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "docker-main" ]
 
 jobs:
 
