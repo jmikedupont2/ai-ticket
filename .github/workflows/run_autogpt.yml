@@ -6,6 +6,13 @@ jobs:
   # lets run the mockai first
   mock_openai_and_autogpt:    
     runs-on: ubuntu-latest
+    container: ubuntu
+    services:
+      mockopenai:
+        image: jmikedupont2/mockopenai
+        ports:
+          - 8080:5000
+    
     if: contains(github.event.comment.body, '/agent-action')
     steps:
     - uses: actions/checkout@v3
@@ -13,32 +20,6 @@ jobs:
       uses: actions/checkout@master
       with:
         submodules: 'true'        
-    - name: Run autogpt in docker with mock openai server
-      run: docker-compose -f nobuilds/docker-compose.yml up --detach --no-build mockopenai
-      env:
-        GITHUB_PAT: ${{ secrets.PAT }}
-        GITHUB_REPO: "jmikedupont2/ai-ticket"
-        
-    - name: wait for openai
-      run: |
-        # for x in 1 2 3 4 5 6 7 9 0 1 2 3 4 5 6 7 9 0;
-        # do        
-        # docker-compose -f nobuilds/docker-compose.yml ps
-        # docker ps  || echo ok
-        # for dpid in `docker ps -q`;
-        # do
-        #    echo $dpid;
-        #    docker inspect  $dpid || echo fail
-        # done
-        #for url in http://localhost:8080/v1/models http://127.0.0.1:8080/v1/models http://172.18.0.3:8080/v1/models http://172.18.0.2:8080/v1/models http://172.18.0.1:8080/v1/models;
-        #do
-        #  echo $url
-        #  curl --verbose $url 
-        #done
-        #echo step
-        #sleep 10
-        #done
-        timeout 300 bash -c 'while [[ "$(curl --insecure -s -o /dev/null -w ''%{http_code}'' http://127.0.0.1:8080/v1/models)" != "200" ]]; do sleep 5; done'
 
     - name: Autogpt
       uses: meta-introspector/agent-action@master
