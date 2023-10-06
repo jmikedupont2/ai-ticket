@@ -9,7 +9,7 @@ jobs:
     container: ubuntu
     services:
       mockopenai:
-        image: jmikedupont2/mockopenai
+        image: h4ckermike/mockopenai
         ports:
           - 8080:5000
     
