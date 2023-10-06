@@ -5,27 +5,40 @@ on:
     types: [created]
 
 jobs:
-  autogpt:
-
+  # lets run the mockai first
+  mock_openai:    
     runs-on: ubuntu-latest
-
+    steps:
+    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@master
+      with:
+        submodules: 'true'        
+    - name: Run autogpt in docker with mock openai server
+      run: docker-compose up --no-build mockopenai
+      env:
+        GITHUB_PAT: ${{ secrets.PAT }}
+        GITHUB_REPO: "jmikedupont2/ai-ticket"
+        
+  autogpt:
+    depends_on:
+      - mockopenai
+    runs-on: ubuntu-latest
     if: contains(github.event.comment.body, '/agent-action')
-
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v4.1.0
       - name: Autogpt
         uses: meta-introspector/agent-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_PAT: ${{ secrets.PAT }}
           AI_ROLE : 'saviour'
           AI_NAME : 'AI saint'
-          AI_GOAL_1 : "feed the masses"
+          AI_GOAL_1: 'feed the masses'
           AI_GOAL_2: 'reduce conflict'
           AI_GOAL_3: 'improve health'
           AI_GOAL_4: 'control pests'
           GITHUB_REPO: jmikedupont2/ai-ticket
           OPENAI_API_KEY: your-openai-api-key
           OPENAI_API_BASE: http://127.0.0.1:8080/v1
-
