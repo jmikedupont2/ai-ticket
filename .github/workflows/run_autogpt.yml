@@ -15,12 +15,10 @@ jobs:
     
     if: contains(github.event.comment.body, '/agent-action')
     steps:
-    - uses: actions/checkout@v3
     - name: Checkout repository
-      uses: actions/checkout@master
-      with:
-        submodules: 'true'        
-
+      uses: actions/checkout@v3
+      submodules: 'true'
+      
     - name: Autogpt
       uses: meta-introspector/agent-action@master
       env:
