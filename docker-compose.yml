@@ -37,6 +37,10 @@ services:
 
   autogpt-standalone:
     entrypoint: bash 
-    build:
-      context: vendor/Auto-GPT/
+    build:      
+       context: vendor/Auto-GPT/
+       dockerfile: slim/Dockerfile
+       args:
+         OFFICIAL_PYTHON_IMAGE: h4ckermike/ai_ticket:latest
+
 
