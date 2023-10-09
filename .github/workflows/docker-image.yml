@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: meta-introspector/checkout@v3
       with :
-        submodule: true
+        submodules: true
     - name: Build the Docker imaage
       run: docker-compose build 
     - name: Build the Docker imaage
