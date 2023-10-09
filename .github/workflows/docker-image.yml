@@ -14,7 +14,9 @@ jobs:
     #runs-on: h4ckermike/act_base:latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: meta-introspector/checkout@v3
+      with :
+        submodule: true
     - name: Build the Docker imaage
       run: docker-compose build 
     - name: Build the Docker imaage
