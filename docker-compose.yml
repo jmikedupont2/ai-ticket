@@ -38,5 +38,5 @@ services:
   autogpt-standalone:
     entrypoint: bash 
     build:
-      context: vendor/Auto-GPT/
+      context: vendor/Auto-GPT/autogpts/autogpt/
 
