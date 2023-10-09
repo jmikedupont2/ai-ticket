@@ -35,3 +35,8 @@ services:
     ports:
       -  "5000:5000"
 
+  autogpt-standalone:
+    entrypoint: bash 
+    build:
+      context: vendor/Auto-GPT/
+
