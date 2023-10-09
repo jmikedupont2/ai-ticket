@@ -17,8 +17,10 @@ jobs:
     - uses: meta-introspector/checkout@v3
       with :
         submodules: true
+        
     - name: Build the Docker imaage
-      run: docker-compose build
+      run: docker-compose build autogpt-standalone
+      
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
@@ -27,7 +29,8 @@ jobs:
         logout : 'false'
 
     - name: Build the Docker imaage
-      run: docker-compose push
+      
+      run: docker-compose push autogpt-standalone
       env:
-        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_USERNAME: "h4ckermike"
         DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER }}
