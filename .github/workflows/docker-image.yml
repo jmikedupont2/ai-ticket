@@ -10,8 +10,8 @@ on:
 jobs:
 
   build-and-publish-docker:
-
-    runs-on: h4ckermike/act_base:latest
+    runs-on: ubuntu-latest
+    #runs-on: h4ckermike/act_base:latest
 
     steps:
     - uses: actions/checkout@v3
