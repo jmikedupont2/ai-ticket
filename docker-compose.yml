@@ -36,7 +36,6 @@ services:
   #     -  "5000:5000"
 
   autogpt-standalone:
-    entrypoint: bash
     image:  h4ckermike/autogpt-standalone
     build:      
        context: vendor/Auto-GPT/
