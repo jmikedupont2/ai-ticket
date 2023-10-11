@@ -163,3 +163,4 @@ cython_debug/
 *~
 /dckr_pat_.txt
 /github_pat.txt
+/.secrets
