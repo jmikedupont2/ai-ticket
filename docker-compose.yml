@@ -12,9 +12,9 @@ services:
       args:
         BASE_IMAGE: h4ckermike/act_base
         POETRY_VERSION: 1.6.1
-    entrypoint: /bin/bash
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
+    #entrypoint: /bin/bash
+    #stdin_open: true # docker run -i
+    #tty: true        # docker run -t
 
     depends_on:
       - act_base
@@ -50,6 +50,7 @@ services:
         BASE_IMAGE: h4ckermike/ai_ticket
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
+     - ./vendor/lollms/:/app/ #mount the source in for editing without reboot
      
     ports:
       -  "5000:8080"
