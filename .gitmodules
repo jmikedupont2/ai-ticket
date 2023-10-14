@@ -76,3 +76,9 @@
 [submodule "vendor/PolyGPT"]
 	path = vendor/PolyGPT
 	url = https://github.com/polywrap/PolyGPT.git
+[submodule "vendor/SuperAGI"]
+	path = vendor/SuperAGI
+	url = https://github.com/SilenNaihin/SuperAGI.git
+[submodule "vendor/babyagi"]
+	path = vendor/babyagi
+	url = https://github.com/SilenNaihin/babyagi.git
