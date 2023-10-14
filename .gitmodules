@@ -22,3 +22,57 @@
 [submodule "vendor/basic_agent"]
 	path = vendor/basic_agent
 	url = https://github.com/meta-introspector/basic_agent
+[submodule "vendor/TheAgency"]
+	path = vendor/TheAgency
+	url = https://github.com/shamantechnology/TheAgency
+[submodule "vendor/mljar-agent"]
+	path = vendor/mljar-agent
+	url = https://github.com/pplonski/mljar-agent
+[submodule "vendor/Swarms-Of-Sparta"]
+	path = vendor/Swarms-Of-Sparta
+	url = https://github.com/Agora-X/Swarms-Of-Sparta
+[submodule "vendor/Jarvis"]
+	path = vendor/Jarvis
+	url = https://github.com/jankomisarczyk/Jarvis
+[submodule "vendor/AutoGPT-trading"]
+	path = vendor/AutoGPT-trading
+	url = https://github.com/enachb/AutoGPT-trading.git
+[submodule "vendor/ScottGPT"]
+	path = vendor/ScottGPT
+	url = https://github.com/scottmas/ScottGPT
+[submodule "vendor/AutoGPTv2"]
+	path = vendor/AutoGPTv2
+	url = https://github.com/taylor-ennen/AutoGPTv2
+[submodule "vendor/beebot"]
+	path = vendor/beebot
+	url = https://github.com/AutoPackAI/beebot.git
+[submodule "vendor/Auto-GPT-Turbo"]
+	path = vendor/Auto-GPT-Turbo
+	url = https://github.com/lc0rp/Auto-GPT-Turbo.git
+[submodule "vendor/smol-developer"]
+	path = vendor/smol-developer
+	url = https://github.com/e2b-dev/smol-developer.git
+[submodule "vendor/Multi-GPT"]
+	path = vendor/Multi-GPT
+	url = https://github.com/sidhq/Multi-GPT
+[submodule "vendor/Auto-GPT-aj"]
+	path = vendor/Auto-GPT-aj
+	url = https://github.com/kaqijiang/Auto-GPT-aj
+[submodule "vendor/Godmode-GPT"]
+	path = vendor/Godmode-GPT
+	url = https://github.com/FOLLGAD/Godmode-GPT
+[submodule "vendor/Auto-GPT-Graph"]
+	path = vendor/Auto-GPT-Graph
+	url = https://github.com/kairess/Auto-GPT-Graph
+[submodule "vendor/BillSchumacher"]
+	path = vendor/BillSchumacher
+	url = https://github.com/BillSchumacher/Auto-GPT
+[submodule "vendor/Auto-GPT-chat-gpt-prompts"]
+	path = vendor/Auto-GPT-chat-gpt-prompts
+	url = https://github.com/chatgpt-prompts/Auto-GPT-chat-gpt-prompts
+[submodule "vendor/MasonBoomPersonalAssistant"]
+	path = vendor/MasonBoomPersonalAssistant
+	url = https://github.com/MasonBoom/AutoGPT.git
+[submodule "vendor/PolyGPT"]
+	path = vendor/PolyGPT
+	url = https://github.com/polywrap/PolyGPT.git
