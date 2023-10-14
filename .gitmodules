@@ -22,3 +22,6 @@
 [submodule "vendor/basic_agent"]
 	path = vendor/basic_agent
 	url = https://github.com/meta-introspector/basic_agent
+[submodule "vendor/AutoGPTOfficial"]
+	path = vendor/AutoGPTOfficial
+	url = https://github.com/Significant-Gravitas/AutoGPT
