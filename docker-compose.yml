@@ -79,3 +79,107 @@ services:
       - basic_agent
       - mockopenai
     image: h4ckermike/autogpt
+
+##
+  autogpt-turbo: #the beast
+    entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment'  "
+
+
+    # uncomment thse next 3 lines for debugging
+    #entrypoint: /bin/bash
+    #stdin_open: true # docker run -i
+    #tty: true        # docker run -t
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:8080/v1
+    build:
+      context: vendor/Auto-GPT-Turbo/
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: h4ckermike/basic_agent
+      #vendor/Auto-GPT-Turbo/Dockerfile
+      
+    #     vendor/AutoGPTv2/autogpts/autogpt/.devcontainer/Dockerfile
+    # vend	or/AutoGPTv2/autogpts/autogpt/Dockerfile
+  auto_honey_comber:
+    build:
+      context: vendor/AutoGPTv2/
+      dockerfile: autogpts/AutoHoneyComber/Dockerfile
+
+# vendor/AutoGPTv2/autogpts/AutoHoneyComber/Dockerfile
+# vendor/AutoGPTv2/autogpts/forge/Dockerfile
+
+  auto-gpt-chat-gpt-prompts:
+    build:
+      context: vendor/AutoGPTv2/
+      dockerfile: autogpts/AutoHoneyComber/Dockerfile
+
+      # vendor/Auto-GPT-chat-gpt-prompts/.devcontainer/Dockerfile
+      # vendor/Auto-GPT-chat-gpt-prompts/Dockerfile
+      
+  Auto-GPT-aj:
+    build:
+      context: vendor/Auto-GPT-aj/
+      #dockerfile: 
+
+      # vendor/Auto-GPT-aj/.devcontainer/Dockerfile
+      # vendor/Auto-GPT-aj/Dockerfile
+      
+# vendor/babyagi/Dockerfile
+# vendor/ScottGPT/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/ScottGPT/autogpts/autogpt/Dockerfile
+# vendor/ScottGPT/autogpts/forge/Dockerfile
+# vendor/Auto-GPT-Turbo/.devcontainer/Dockerfile
+# vendor/AutoGPT-trading/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/AutoGPT-trading/autogpts/autogpt/Dockerfile
+# vendor/AutoGPT-trading/autogpts/forge/Dockerfile
+# vendor/AutoGPT-trading/autogpts/okx-trade/Dockerfile
+# vendor/Jarvis/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/Jarvis/autogpts/autogpt/Dockerfile
+# vendor/Jarvis/autogpts/forge/Dockerfile
+# vendor/TheAgency/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/TheAgency/autogpts/autogpt/Dockerfile
+# vendor/TheAgency/autogpts/ZEROAGPT_02/Dockerfile
+# vendor/TheAgency/autogpts/ZEROAGPT_01/Dockerfile
+# vendor/TheAgency/autogpts/forge/Dockerfile
+# vendor/TheAgency/autogpts/ZEROAGPT_03/Dockerfile
+# vendor/Godmode-GPT/.devcontainer/Dockerfile
+# vendor/Godmode-GPT/Dockerfile
+# vendor/basic_agent/Dockerfile
+# vendor/SuperAGI/Dockerfile
+# vendor/SuperAGI/gui/Dockerfile
+# vendor/BillSchumacher/.devcontainer/Dockerfile
+# vendor/BillSchumacher/Dockerfile
+# vendor/Auto-GPT-Graph/Dockerfile
+# vendor/MasonBoomPersonalAssistant/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/MasonBoomPersonalAssistant/autogpts/autogpt/Dockerfile
+# vendor/MasonBoomPersonalAssistant/autogpts/PersonalAssistant/Dockerfile
+# vendor/MasonBoomPersonalAssistant/autogpts/forge/Dockerfile
+# vendor/MasonBoomPersonalAssistant/autogpts/testgpt/Dockerfile
+# vendor/Swarms-Of-Sparta/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/Swarms-Of-Sparta/autogpts/autogpt/Dockerfile
+# vendor/Swarms-Of-Sparta/autogpts/forge/Dockerfile
+# vendor/mljar-agent/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/mljar-agent/autogpts/autogpt/Dockerfile
+# vendor/mljar-agent/autogpts/forge/Dockerfile
+# vendor/python-poetry/build/Dockerfile
+# vendor/docker-compose-viz/Dockerfile
+# vendor/AutoGPTOfficial/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/AutoGPTOfficial/autogpts/autogpt/Dockerfile
+# vendor/AutoGPTOfficial/autogpts/forge/Dockerfile
+# vendor/Multi-GPT/.devcontainer/Dockerfile
+# vendor/Multi-GPT/Dockerfile
+# vendor/Auto-GPT/Dockerfile
+# vendor/Auto-GPT/slim/Dockerfile
+# vendor/Auto-GPT/autogpts/autogpt/.devcontainer/Dockerfile
+# vendor/Auto-GPT/autogpts/forge/Dockerfile
+
+      args:
+        BASE_IMAGE: h4ckermike/basic_agent
+
+    depends_on:
+      - basic_agent
+      - mockopenai
+    image: h4ckermike/autogpt
