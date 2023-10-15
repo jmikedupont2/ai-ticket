@@ -111,21 +111,35 @@ services:
       
     #     vendor/AutoGPTv2/autogpts/autogpt/.devcontainer/Dockerfile
     # vend	or/AutoGPTv2/autogpts/autogpt/Dockerfile
-  auto_honey_comber:
-    build:
-      context: vendor/AutoGPTv2/
-      dockerfile: autogpts/AutoHoneyComber/Dockerfile
+  # auto_honey_comber:
+  #   build:
+  #     context: vendor/AutoGPTv2/
+  #     dockerfile: autogpts/AutoHoneyComber/Dockerfile
+  #     args:
+  #       BASE_IMAGE: h4ckermike/basic_agent
+  #   volumes:
+  #    - ./vendor/AutoGPTv2/autogpts/AutoHoneyComber/:/app/ #mount the source in for editing without reboot
 
 # vendor/AutoGPTv2/autogpts/AutoHoneyComber/Dockerfile
 # vendor/AutoGPTv2/autogpts/forge/Dockerfile
 
   auto-gpt-chat-gpt-prompts:
-    build:
-      context: vendor/AutoGPTv2/
-      dockerfile: autogpts/AutoHoneyComber/Dockerfile
+    #--ai-settings ai_settings.yaml
+    entrypoint: bash -c "python -m autogpt -y --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
 
+    build:
+      context: vendor/Auto-GPT-chat-gpt-prompts/
+      #dockerfile: Dockerfile
+    volumes:
+      - ./vendor/Auto-GPT-chat-gpt-prompts/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
       # vendor/Auto-GPT-chat-gpt-prompts/.devcontainer/Dockerfile
-      # vendor/Auto-GPT-chat-gpt-prompts/Dockerfile
+      # 
       
   Auto-GPT-aj:
     build:
