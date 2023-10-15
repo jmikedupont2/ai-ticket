@@ -165,11 +165,25 @@ services:
     volumes:
       - ./vendor/babyagi/:/app/ #mount the source in for editing witho
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
-
 # vendor/babyagi/Dockerfile
+
 # vendor/ScottGPT/autogpts/autogpt/.devcontainer/Dockerfile
-# vendor/ScottGPT/autogpts/autogpt/Dockerfile
+# 
 # vendor/ScottGPT/autogpts/forge/Dockerfile
+  scott-gpt:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    #entrypoint: bash -c "ls -latr  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/ScottGPT/autogpts/autogpt/
+    volumes:
+      - ./vendor/ScottGPT/autogpts/autogpt:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+
 # vendor/Auto-GPT-Turbo/.devcontainer/Dockerfile
 # vendor/AutoGPT-trading/autogpts/autogpt/.devcontainer/Dockerfile
 # vendor/AutoGPT-trading/autogpts/autogpt/Dockerfile
