@@ -53,8 +53,8 @@ services:
      - /var/run/docker.sock:/var/run/docker.sock
      - ./vendor/lollms/:/app/ #mount the source in for editing without reboot
      
-    ports:
-      -  "8080:5000"
+    #ports:
+    #  -  "8080:5000" #the app listens on mockopenai:5000 inside of docker
 
   autogpt: #the beast
     entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment'  "
@@ -81,7 +81,11 @@ services:
     image: h4ckermike/autogpt
 
 ##
-  autogpt-turbo: #the beast
+  autogpt-turbo:
+    #entrypoint: /bin/bash
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
     entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment'  "
 
 
@@ -93,7 +97,11 @@ services:
       - GITHUB_PAT="${GITHUB_PAT}"
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
-      - OPENAI_API_BASE=http://mockopenai:8080/v1
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    volumes:
+    # - /var/run/docker.sock:/var/run/docker.sock
+     - ./vendor/Auto-GPT-Turbo/:/app/ #mount the source in for editing without reboot
+
     build:
       context: vendor/Auto-GPT-Turbo/
       dockerfile: Dockerfile
