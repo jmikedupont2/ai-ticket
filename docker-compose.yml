@@ -1,10 +1,10 @@
 version: '3'
 services:
-    
+
   act_base: #root base of action
     build: vendor/act_base
     image: h4ckermike/act_base
-    
+
   poetry_base: # use poetry
     image: h4ckermike/poetry_base
     build:
@@ -18,7 +18,7 @@ services:
 
     depends_on:
       - act_base
-    
+
   ai_ticket: # the ticket to unite
     image: h4ckermike/ai_ticket
     build:
@@ -27,7 +27,7 @@ services:
         BASE_IMAGE: h4ckermike/poetry_base
     depends_on:
       - poetry_base
-    
+
   basic_agent: #basic agent
     image: h4ckermike/basic_agent
     build:
@@ -52,7 +52,6 @@ services:
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
      - ./vendor/lollms/:/app/ #mount the source in for editing without reboot
-     
     #ports:
     #  -  "8080:5000" #the app listens on mockopenai:5000 inside of docker
 
@@ -108,7 +107,7 @@ services:
       args:
         BASE_IMAGE: h4ckermike/basic_agent
       #vendor/Auto-GPT-Turbo/Dockerfile
-      
+
     #     vendor/AutoGPTv2/autogpts/autogpt/.devcontainer/Dockerfile
     # vend	or/AutoGPTv2/autogpts/autogpt/Dockerfile
   # auto_honey_comber:
@@ -139,16 +138,21 @@ services:
       - ./vendor/Auto-GPT-chat-gpt-prompts/:/app/ #mount the source in for editing witho
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
       # vendor/Auto-GPT-chat-gpt-prompts/.devcontainer/Dockerfile
-      # 
-      
-  Auto-GPT-aj:
-    build:
-      context: vendor/Auto-GPT-aj/
-      #dockerfile: 
+      #
 
-      # vendor/Auto-GPT-aj/.devcontainer/Dockerfile
-      # vendor/Auto-GPT-aj/Dockerfile
-      
+  auto-gpt-aj:
+    entrypoint: bash -c "python -m autogpt -y --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/Auto-GPT-aj
+    volumes:
+      - ./vendor/Auto-GPT-aj/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+
 # vendor/babyagi/Dockerfile
 # vendor/ScottGPT/autogpts/autogpt/.devcontainer/Dockerfile
 # vendor/ScottGPT/autogpts/autogpt/Dockerfile
@@ -198,10 +202,10 @@ services:
 # vendor/Auto-GPT/autogpts/autogpt/.devcontainer/Dockerfile
 # vendor/Auto-GPT/autogpts/forge/Dockerfile
 
-      args:
-        BASE_IMAGE: h4ckermike/basic_agent
+#      args:
+#        BASE_IMAGE: h4ckermike/basic_agent
 
-    depends_on:
-      - basic_agent
-      - mockopenai
-    image: h4ckermike/autogpt
+#    depends_on:
+#      - basic_agent
+#      - mockopenai
+#    image: h4ckermike/autogpt
