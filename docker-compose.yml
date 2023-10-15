@@ -153,6 +153,19 @@ services:
       - ./vendor/Auto-GPT-aj/:/app/ #mount the source in for editing witho
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
 
+  babyagi:
+    entrypoint: bash -c "python babyagi.py -y --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/babyagi
+    volumes:
+      - ./vendor/babyagi/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+
 # vendor/babyagi/Dockerfile
 # vendor/ScottGPT/autogpts/autogpt/.devcontainer/Dockerfile
 # vendor/ScottGPT/autogpts/autogpt/Dockerfile
