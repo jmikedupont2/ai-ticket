@@ -1,5 +1,11 @@
 version: '3'
 services:
+  arena:
+    depends_on:
+      - mockopenai
+      - the_agency_1
+    build:
+      context : arena
 
   act_base: #root base of action
     build: vendor/act_base
@@ -197,17 +203,19 @@ services:
       - ./vendor/Jarvis/autogpts/autogpt/autogpts/autogpt:/app/ #mount the source in for editing witho
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
   the_agency_1:
-    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    entrypoint: bash -c "poetry install &&  poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     environment:
       - GITHUB_PAT="${GITHUB_PAT}"
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
       - OPENAI_API_BASE=http://mockopenai:5000/v1
     build:
-      context: vendor/TheAgency/autogpts/autogpt/
+      context: vendor/TheAgency/
+      dockerfile: autogpts/autogpt/Dockerfile
     volumes:
+      - ./vendor/TheAgency/benchmark:/benchmark
       - ./vendor/TheAgency/autogpts/autogpt/:/app/ #mount the source in for editing witho
-      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+      - ./vendor/Auto-GPT/autogpts/autogpt/the_agency_ai_settings.yaml:/tmp/ai_settings.yaml
   the_agency_2:
     #entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     entrypoint: bash 

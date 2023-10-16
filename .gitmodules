@@ -85,3 +85,6 @@
 [submodule "vendor/PolyGPT-alpha"]
 	path = vendor/PolyGPT-alpha
 	url = https://github.com/team-tonic-arena-hacks/PolyGPT-alpha
+[submodule "vendor/RedAGPT"]
+	path = vendor/RedAGPT
+	url = https://github.com/shamantechnology/RedAGPT
