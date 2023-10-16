@@ -192,16 +192,21 @@ services:
 
   jarvis:
     entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    #entrypoint: bash
     environment:
       - GITHUB_PAT="${GITHUB_PAT}"
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
       - OPENAI_API_BASE=http://mockopenai:5000/v1
     build:
-      context: vendor/Jarvis/autogpts/autogpt
+      context: vendor/Jarvis/
+      dockerfile: autogpts/autogpt/Dockerfile
+      args:
+        BASE_IMAGE: h4ckermike/basic_agent
     volumes:
-      - ./vendor/Jarvis/autogpts/autogpt/autogpts/autogpt:/app/ #mount the source in for editing witho
-      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+      - ./vendor/Jarvis/benchmark:/benchmark
+      - ./vendor/Jarvis/autogpts/autogpt//app/ #mount the source in for editing witho
+      - ./tests/ai_settings.yaml:/tmp/ai_settings.yaml
   the_agency_1:
     entrypoint: bash -c "poetry install &&  poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     environment:
