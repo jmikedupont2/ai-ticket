@@ -184,10 +184,7 @@ services:
       - ./vendor/ScottGPT/autogpts/autogpt:/app/ #mount the source in for editing witho
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
 
-# vendor/AutoGPT-trading/autogpts/autogpt/Dockerfile
-
-
-  autogpt-trading:
+  jarvis:
     entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     environment:
       - GITHUB_PAT="${GITHUB_PAT}"
@@ -195,57 +192,144 @@ services:
       - OPENAI_API_KEY=your-openai-api-key
       - OPENAI_API_BASE=http://mockopenai:5000/v1
     build:
-      context: vendor/AutoGPT-trading/autogpts/autogpt/
+      context: vendor/Jarvis/autogpts/autogpt
     volumes:
-      - ./vendor/AutoGPT-trading/autogpts/autogpt:/app/ #mount the source in for editing witho
+      - ./vendor/Jarvis/autogpts/autogpt/autogpts/autogpt:/app/ #mount the source in for editing witho
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  the_agency_1:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/TheAgency/autogpts/autogpt/
+    volumes:
+      - ./vendor/TheAgency/autogpts/autogpt/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  the_agency_2:
+    #entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    entrypoint: bash 
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/TheAgency/
+      dockerfile : autogpts/ZEROAGPT_02/Dockerfile
+    volumes:
+      - ./vendor/TheAgency/benchmark:/benchmark
+      - ./vendor/TheAgency/autogpts/ZEROAGPT_02/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  the_agency_3:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      #context: vendor/TheAgency/autogpts/ZEROAGPT_01/
+      context: vendor/TheAgency/
+      dockerfile : autogpts/ZEROAGPT_01/Dockerfile
 
-# vendor/AutoGPT-trading/autogpts/okx-trade/Dockerfile
+    volumes:
+      - ./vendor/TheAgency/autogpts/ZEROAGPT_01/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  the_agency_4:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      #context: vendor/TheAgency/autogpts/ZEROAGPT_03/
+      context: vendor/TheAgency/
+      dockerfile : autogpts/ZEROAGPT_03/Dockerfile
+
+    volumes:
+      - ./vendor/TheAgency/autogpts/ZEROAGPT_03/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  mason_boom:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/MasonBoomPersonalAssistant/autogpts/autogpt/
+    volumes:
+      - ./vendor/MasonBoomPersonalAssistant/autogpts/autogpt/:/app/ #mount the source in for editixong witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  mason_boom_pa:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/MasonBoomPersonalAssistant/
+      dockerfile: autogpts/PersonalAssistant/Dockerfile
+    volumes:
+      - ./vendor/MasonBoomPersonalAssistant/autogpts/PersonalAssistant/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  mason_boom_testgpt:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/MasonBoomPersonalAssistant/
+      dockerfile: autogpts/PersonalAssistant/Dockerfile
+    volumes:
+      - ./vendor/MasonBoomPersonalAssistant/autogpts/testgpt/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  swarms_of_sparta:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/Swarms-Of-Sparta/autogpts/autogpt/
+    volumes:
+      - ./vendor/Swarms-Of-Sparta/autogpts/autogpt/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+  mljar:
+    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+    build:
+      context: vendor/mljar-agent/autogpts/autogpt/
+    volumes:
+      - ./vendor/mljar-agent/autogpts/autogpt/:/app/ #mount the source in for editing witho
+      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+# vendor/AutoGPT-trading/autogpts/autogpt/Dockerfile
 
 
-# vendor/Jarvis/autogpts/autogpt/Dockerfile
 
 
-# vendor/TheAgency/autogpts/autogpt/Dockerfile
-# vendor/TheAgency/autogpts/ZEROAGPT_02/Dockerfile
-# vendor/TheAgency/autogpts/ZEROAGPT_01/Dockerfile
-# vendor/TheAgency/autogpts/forge/Dockerfile
-# vendor/TheAgency/autogpts/ZEROAGPT_03/Dockerfile
+
 
 # vendor/Godmode-GPT/Dockerfile
-
 # vendor/SuperAGI/Dockerfile
-
-
 # vendor/BillSchumacher/Dockerfile
-
 # vendor/Auto-GPT-Graph/Dockerfile
-
-
-# vendor/MasonBoomPersonalAssistant/autogpts/autogpt/Dockerfile
-# vendor/MasonBoomPersonalAssistant/autogpts/PersonalAssistant/Dockerfile
-
-
-# vendor/MasonBoomPersonalAssistant/autogpts/testgpt/Dockerfile
-
-# vendor/Swarms-Of-Sparta/autogpts/autogpt/Dockerfile
-
-
-# vendor/mljar-agent/autogpts/autogpt/Dockerfile
-
-
-
-
-# vendor/AutoGPTOfficial/autogpts/autogpt/Dockerfile
-
-
 # vendor/Multi-GPT/Dockerfile
 
 
-#      args:
-#        BASE_IMAGE: h4ckermike/basic_agent
 
-#    depends_on:
-#      - basic_agent
-#      - mockopenai
-#    image: h4ckermike/autogpt
+#poetry run agent start forge --setup
+#poetry run agbenchmark --mock
+#poetry run agbenchmark --test=WriteFile

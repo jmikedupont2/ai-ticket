@@ -82,3 +82,6 @@
 [submodule "vendor/babyagi"]
 	path = vendor/babyagi
 	url = https://github.com/SilenNaihin/babyagi.git
+[submodule "vendor/PolyGPT-alpha"]
+	path = vendor/PolyGPT-alpha
+	url = https://github.com/team-tonic-arena-hacks/PolyGPT-alpha
