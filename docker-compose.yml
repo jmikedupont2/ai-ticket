@@ -160,8 +160,15 @@ services:
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
 
   babyagi:
-    entrypoint: bash -c "python babyagi.py -y --ai-settings /tmp/ai_settings.yaml  "
+  #         
+    entrypoint: bash -c "python babyagi.py --mode   "
     environment:
+      - OBJECTIVE="Integrate babyagi with autogpt"
+      - INITIAL_TASK="Compare the babyagi to autogpt"
+      #- LLM_MODEL, DOTENV_EXTENSIONS,
+      - INSTANCE_NAME="baby-autogpt",
+      #COOPERATIVE_MODE,
+      #JOIN_EXISTING_OBJECTIVE
       - GITHUB_PAT="${GITHUB_PAT}"
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
@@ -208,6 +215,9 @@ services:
       - ./vendor/Jarvis/autogpts/autogpt//app/ #mount the source in for editing witho
       - ./tests/ai_settings.yaml:/tmp/ai_settings.yaml
   the_agency_1:
+    depends_on:
+      - mockopenai
+
     entrypoint: bash -c "poetry install &&  poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     environment:
       - GITHUB_PAT="${GITHUB_PAT}"
@@ -220,7 +230,7 @@ services:
     volumes:
       - ./vendor/TheAgency/benchmark:/benchmark
       - ./vendor/TheAgency/autogpts/autogpt/:/app/ #mount the source in for editing witho
-      - ./vendor/Auto-GPT/autogpts/autogpt/the_agency_ai_settings.yaml:/tmp/ai_settings.yaml
+      - ./tests/ai_settings.yaml:/tmp/ai_settings.yaml
   the_agency_2:
     #entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     entrypoint: bash 
