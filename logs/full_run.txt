@@ -1,4 +1,4 @@
-
+error
 mdupont@mdupont-G470:~/experiments/ai-ticket$ sudo docker-compose up
 Creating ai-ticket_jarvis_1 ... 
 Creating ai-ticket_auto-gpt-aj_1 ... 
@@ -646,11 +646,6 @@ autogpt-turbo_1              | WARNING:  You do not have access to gpt-4-0314. S
 autogpt-turbo_1              | Skip Re-prompt:  ENABLED
 autogpt-turbo_1              | Using Prompt Settings File:  /app/config/personas/turbo/prompts.yaml
 autogpt-turbo_1              | 
-autogpt-turbo_1              | 3 PERSONAS FOUND: 
-autogpt-turbo_1              | ================================ 
-autogpt-turbo_1              |  [1] - coder.engineer 
-autogpt-turbo_1              |  [2] - coder.v2 
-autogpt-turbo_1              |  [3] - turbo 
 autogpt-turbo_1              | 
 mockopenai_1                 | Retrying langchain.llms.openai.completion_with_retry.<locals>._completion_with_retry in 4.0 seconds as it raised RateLimitError: Rate limit reached for text-davinci-003 in organization org-ZjaIs4ZsUG8dzXEPqKUwjEt0 on requests per min. Limit: 3 / min. Please try again in 20s. Contact us through our help center at help.openai.com if you continue to have issues. Please add a payment method to your account to increase your rate limit. Visit https://platform.openai.com/account/billing to add a payment method..
 mockopenai_1                 | DEBUG {

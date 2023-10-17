@@ -44,8 +44,11 @@ The docker images are organized like this :
 * act_base is the foundation of all actions. 
 * poetry_base is contains the poetry magic layer with shared containers.
 
+# Importing new agents
 
-# RUnning
+we start with the results of the download of the change stats Auto-GPT/stats/filtered_result2.csv
+
+# Running
 
 `sudo docker-compose build`
 `sudo docker-compose up mockopenai`

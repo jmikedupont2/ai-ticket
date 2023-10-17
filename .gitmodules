@@ -88,3 +88,33 @@
 [submodule "vendor/RedAGPT"]
 	path = vendor/RedAGPT
 	url = https://github.com/shamantechnology/RedAGPT
+[submodule "vendor/osGPT"]
+	path = vendor/osGPT
+	url = https://github.com/jinho-kim-osd/osGPT
+[submodule "vendor/FritzGPT"]
+	path = vendor/FritzGPT
+	url = https://github.com/bsenst/FritzGPT
+[submodule "vendor/Asimov"]
+	path = vendor/Asimov
+	url = https://github.com/murnanedaniel/Asimov
+[submodule "vendor/evo.ninja"]
+	path = vendor/evo.ninja
+	url = https://github.com/polywrap/evo.ninja
+[submodule "vendor/Mutant-AI"]
+	path = vendor/Mutant-AI
+	url = https://github.com/cluna80/Mutant-AI
+[submodule "vendor/gordonwilliamsburg"]
+	path = vendor/gordonwilliamsburg
+	url = https://github.com/gordonwilliamsburg/test
+[submodule "vendor/joslangarica"]
+	path = vendor/joslangarica
+	url = https://github.com/joslangarica/AutoGPT
+[submodule "vendor/isayahc"]
+	path = vendor/isayahc
+	url = https://github.com/isayahc/AutoGPT
+[submodule "vendor/merwanehamadi"]
+	path = vendor/merwanehamadi
+	url = https://github.com/merwanehamadi/Auto-GPT
+[submodule "vendor/HMDCrew"]
+	path = vendor/HMDCrew
+	url = https://github.com/HMDCrew/AutoGPT
