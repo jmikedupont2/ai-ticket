@@ -2,7 +2,8 @@
 The AI Ticket system to handle the AI with tickets.
 Human Powered AI-Ops to Help you with the last mile of your AI code generated system.
 
-
+* join us on discord https://discord.com/invite/XWSam9kE
+  
 **Summary: User-Driven Ticket-Based Workflow**
 
 Welcome to our innovative user-driven workflow, designed to empower you to interact with our system like a large language model. Here's a quick overview of what we're doing:
