@@ -118,3 +118,72 @@
 [submodule "vendor/HMDCrew"]
 	path = vendor/HMDCrew
 	url = https://github.com/HMDCrew/AutoGPT
+[submodule "vendor/aorwall"]
+	path = vendor/aorwall
+	url = https://github.com/aorwall/AutoGPT
+[submodule "vendor/Agora-X"]
+	path = vendor/Agora-X
+	url = https://github.com/Agora-X/Swarms-Of-Sparta
+[submodule "vendor/IkuOhama"]
+	path = vendor/IkuOhama
+	url = https://github.com/IkuOhama/AutoGPT
+[submodule "vendor/neitheroption"]
+	path = vendor/neitheroption
+	url = https://github.com/neitheroption/GPTAgentTest
+[submodule "vendor/jackyluo-learning"]
+	path = vendor/jackyluo-learning
+	url = https://github.com/jackyluo-learning/AutoGPT
+[submodule "vendor/scottmas"]
+	path = vendor/scottmas
+	url = https://github.com/scottmas/ScottGPT
+[submodule "vendor/reyug9"]
+	path = vendor/reyug9
+	url = https://github.com/reyug9/AutoGPT
+[submodule "vendor/taylor-ennen"]
+	path = vendor/taylor-ennen
+	url = https://github.com/taylor-ennen/AutoGPTv2
+[submodule "vendor/mahmudremal"]
+	path = vendor/mahmudremal
+	url = https://github.com/mahmudremal/AutoGPT
+[submodule "vendor/harishafeez1"]
+	path = vendor/harishafeez1
+	url = https://github.com/harishafeez1/AutoGPT-haris
+[submodule "vendor/pplonski"]
+	path = vendor/pplonski
+	url = https://github.com/pplonski/mljar-agent
+[submodule "vendor/meta-introspector"]
+	path = vendor/meta-introspector
+	url = https://github.com/meta-introspector/Auto-GPT
+[submodule "vendor/georgehaws"]
+	path = vendor/georgehaws
+	url = https://github.com/georgehaws/interhalogen
+[submodule "vendor/a-cires"]
+	path = vendor/a-cires
+	url = https://github.com/a-cires/AutoGPT
+[submodule "vendor/MasonBoom"]
+	path = vendor/MasonBoom
+	url = https://github.com/MasonBoom/AutoGPT
+[submodule "vendor/enachb"]
+	path = vendor/enachb
+	url = https://github.com/enachb/AutoGPT-trading
+[submodule "vendor/micahnz"]
+	path = vendor/micahnz
+	url = https://github.com/micahnz/AutoGPT
+[submodule "vendor/kabbo25"]
+	path = vendor/kabbo25
+	url = https://github.com/kabbo25/AutoGPT
+[submodule "vendor/yodatech1988"]
+	path = vendor/yodatech1988
+	url = https://github.com/yodatech1988/AutoGPT
+[submodule "vendor/jankomisarczyk"]
+	path = vendor/jankomisarczyk
+	url = https://github.com/jankomisarczyk/Jarvis
+[submodule "vendor/NaixingWang"]
+	path = vendor/NaixingWang
+	url = https://github.com/NaixingWang/AutoGPT
+[submodule "vendor/clusterfudge"]
+	path = vendor/clusterfudge
+	url = https://github.com/clusterfudge/Auto-GPT
+[submodule "vendor/vikyw89"]
+	path = vendor/vikyw89
+	url = https://github.com/vikyw89/Auto-GPT
