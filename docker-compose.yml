@@ -9,6 +9,9 @@ services:
       context : .
       dockerfile: arena/Dockerfile
     #entrypoint: bash -c "curl -d @/tmp/agent.json  --request POST http://ghostcoder:8000/ap/v1/agent/tasks  "
+    environment:
+      - TARGET=http://the_agency_3:8000
+      
     entrypoint: python /tmp/run.py
 
   act_base: #root base of action
@@ -218,68 +221,33 @@ services:
       - ./vendor/Jarvis/benchmark:/benchmark
       - ./vendor/Jarvis/autogpts/autogpt//app/ #mount the source in for editing witho
       - ./tests/ai_settings.yaml:/tmp/ai_settings.yaml
-  the_agency_1:
+      
+  the_agency_3:
     depends_on:
       - mockopenai
-
-    entrypoint: bash -c "poetry install &&  poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    #entrypoint: bash -c "poetry install &&  poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
+    entrypoint: bash -c "poetry run python -m forge agent start ZEROAGPT"
     environment:
       - GITHUB_PAT="${GITHUB_PAT}"
       - GITHUB_REPO="jmikedupont2/ai-ticket"
       - OPENAI_API_KEY=your-openai-api-key
       - OPENAI_API_BASE=http://mockopenai:5000/v1
+      - BOT_NAME=ZEROAGPT_03 #FIXME do we need this?
+      - AGENT_WORKSPACE=/tmp/workspace/
+      - AGENT_MODEL=/tmp/workspace/
+      - OPENAI_MODEL="gpt-4"
+      - DATABASE_STRING=sqlite:///agent.db
     build:
       context: vendor/TheAgency/
-      dockerfile: autogpts/autogpt/Dockerfile
+      dockerfile: autogpts/ZEROAGPT_03/Dockerfile
+      args:
+        BASE_IMAGE: h4ckermike/basic_agent
+
     volumes:
       - ./vendor/TheAgency/benchmark:/benchmark
-      - ./vendor/TheAgency/autogpts/autogpt/:/app/ #mount the source in for editing witho
-      - ./tests/ai_settings.yaml:/tmp/ai_settings.yaml
-  the_agency_2:
-    #entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
-    entrypoint: bash 
-    environment:
-      - GITHUB_PAT="${GITHUB_PAT}"
-      - GITHUB_REPO="jmikedupont2/ai-ticket"
-      - OPENAI_API_KEY=your-openai-api-key
-      - OPENAI_API_BASE=http://mockopenai:5000/v1
-    build:
-      context: vendor/TheAgency/
-      dockerfile : autogpts/ZEROAGPT_02/Dockerfile
-    volumes:
-      - ./vendor/TheAgency/benchmark:/benchmark
-      - ./vendor/TheAgency/autogpts/ZEROAGPT_02/:/app/ #mount the source in for editing witho
-      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
-  the_agency_3:
-    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
-    environment:
-      - GITHUB_PAT="${GITHUB_PAT}"
-      - GITHUB_REPO="jmikedupont2/ai-ticket"
-      - OPENAI_API_KEY=your-openai-api-key
-      - OPENAI_API_BASE=http://mockopenai:5000/v1
-    build:
-      #context: vendor/TheAgency/autogpts/ZEROAGPT_01/
-      context: vendor/TheAgency/
-      dockerfile : autogpts/ZEROAGPT_01/Dockerfile
-
-    volumes:
-      - ./vendor/TheAgency/autogpts/ZEROAGPT_01/:/app/ #mount the source in for editing witho
-      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
-  the_agency_4:
-    entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
-    environment:
-      - GITHUB_PAT="${GITHUB_PAT}"
-      - GITHUB_REPO="jmikedupont2/ai-ticket"
-      - OPENAI_API_KEY=your-openai-api-key
-      - OPENAI_API_BASE=http://mockopenai:5000/v1
-    build:
-      #context: vendor/TheAgency/autogpts/ZEROAGPT_03/
-      context: vendor/TheAgency/
-      dockerfile : autogpts/ZEROAGPT_03/Dockerfile
-
-    volumes:
       - ./vendor/TheAgency/autogpts/ZEROAGPT_03/:/app/ #mount the source in for editing witho
-      - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+      - ./tests/ai_settings.yaml:/tmp/ai_settings.yaml
+      
   mason_boom:
     entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     environment:
@@ -292,6 +260,7 @@ services:
     volumes:
       - ./vendor/MasonBoomPersonalAssistant/autogpts/autogpt/:/app/ #mount the source in for editixong witho
       - ./vendor/Auto-GPT/autogpts/autogpt/ai_settings.yaml:/tmp/ai_settings.yaml
+      
   mason_boom_pa:
     entrypoint: bash -c "poetry run python -m autogpt -y --skip-news --ai-settings /tmp/ai_settings.yaml  "
     environment:

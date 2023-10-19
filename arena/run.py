@@ -1,5 +1,5 @@
 import asyncio
-
+import os
 from agent_protocol.models import StepRequestBody
 from agent_protocol_client import (
     Configuration,
@@ -11,7 +11,7 @@ from agent_protocol_client import (
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = Configuration(host="http://ghostcoder:8000")
+configuration = Configuration(host=os.environ.get("TARGET"))
 
 
 async def main():
