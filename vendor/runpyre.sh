@@ -13,19 +13,26 @@ do
 	    cp ../../pyre/.watchmanconfig  .
 	fi
 	if [ ! -f  pyre_init.txt ] ; then	    
-	    pyre init  |tee pyre_init.txt
+	    pyre init  > pyre_init.txt
 	fi
 	if [ ! -f  pyre_coverage.txt ] ; then	    
-	    pyre coverage |tee pyre_coverage.txt
+	    pyre coverage > pyre_coverage.txt
 	fi
 	if [ ! -f  pyre_statistics.txt ] ; then	    
-	    pyre statistics | tee  pyre_statistics.txt
+	    pyre statistics >  pyre_statistics.txt
 	fi
-	if [ ! -f  pyre_dump.json ] ; then	    
-	    #pyre dump --output pyre_dump.json
-	    #pyre-check query "types_in_file('tests.py')"
-	    echo pass
+	#rm pyre_callgraph.json
+	if [ ! -f  pyre_callgraph.json ] ; then
+	    pyre start
+	    pyre query "dump_call_graph()" >  pyre_callgraph.json
+	    pyre stop
 	fi
+
+	if [ ! -f functions.txt ] ; then
+	    
+	    jq ".response|keys[]" -r pyre_callgraph.json  > functions.txt
+	fi
+	
 	popd
     fi
 done
