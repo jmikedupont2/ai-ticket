@@ -193,3 +193,9 @@
 [submodule "vendor/agent-protocol-sdk-python"]
 	path = vendor/agent-protocol-sdk-python
 	url = https://github.com/AI-Engineer-Foundation/agent-protocol-sdk-python
+[submodule "vendor/analysis/pyre-check"]
+	path = vendor/analysis/pyre-check
+	url = https://github.com/meta-introspector/pyre-check
+[submodule "vendor/analysis/watchman"]
+	path = vendor/analysis/watchman
+	url = https://github.com/meta-introspector/watchman
