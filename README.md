@@ -54,3 +54,7 @@ we start with the results of the download of the change stats Auto-GPT/stats/fil
 `sudo docker-compose build`
 `sudo docker-compose up mockopenai`
 `sudo docker-compose run auto-gpt-chat-gpt-prompts `
+
+
+# Example of verbose build
+`sudo docker-compose --progress=plain  --log-level DEBUG --ansi=never  --verbose build  ghostcoder` 

@@ -1,11 +1,15 @@
 version: '3'
 services:
+
   arena:
     depends_on:
       - mockopenai
-      - the_agency_1
+      - ghostcoder
     build:
-      context : arena
+      context : .
+      dockerfile: arena/Dockerfile
+    #entrypoint: bash -c "curl -d @/tmp/agent.json  --request POST http://ghostcoder:8000/ap/v1/agent/tasks  "
+    entrypoint: python /tmp/run.py
 
   act_base: #root base of action
     build: vendor/act_base
@@ -356,3 +360,26 @@ services:
 #poetry run agent start forge --setup
 #poetry run agbenchmark --mock
 #poetry run agbenchmark --test=WriteFile
+
+  ghostcoder:
+    #ports:
+    #  -  "8001:8000" # we can expose ports for each bot
+    #CMD ["poetry", "run", "python", "autogpt/__main__.py"]
+    entrypoint: bash -c "poetry run python -m forge agent start ghostcoder"
+    #entrypoint: bash
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:5000/v1
+      - AGENT_WORKSPACE=/tmp/workspace/
+      - DATABASE_STRING=sqlite:///agent.db
+    build:
+      context: vendor/aorwall/
+      dockerfile: autogpts/ghostcoder/Dockerfile
+      args:
+        BASE_IMAGE: h4ckermike/basic_agent
+    volumes:
+      - ./vendor/aorwall/benchmark:/benchmark
+      - ./vendor/aorwall/autogpts/ghostcoder:/app/ #mount the source in for editing witho
+      - ./tests/ai_settings.yaml:/tmp/ai_settings.yaml

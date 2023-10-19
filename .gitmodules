@@ -187,3 +187,9 @@
 [submodule "vendor/vikyw89"]
 	path = vendor/vikyw89
 	url = https://github.com/vikyw89/Auto-GPT
+[submodule "vendor/agent-protocol-client-python"]
+	path = vendor/agent-protocol-client-python
+	url = https://github.com/AI-Engineer-Foundation/agent-protocol-client-python
+[submodule "vendor/agent-protocol-sdk-python"]
+	path = vendor/agent-protocol-sdk-python
+	url = https://github.com/AI-Engineer-Foundation/agent-protocol-sdk-python
