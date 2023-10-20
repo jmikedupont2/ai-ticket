@@ -6,32 +6,41 @@ do
     if [ -d "${D}" ]; then
         echo "${D}"   # your processing here
 	pushd $D
+	DIRN="../../pyre/report/$D/report/"
+	if [ ! -d $DIRN ] ;
+	then
+	    echo mkdir $DIRN
+	fi	
+
 	if [ ! -f .pyre_configuration ]; then
 	    cp ../../pyre/.pyre_configuration  .
 	fi
 	if [ ! -f .watchmanconfig ]; then
 	    cp ../../pyre/.watchmanconfig  .
 	fi
-	if [ ! -f  pyre_init.txt ] ; then	    
-	    pyre init  > pyre_init.txt
+	if [ ! -f  ${DIRN}/pyre_init.txt ] ; then	    
+	    pyre init  > $DIRN/pyre_init.txt
 	fi
-	if [ ! -f  pyre_coverage.txt ] ; then	    
-	    pyre coverage > pyre_coverage.txt
+	if [ ! -f  ${DIRN}/pyre_coverage.txt ] ; then	    
+	    pyre coverage > $DIRN/pyre_coverage.txt
 	fi
-	if [ ! -f  pyre_statistics.txt ] ; then	    
-	    pyre statistics >  pyre_statistics.txt
+	if [ ! -f  ${DIRN}/pyre_statistics.txt ] ; then	    
+	    pyre statistics >  $DIRN/pyre_statistics.txt
 	fi
+	
 	#rm pyre_callgraph.json
-	if [ ! -f  pyre_callgraph.json ] ; then
+	if [ ! -f  ${DIRN}/pyre_callgraph.json ] ; then
 	    pyre start
-	    pyre query "dump_call_graph()" >  pyre_callgraph.json
+	    pyre query "dump_call_graph()" >  ${DIRN}/pyre_callgraph.json
 	    pyre stop
 	fi
 
-	if [ ! -f functions.txt ] ; then
+	if [ ! -f ${DIRN}/functions.txt ] ; then
 	    
-	    jq ".response|keys[]" -r pyre_callgraph.json  > functions.txt
+	    jq ".response|keys[]" -r pyre_callgraph.json  > ${DIRN}/functions.txt
 	fi
+
+	#pyre analyze --save-results-to $DIRN
 	
 	popd
     fi

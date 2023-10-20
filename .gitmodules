@@ -199,3 +199,12 @@
 [submodule "vendor/analysis/watchman"]
 	path = vendor/analysis/watchman
 	url = https://github.com/meta-introspector/watchman
+[submodule "vendor/analysis/ast2json"]
+	path = vendor/analysis/ast2json
+	url = https://github.com/Psycojoker/ast2json.git
+[submodule "vendor/analysis/beniget"]
+	path = vendor/analysis/beniget
+	url = https://github.com/meta-introspector/beniget
+[submodule "vendor/analysis/sapp"]
+	path = vendor/analysis/sapp
+	url = https://github.com/meta-introspector/sapp

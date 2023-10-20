@@ -8912,6 +8912,7 @@
       2 autogpt.workspace.workspace.Workspace.restrict_to_workspace
       2 autogpt.workspace.workspace.Workspace.root
       2 autogpt.workspace.workspace.Workspace._sanitize_path
+      
       2 data_ingestion.configure_logging
       2 data_ingestion.ingest_directory
       2 data_ingestion.main
@@ -8964,6 +8965,7 @@
       2 tests.unit.test_url_validation.test_url_validation_fails_local_path
       2 tests.unit.test_url_validation.test_url_validation_succeeds
       2 tests.utils.skip_in_ci
+      
       3 autogpt.agent.agent.Agent.__init__
       3 autogpt.agent.agent.Agent.start_interaction_loop
       3 autogpt.agent.agent_manager.AgentManager.create_agent
@@ -9152,6 +9154,7 @@
       3 tests.unit.test_chat.TestChat.test_generate_context_empty_inputs
       3 tests.unit.test_chat.TestChat.test_generate_context_valid_inputs
       3 tests.unit.test_chat.TestChat.test_happy_path_role_content
+      
       4 autogpt.commands.execute_code.execute_python_file
       4 autogpt.commands.execute_code.execute_shell
       4 autogpt.commands.execute_code.we_are_running_in_a_docker_container
@@ -9190,7 +9193,9 @@
       4 autogpt.speech.say.say_text.speak
       4 autogpt.utils.validate_yaml_file
       4 scripts.check_requirements.main
+      
       6 autogpts.forge.forge.sdk.agent.Agent.start.root
+      
       7 autogpts.autogpt.autogpt.logs.formatters.AutoGptFormatter.__init__
       7 autogpts.forge.forge.sdk.ai_profile.ProfileGenerator.__init__
       7 autogpts.forge.forge.sdk.memory.memstore.ChromaMemStore.add
@@ -9199,6 +9204,7 @@
       7 autogpts.forge.forge.sdk.memory.memstore.ChromaMemStore.__init__
       7 autogpts.forge.forge.sdk.memory.memstore.ChromaMemStore.query
       7 autogpts.forge.forge.sdk.memory.memstore.ChromaMemStore.update
+
       8 autogpts.autogpt.autogpt.agents.agent.Agent.build_prompt
       8 autogpts.autogpt.autogpt.agents.base.BaseAgent.build_prompt
       8 autogpts.autogpt.autogpt.agents.base.BaseAgent.propose_action
@@ -9238,6 +9244,7 @@
       8 benchmark.tests.test_get_roots.test_no_roots
       8 benchmark.tests.test_is_circular.test_is_circular
       8 benchmark.tests.test_is_circular.test_is_not_circular
+
       9 autogpts.autogpt.agbenchmark_config.analyze_reports.process_test
       9 autogpts.autogpt.agbenchmark_config.benchmarks.bootstrap_agent
       9 autogpts.autogpt.agbenchmark_config.benchmarks.run_specific_agent
@@ -10632,6 +10639,7 @@
       9 cli.start
       9 cli.stop
       9 cli.update
+
      23 $parameter$func
      23 $parameter$progress
      23 aifc._aifc_params.__init__
