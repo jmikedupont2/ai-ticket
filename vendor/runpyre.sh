@@ -9,7 +9,7 @@ do
 	DIRN="../../pyre/report/$D/report/"
 	if [ ! -d $DIRN ] ;
 	then
-	    echo mkdir $DIRN
+	    mkdir -p $DIRN
 	fi	
 
 	if [ ! -f .pyre_configuration ]; then
@@ -18,11 +18,15 @@ do
 	if [ ! -f .watchmanconfig ]; then
 	    cp ../../pyre/.watchmanconfig  .
 	fi
+	ls "${DIRN}"
 	if [ ! -f  ${DIRN}/pyre_init.txt ] ; then	    
 	    pyre init  > $DIRN/pyre_init.txt
+
+	    #echo init
 	fi
+	pyre start
 	if [ ! -f  ${DIRN}/pyre_coverage.txt ] ; then	    
-	    pyre coverage > $DIRN/pyre_coverage.txt
+	    pyre coverage > $DIRN/pyre_coverage.txt	    
 	fi
 	if [ ! -f  ${DIRN}/pyre_statistics.txt ] ; then	    
 	    pyre statistics >  $DIRN/pyre_statistics.txt
@@ -30,16 +34,15 @@ do
 	
 	#rm pyre_callgraph.json
 	if [ ! -f  ${DIRN}/pyre_callgraph.json ] ; then
-	    pyre start
+
 	    pyre query "dump_call_graph()" >  ${DIRN}/pyre_callgraph.json
-	    pyre stop
+
 	fi
 
 	if [ ! -f ${DIRN}/functions.txt ] ; then
-	    
 	    jq ".response|keys[]" -r pyre_callgraph.json  > ${DIRN}/functions.txt
 	fi
-
+	pyre stop
 	#pyre analyze --save-results-to $DIRN
 	
 	popd
