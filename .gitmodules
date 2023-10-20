@@ -541,3 +541,6 @@
 [submodule "vendor/banuitt"]
 	path = vendor/banuitt
 	url = https://github.com/banuitt/Auto-GPT
+[submodule "vendor/gpt-engineer"]
+	path = vendor/gpt-engineer
+	url = https://github.com/AntonOsika/gpt-engineer
