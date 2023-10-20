@@ -208,3 +208,6 @@
 [submodule "vendor/analysis/sapp"]
 	path = vendor/analysis/sapp
 	url = https://github.com/meta-introspector/sapp
+[submodule "vendor/BatsyDefenseAi"]
+	path = vendor/BatsyDefenseAi
+	url = https://github.com/Deadsg/BatsyDefenseAi
