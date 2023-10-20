@@ -6,3 +6,5 @@ run this to collect data
 
 list of files
 `jq -r keys[] pyre_statistics.txt ` 
+
+pyre-check query "types_in_file('tests.py')"
