@@ -187,106 +187,71 @@ def graph_interactive_network(
     labels: Dict[Any, Dict[str, Any]],
     html_graph_path: str = "",
 ) -> None:
-    nt = Network(notebook=True, width="100%", height="800px", directed=True)
 
-    #category_colors = get_category_colors(DATA_CATEGORY)
-
-    # Add nodes and edges to the pyvis network
-    for node, json_data in labels.items():
-        label = json_data.get("name", "")
-        # remove the first 4 letters of label
-        label_without_test = label[4:]
-        node_id_str = node.nodeid
-
-        # Get the category for this label
-        #category = DATA_CATEGORY.get(
-        #    label, "unknown"
-        #)  # Default to 'unknown' if label not found
-
-        # Get the color for this category
-        #        color = category_colors.get(category, "grey")
-        color = "grey"
-
-        nt.add_node(
-            node_id_str,
-            label=label_without_test,
-            color=color,
-            data=json_data,
-        )
-
-    # Add edges to the pyvis network
-    for edge in dag.edges():
-        #print(edge)
-        source_id_str = edge[0]
-        target_id_str = edge[1]
-        edge_id_str = (
-            f"{source_id_str}_to_{target_id_str}"  # Construct a unique edge id
-        )
-        #if not (source_id_str in nt.get_nodes() and target_id_str in nt.get_nodes()):
-        #    print(
-        #        f"Skipping edge {source_id_str} -> {target_id_str} due to missing nodes."
-        #    )
-        #    continue
-        nt.add_node(source_id_str)
-        nt.add_node(target_id_str)
-        nt.add_edge(source_id_str, target_id_str, id=edge_id_str)
-
-    # Configure physics for hierarchical layout
-    hierarchical_options = {
-        "enabled": True,
-        "levelSeparation": 200,  # Increased vertical spacing between levels
-        "nodeSpacing": 250,  # Increased spacing between nodes on the same level
-        "treeSpacing": 250,  # Increased spacing between different trees (for forest)
-        "blockShifting": True,
-        "edgeMinimization": True,
-        "parentCentralization": True,
-        "direction": "UD",
-        "sortMethod": "directed",
-    }
-
-    physics_options = {
-        "stabilization": {
+    # now lets split
+    # nx.
+    #largest_components = sorted(nx.connected_components(dag), key=len, reverse=True)[:n]
+    size = 10
+    #ag = dag.to_undirected()
+    largest_components = sorted(nx.strongly_connected_components(dag), key=len, reverse=True)[:size]
+    for index in range(size):
+        name= f'Component{index}'
+        component=dag.subgraph(largest_components[index])
+        nt = Network(notebook=True, width="100%", height="800px", directed=True)
+        for edge in component.edges():
+            source_id_str = edge[0]
+            target_id_str = edge[1]
+            edge_id_str = (
+                f"{source_id_str}_to_{target_id_str}"  # Construct a unique edge id
+            )
+            nt.add_node(source_id_str)
+            nt.add_node(target_id_str)
+            nt.add_edge(source_id_str, target_id_str, id=edge_id_str)
+        hierarchical_options = {
             "enabled": True,
-            "iterations": 1000,  # Default is often around 100
-        },
-        "hierarchicalRepulsion": {
-            "centralGravity": 0.0,
-            "springLength": 200,  # Increased edge length
-            "springConstant": 0.01,
-            "nodeDistance": 250,  # Increased minimum distance between nodes
-            "damping": 0.09,
-        },
-        "solver": "hierarchicalRepulsion",
-        "timestep": 0.5,
-    }
-
-    nt.options = {
-        "nodes": {
-            "font": {
-                "size": 20,  # Increased font size for labels
-                "color": "black",  # Set a readable font color
+            "levelSeparation": 200,  # Increased vertical spacing between levels
+            "nodeSpacing": 250,  # Increased spacing between nodes on the same level
+            "treeSpacing": 250,  # Increased spacing between different trees (for forest)
+            "blockShifting": True,
+            "edgeMinimization": True,
+            "parentCentralization": True,
+            "direction": "UD",
+            "sortMethod": "directed",
+        }
+        physics_options = {
+            "stabilization": {
+                "enabled": True,
+                "iterations": 1000,  # Default is often around 100
             },
-            "shapeProperties": {"useBorderWithImage": True},
-        },
-        "edges": {
-            "length": 250,  # Increased edge length
-        },
-        "physics": physics_options,
-        "layout": {"hierarchical": hierarchical_options},
-    }
-
-    # Serialize the graph to JSON
-    graph_data = {"nodes": nt.nodes, "edges": nt.edges}
-
-    json_graph = json.dumps(graph_data)
-
-    #home_path = find_absolute_benchmark_path()
-
-    # Optionally, save to a file
-    with open("graph.json", "w") as f:
-        f.write(json_graph)
-
-    nt.show("graph.html")
+            "hierarchicalRepulsion": {
+                "centralGravity": 0.0,
+                "springLength": 200,  # Increased edge length
+                "springConstant": 0.01,
+                "nodeDistance": 250,  # Increased minimum distance between nodes
+                "damping": 0.09,
+            },
+            "solver": "hierarchicalRepulsion",
+            "timestep": 0.5,
+        }
+        nt.options = {
+            "nodes": {
+                "font": {
+                    "size": 20,  # Increased font size for labels
+                    "color": "black",  # Set a readable font color
+                },
+                "shapeProperties": {"useBorderWithImage": True},
+            },
+            "edges": {
+                "length": 250,  # Increased edge length
+            },
+            "physics": physics_options,
+            "layout": {"hierarchical": hierarchical_options},
+        }
+        graph_data = {"nodes": nt.nodes, "edges": nt.edges}
+        json_graph = json.dumps(graph_data)
+        with open(f"graphs/graph{name}.json", "w") as f:
+            f.write(json_graph)
+        nt.show(f"graphs/graph{name}.html")
 
 
 @click.command()
