@@ -544,3 +544,6 @@
 [submodule "vendor/gpt-engineer"]
 	path = vendor/gpt-engineer
 	url = https://github.com/AntonOsika/gpt-engineer
+[submodule "vendor/conversational-agent"]
+	path = vendor/conversational-agent
+	url = https://github.com/readerbench/conversational-agent
