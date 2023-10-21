@@ -216,9 +216,9 @@ def graph_interactive_network(
             #"nodeSpacing": 250,  # Increased spacing between nodes on the same level
             #"treeSpacing": 250,  # Increased spacing between different trees (for forest)
             "blockShifting": True,
-            "edgeMinimization": True,
+           # "edgeMinimization": True,
             "parentCentralization": True,
-            "direction": "UD",
+            #"direction": "UD",
             "sortMethod": "directed",
         }
         physics_options = {
@@ -228,9 +228,9 @@ def graph_interactive_network(
             },
             "hierarchicalRepulsion": {
                 "centralGravity": 0.0,
-                "springLength": 200,  # Increased edge length
+                "springLength": 700,  # Increased edge length
                 "springConstant": 0.01,
-                "nodeDistance": 250,  # Increased minimum distance between nodes
+                "nodeDistance": 750,  # Increased minimum distance between nodes
                 "damping": 0.09,
             },
             "solver": "hierarchicalRepulsion",
@@ -239,13 +239,13 @@ def graph_interactive_network(
         nt.options = {
             "nodes": {
                 "font": {
-                    "size": 20,  # Increased font size for labels
+                    "size": 12,  # Increased font size for labels
                     "color": "black",  # Set a readable font color
                 },
                 "shapeProperties": {"useBorderWithImage": True},
             },
             "edges": {
-                "length": 250,  # Increased edge length
+                "length": 1050,  # Increased edge length
             },
             "physics": physics_options,
             "layout": {"hierarchical": hierarchical_options},
