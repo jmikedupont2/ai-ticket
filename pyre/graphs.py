@@ -192,12 +192,15 @@ def graph_interactive_network(
     # nx.
     #largest_components = sorted(nx.connected_components(dag), key=len, reverse=True)[:n]
     size = 10
-    #ag = dag.to_undirected()
-    largest_components = sorted(nx.strongly_connected_components(dag), key=len, reverse=True)[:size]
+    dag = dag.to_undirected()
+    #largest_components = sorted(nx.strongly_connected_components(dag), key=len, reverse=True)[:size]
+    largest_components = sorted(nx.connected_components(dag), key=len, reverse=True)[:size]
     for index in range(size):
         name= f'Component{index}'
         component=dag.subgraph(largest_components[index])
-        nt = Network(notebook=True, width="100%", height="800px", directed=True)
+        nt = Network(notebook=True, width="100%", height="800px",
+                     #directed=True
+                     )
         for edge in component.edges():
             source_id_str = edge[0]
             target_id_str = edge[1]
@@ -209,9 +212,9 @@ def graph_interactive_network(
             nt.add_edge(source_id_str, target_id_str, id=edge_id_str)
         hierarchical_options = {
             "enabled": True,
-            "levelSeparation": 200,  # Increased vertical spacing between levels
-            "nodeSpacing": 250,  # Increased spacing between nodes on the same level
-            "treeSpacing": 250,  # Increased spacing between different trees (for forest)
+            #"levelSeparation": 200,  # Increased vertical spacing between levels
+            #"nodeSpacing": 250,  # Increased spacing between nodes on the same level
+            #"treeSpacing": 250,  # Increased spacing between different trees (for forest)
             "blockShifting": True,
             "edgeMinimization": True,
             "parentCentralization": True,
