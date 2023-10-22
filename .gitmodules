@@ -553,3 +553,6 @@
 [submodule "vendor/docker-compose-viz"]
 	path = vendor/docker-compose-viz
 	url = https://github.com/meta-introspector/docker-compose-viz
+[submodule "vendor/pandas-ai"]
+	path = vendor/pandas-ai
+	url = https://github.com/gventuri/pandas-ai/
