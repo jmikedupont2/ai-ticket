@@ -88,8 +88,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update", "label": "autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update", "shape": "dot"}, {"color": "#97c2fc", "id": "autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update_task_memory", "label": "autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update_task_memory", "shape": "dot"}]);
-                  edges = new vis.DataSet([{"from": "autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update", "id": "autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update_to_autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update_task_memory", "to": "autogpts.PolyGPT-alpha.forge.sdk.memory.memstore.MemStore.update_task_memory"}]);
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "float.__new__", "label": "float.__new__", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.langchain_tools.CircumferenceTool._run", "label": "tools.langchain_tools.CircumferenceTool._run", "shape": "dot"}, {"color": "#97c2fc", "id": "float.__mul__", "label": "float.__mul__", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "float.__new__", "id": "float.__new___to_tools.langchain_tools.CircumferenceTool._run", "to": "tools.langchain_tools.CircumferenceTool._run"}, {"from": "float.__mul__", "id": "float.__mul___to_tools.langchain_tools.CircumferenceTool._run", "to": "tools.langchain_tools.CircumferenceTool._run"}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });

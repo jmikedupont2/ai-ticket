@@ -88,8 +88,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "object.__new__", "label": "object.__new__", "shape": "dot"}, {"color": "#97c2fc", "id": "autogpts.PolyGPT-alpha.llms_config.LlmConfiguration.__new__", "label": "autogpts.PolyGPT-alpha.llms_config.LlmConfiguration.__new__", "shape": "dot"}]);
-                  edges = new vis.DataSet([{"from": "object.__new__", "id": "object.__new___to_autogpts.PolyGPT-alpha.llms_config.LlmConfiguration.__new__", "to": "autogpts.PolyGPT-alpha.llms_config.LlmConfiguration.__new__"}]);
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "int.__eq__", "label": "int.__eq__", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.custom_chat_manager.ManualManager.run_andy_chat", "label": "utils.custom_chat_manager.ManualManager.run_andy_chat", "shape": "dot"}, {"color": "#97c2fc", "id": "range.__init__", "label": "range.__init__", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "int.__eq__", "id": "int.__eq___to_utils.custom_chat_manager.ManualManager.run_andy_chat", "to": "utils.custom_chat_manager.ManualManager.run_andy_chat"}, {"from": "utils.custom_chat_manager.ManualManager.run_andy_chat", "id": "utils.custom_chat_manager.ManualManager.run_andy_chat_to_range.__init__", "to": "range.__init__"}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
