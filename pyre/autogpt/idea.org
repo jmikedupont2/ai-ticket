@@ -145,3 +145,70 @@ Now, Emacs should have spell checking enabled using `flyspell`, along with any a
 If implemented successfully, this self-improving org file can serve as a powerful tool for enhancing writing skills, improving code quality, and facilitating the review and learning process.
 
 Let's further explore this idea by interacting with ChatGPT.
+
+
+
+
+#+begin_ai
+please help me rewrite this in org mode syntax and suggest emacs modules that will help me.
+
+I want to create an recontextualize function using emacs org mode that will fill the "backpack" of 
+4000 tokens to send to chatgpt. 
+We will send the kid to school and pack him a good lunch of tokens so his brain will be healthy.
+
+The context of message from the agent to the llm contains :
+1. what version of the which agent is running, that includes the author history
+2. previous executions of that agent, history, that includes task information. and success rate.
+3. the definition of success for each individual task, its intended result and how we will measure that 
+and how effective that measurement is. that is our quality system. GMP good manufacturing practices. 
+ISO9000, six sigma, lean , agile. Agile/Scrum contains DOD, definition of done. 
+In bad practice, They have the developers team define the DOD, 
+it should be defined by the product owner. 
+There is a disconnect between the product team and the development team in many cases, 
+scrum master mediates between the dev team and product owner. Kindergarten teacher (scrum master) takes care of the kids(devs) for 
+the parents(product owner). As the child grows, the difficulty and complexity of the definition of done increases until you have 
+autonomous verifiable systems.  This is known as cat herding and yak shaving. 
+
+[AI]: To create the recontextualize function using Emacs org mode, you can follow this syntax:
+
+```org
+* Recontextualize Function
+** Description
+   This function fills the "backpack" of 4000 tokens to send to chatgpt in order
+   to provide a good lunch for the kid's brain.
+** Context of Message from Agent to LLM
+   1. Version of the agent running, including author history
+   2. Previous executions of the agent, including task information and success rate
+   3. Definition of success for each individual task, intended result, measurement, and its effectiveness
+** Quality System
+   - GMP (Good Manufacturing Practices)
+   - ISO9000
+   - Six Sigma
+   - Lean
+   - Agile
+   - Agile/Scrum
+     + Definition of Done (DOD)
+     + Inefficient practice of allowing developers to define DOD instead of product owner
+     + Disconnect between product team and development team
+     + Scrum Master as mediator between dev team and product owner
+     + Kindergarten teacher analogy
+** Evolution of Definition of Done (DOD)
+   - Increase in difficulty and complexity as the child (project) grows
+   - Goal to achieve autonomous verifiable systems
+   - Cat herding and yak shaving as challenges in this process
+```
+
+Regarding Emacs modules that can help you, here are a few suggestions:
+
+1. `org-mode`: The built-in major mode for editing org mode files.
+2. `org-babel`: Allows executing code within org mode buffers.
+3. `org-capture`: Provides quick capturing of notes and tasks.
+4. `org-agenda`: Helps organize and manage your tasks and agenda.
+5. `org-publish`: Useful for publishing org mode files to different formats (e.g., HTML).
+6. `org-ref`: Adds citation and reference management capabilities to org mode.
+7. `org-trello`: Integrates Trello functionality into org mode.
+
+These modules can enhance your experience with org mode and assist you in organizing and manipulating your content effectively.
+
+[ME]: 
+#+end_ai
