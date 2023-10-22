@@ -17,7 +17,7 @@ for name in glob.glob(names):
         if (len(data[x])):
           for y in data[x]:
             if "direct_target" in y:
-              calls.append( x +"-"+ y["direct_target"])
+              calls.append( x +"|"+ y["direct_target"])
 df= Counter(calls)
 df2=pd.DataFrame(df.most_common(), columns=["name","count"])
 df2.to_csv("function_calls2.csv")
