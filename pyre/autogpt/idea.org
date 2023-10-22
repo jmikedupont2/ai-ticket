@@ -2,27 +2,12 @@
 
 We are using [[https://github.com/rksm/org-ai][https://github.com/rksm/org-ai]] to interact with the llm using emacs right now.
 
-#+begin_ai
-rewrite this in org mode syntax:
-We are using https://github.com/rksm/org-ai to interact with the llm using emacs right now. 
-
-[AI]: We are using [[https://github.com/rksm/org-ai][https://github.com/rksm/org-ai]] to interact with the llm using emacs right now.
-
-[ME]: 
-#+end_ai
-
-
-#+begin_ai
-Is Emacs the greatest editor?
+* Is Emacs the greatest editor?
 
 [AI]: As an AI language model, I don't have personal opinions. However, Emacs is highly regarded by many developers and power users as one of the most powerful and versatile text editors available. It's known for its extensive customizability and support for a wide range of programming languages and tasks. However, the perception of the "greatest" editor is subjective and depends on individual preferences and needs. Many other editors such as Vim, Atom, Sublime Text, and Visual Studio Code are also popular choices and have their own dedicated user bases.
 
-[ME]: 
-#+end_ai
 
-
-#+begin_ai
-My idea is that we can create a self improving org file that will 
+* My idea is that we can create a self improving org file that will 
 contain executable code that will send itself to a llm for review.
 
 changes to it will be recorded. Every time you save it will create a new version and analyse it.
@@ -35,9 +20,8 @@ also we should add spell checking and all the other emacs modules that will impr
 so lets send this file to chatgpt and see what it says.
 please rewrite in org mode. 
 
-[AI]: Sure! Here's a rewrite of your idea in org mode:
 
-#+TITLE: Self-Improving Org File
+
 
 * Idea
 The idea is to create a self-improving org file that contains executable code which can be sent to a Language Model (LLM) for review. The org file will record changes made to it and generate new versions every time it is saved. The proposed implementation involves using pre-commit hooks in Git and integrating with Emacs.
@@ -67,8 +51,6 @@ If implemented successfully, this self-improving org file can serve as a powerfu
 
 Let's further explore this idea by interacting with ChatGPT.
 
-[ME]: 
-#+end_ai
 
 * Idea
 The idea is to create a self-improving org file that contains executable code which can be sent to a Language Model (LLM) for review. The org file will record changes made to it and generate new versions every time it is saved. The proposed implementation involves using pre-commit hooks in Git and integrating with Emacs.
@@ -86,10 +68,11 @@ To implement this idea, the following steps can be followed:
 
 2. Configure Emacs to enable spell checking and other writing improvement modules.
 
-#+begin_ai
+# straight el
+
 using straight-el or git, use Emacs to enable spell checking and other writing improvement modules.
 
-[AI]: To enable spell checking and other writing improvement modules in Emacs using straight.el or git, you can follow the steps below:
+To enable spell checking and other writing improvement modules in Emacs using straight.el or git, you can follow the steps below:
 
 1. Install straight.el: 
    - If you are using straight.el, add the following code to your `init.el` or `.emacs` file to bootstrap straight.el:
@@ -131,8 +114,6 @@ using straight-el or git, use Emacs to enable spell checking and other writing i
 
 Now, Emacs should have spell checking enabled using `flyspell`, along with any additional writing improvement modules you installed, such as `langtool` and `writegood-mode`. You can use these features to check your spelling, grammar, and style while writing.
 
-[ME]: 
-#+end_ai
 
 3. Develop the logic to analyze the org file, identifying areas of improvement and generating suggestions based on the analysis.
 
@@ -144,13 +125,11 @@ Now, Emacs should have spell checking enabled using `flyspell`, along with any a
 
 If implemented successfully, this self-improving org file can serve as a powerful tool for enhancing writing skills, improving code quality, and facilitating the review and learning process.
 
-Let's further explore this idea by interacting with ChatGPT.
 
-
-
-
-#+begin_ai
 please help me rewrite this in org mode syntax and suggest emacs modules that will help me.
+
+
+Let's further explore this idea by interacting with ChatGPT.
 
 I want to create an recontextualize function using emacs org mode that will fill the "backpack" of 
 4000 tokens to send to chatgpt. 
@@ -169,9 +148,6 @@ scrum master mediates between the dev team and product owner. Kindergarten teach
 the parents(product owner). As the child grows, the difficulty and complexity of the definition of done increases until you have 
 autonomous verifiable systems.  This is known as cat herding and yak shaving. 
 
-[AI]: To create the recontextualize function using Emacs org mode, you can follow this syntax:
-
-```org
 * Recontextualize Function
 ** Description
    This function fills the "backpack" of 4000 tokens to send to chatgpt in order
@@ -196,7 +172,7 @@ autonomous verifiable systems.  This is known as cat herding and yak shaving.
    - Increase in difficulty and complexity as the child (project) grows
    - Goal to achieve autonomous verifiable systems
    - Cat herding and yak shaving as challenges in this process
-```
+
 
 Regarding Emacs modules that can help you, here are a few suggestions:
 
@@ -209,6 +185,3 @@ Regarding Emacs modules that can help you, here are a few suggestions:
 7. `org-trello`: Integrates Trello functionality into org mode.
 
 These modules can enhance your experience with org mode and assist you in organizing and manipulating your content effectively.
-
-[ME]: 
-#+end_ai
