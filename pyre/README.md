@@ -4,10 +4,13 @@ prep
 run this to collect data
 `vendor/runpyre.sh`
 
+now extract the calls
+`python calls.py`
+`python calls2.py`
+
 list of files
 `jq -r keys[] pyre_statistics.txt ` 
 
-pyre-check query "types_in_file('tests.py')"
 
 # produce graphs
 
@@ -49,3 +52,9 @@ published in webpage: https://jmikedupont2.github.io/ai-ticket/pyre/
     jq ".edges[]|.to"  graphComponent*.json  |sort |uniq -c | sort -n |grep autogpt
 ``` 
   
+
+
+# todo
+
+this is not working yet
+`pyre-check query "types_in_file('tests.py')"`

@@ -88,8 +88,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "lollms.terminal.MainMenu.install_model", "label": "lollms.terminal.MainMenu.install_model", "shape": "dot"}, {"color": "#97c2fc", "id": "lollms.terminal.MainMenu.select_model", "label": "lollms.terminal.MainMenu.select_model", "shape": "dot"}]);
-                  edges = new vis.DataSet([{"from": "lollms.terminal.MainMenu.install_model", "id": "lollms.terminal.MainMenu.install_model_to_lollms.terminal.MainMenu.select_model", "to": "lollms.terminal.MainMenu.select_model"}, {"from": "lollms.terminal.MainMenu.select_model", "id": "lollms.terminal.MainMenu.select_model_to_lollms.terminal.MainMenu.select_model", "to": "lollms.terminal.MainMenu.select_model"}]);
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "lollms.terminal.MainMenu.select_model", "label": "lollms.terminal.MainMenu.select_model", "shape": "dot"}, {"color": "#97c2fc", "id": "lollms.terminal.MainMenu.install_model", "label": "lollms.terminal.MainMenu.install_model", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "lollms.terminal.MainMenu.select_model", "id": "lollms.terminal.MainMenu.select_model_to_lollms.terminal.MainMenu.select_model", "to": "lollms.terminal.MainMenu.select_model"}, {"from": "lollms.terminal.MainMenu.select_model", "id": "lollms.terminal.MainMenu.select_model_to_lollms.terminal.MainMenu.install_model", "to": "lollms.terminal.MainMenu.install_model"}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
