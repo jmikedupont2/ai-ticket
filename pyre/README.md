@@ -58,3 +58,10 @@ published in webpage: https://jmikedupont2.github.io/ai-ticket/pyre/
 
 this is not working yet
 `pyre-check query "types_in_file('tests.py')"`
+
+
+# calls3 
+produces a report with module and called function
+
+# calls_generic.py
+like call2.py but takes a name
