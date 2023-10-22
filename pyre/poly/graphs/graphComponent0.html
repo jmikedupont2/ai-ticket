@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.star_network", "label": "utils.orchestrator.Orchestrator.star_network", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.basic_chat", "label": "utils.orchestrator.Orchestrator.basic_chat", "shape": "dot"}, {"color": "#97c2fc", "id": "dict.__getitem__", "label": "dict.__getitem__", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.start_conversation", "label": "utils.orchestrator.Orchestrator.start_conversation", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.add_message", "label": "utils.orchestrator.Orchestrator.add_message", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.proxy_based_communication", "label": "utils.orchestrator.Orchestrator.proxy_based_communication", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.group_based_communication", "label": "utils.orchestrator.Orchestrator.group_based_communication", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.two_way_communication", "label": "utils.orchestrator.Orchestrator.two_way_communication", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.all_to_all_communication", "label": "utils.orchestrator.Orchestrator.all_to_all_communication", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.broadcast", "label": "utils.orchestrator.Orchestrator.broadcast", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.request_and_respond", "label": "utils.orchestrator.Orchestrator.request_and_respond", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.round_robin", "label": "utils.orchestrator.Orchestrator.round_robin", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.hierarchical_communication", "label": "utils.orchestrator.Orchestrator.hierarchical_communication", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.langchain_tools.generate_llm_config", "label": "tools.langchain_tools.generate_llm_config", "shape": "dot"}, {"color": "#97c2fc", "id": "BaseException.__init__", "label": "BaseException.__init__", "shape": "dot"}, {"color": "#97c2fc", "id": "object.__eq__", "label": "object.__eq__", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.get_agent_by_name", "label": "utils.orchestrator.Orchestrator.get_agent_by_name", "shape": "dot"}, {"color": "#97c2fc", "id": "dict.get", "label": "dict.get", "shape": "dot"}, {"color": "#97c2fc", "id": "agents.core_agents.CoreAgent.initiate_chat", "label": "agents.core_agents.CoreAgent.initiate_chat", "shape": "dot"}, {"color": "#97c2fc", "id": "utils.orchestrator.Orchestrator.__init__", "label": "utils.orchestrator.Orchestrator.__init__", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_scrapper.HttpClient.send_request", "label": "tools.web_scrapper.HttpClient.send_request", "shape": "dot"}, {"color": "#97c2fc", "id": "llms_config.LlmConfiguration._find_and_load_config", "label": "llms_config.LlmConfiguration._find_and_load_config", "shape": "dot"}, {"color": "#97c2fc", "id": "int.__lt__", "label": "int.__lt__", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_scrapper.URLManager.normalize_url", "label": "tools.web_scrapper.URLManager.normalize_url", "shape": "dot"}, {"color": "#97c2fc", "id": "urllib.parse.ParseResult.geturl", "label": "urllib.parse.ParseResult.geturl", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_scrapper.URLManager.mark_visited", "label": "tools.web_scrapper.URLManager.mark_visited", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_scrapper.Scraper.parse_and_store_data", "label": "tools.web_scrapper.Scraper.parse_and_store_data", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_scrapper.Scraper.scrape_url", "label": "tools.web_scrapper.Scraper.scrape_url", "shape": "dot"}, {"color": "#97c2fc", "id": "BaseException.__str__", "label": "BaseException.__str__", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_scrapper.Logger.log", "label": "tools.web_scrapper.Logger.log", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_scrapper.URLManager.is_visited", "label": "tools.web_scrapper.URLManager.is_visited", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_constructor.WebConstructorApp.construct_website", "label": "tools.web_constructor.WebConstructorApp.construct_website", "shape": "dot"}, {"color": "#97c2fc", "id": "bs4.BeautifulSoup.__init__", "label": "bs4.BeautifulSoup.__init__", "shape": "dot"}, {"color": "#97c2fc", "id": "io.TextIOWrapper.__enter__", "label": "io.TextIOWrapper.__enter__", "shape": "dot"}, {"color": "#97c2fc", "id": "io.TextIOBase.write", "label": "io.TextIOBase.write", "shape": "dot"}, {"color": "#97c2fc", "id": "bs4.element.Tag.find_all", "label": "bs4.element.Tag.find_all", "shape": "dot"}, {"color": "#97c2fc", "id": "requests.models.Response.raise_for_status", "label": "requests.models.Response.raise_for_status", "shape": "dot"}, {"color": "#97c2fc", "id": "requests.models.Response.text", "label": "requests.models.Response.text", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_constructor.WebConstructor.construct_page", "label": "tools.web_constructor.WebConstructor.construct_page", "shape": "dot"}, {"color": "#97c2fc", "id": "tools.web_constructor.WebConstructor.construct_website", "label": "tools.web_constructor.WebConstructor.construct_website", "shape": "dot"}, {"color": "#97c2fc", "id": "agents.core_agents.CoreAgent.__init__", "label": "agents.core_agents.CoreAgent.__init__", "shape": "dot"}, {"color": "#97c2fc", "id": "hashlib._Hash.hexdigest", "label": "hashlib._Hash.hexdigest", "shape": "dot"}, {"color": "#97c2fc", "id": "str.encode", "label": "str.encode", "shape": "dot"}, {"color": "#97c2fc", "id": "io.TextIOBase.read", "label": "io.TextIOBase.read", "shape": "dot"}, {"color": "#97c2fc", "id": "object.__repr__", "label": "object.__repr__", "shape": "dot"}, {"color": "#97c2fc", "id": "main.main", "label": "main.main", "shape": "dot"}, {"color": "#97c2fc", "id": "str.__eq__", "label": "str.__eq__", "shape": "dot"}, {"color": "#97c2fc", "id": "llms_config.LlmConfiguration.__init__", "label": "llms_config.LlmConfiguration.__init__", "shape": "dot"}, {"color": "#97c2fc", "id": "agents.internet_agent.internet_agent", "label": "agents.internet_agent.internet_agent", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "utils.orchestrator.Orchestrator.star_network", "id": "utils.orchestrator.Orchestrator.star_network_to_utils.orchestrator.Orchestrator.basic_chat", "to": "utils.orchestrator.Orchestrator.basic_chat"}, {"from": "utils.orchestrator.Orchestrator.star_network", "id": "utils.orchestrator.Orchestrator.star_network_to_dict.__getitem__", "to": "dict.__getitem__"}, {"from": "utils.orchestrator.Orchestrator.star_network", "id": "utils.orchestrator.Orchestrator.star_network_to_utils.orchestrator.Orchestrator.start_conversation", "to": "utils.orchestrator.Orchestrator.start_conversation"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.add_message", "to": "utils.orchestrator.Orchestrator.add_message"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.proxy_based_communication", "to": "utils.orchestrator.Orchestrator.proxy_based_communication"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.group_based_communication", "to": "utils.orchestrator.Orchestrator.group_based_communication"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.two_way_communication", "to": "utils.orchestrator.Orchestrator.two_way_communication"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.all_to_all_communication", "to": "utils.orchestrator.Orchestrator.all_to_all_communication"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.broadcast", "to": "utils.orchestrator.Orchestrator.broadcast"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.request_and_respond", "to": "utils.orchestrator.Orchestrator.request_and_respond"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.round_robin", "to": "utils.orchestrator.Orchestrator.round_robin"}, {"from": "utils.orchestrator.Orchestrator.basic_chat", "id": "utils.orchestrator.Orchestrator.basic_chat_to_utils.orchestrator.Orchestrator.hierarchical_communication", "to": "utils.orchestrator.Orchestrator.hierarchical_communication"}, {"from": "dict.__getitem__", "id": "dict.__getitem___to_utils.orchestrator.Orchestrator.group_based_communication", "to": "utils.orchestrator.Orchestrator.group_based_communication"}, {"from": "dict.__getitem__", "id": "dict.__getitem___to_tools.langchain_tools.generate_llm_config", "to": "tools.langchain_tools.generate_llm_config"}, {"from": "dict.__getitem__", "id": "dict.__getitem___to_utils.orchestrator.Orchestrator.two_way_communication", "to": "utils.orchestrator.Orchestrator.two_way_communication"}, {"from": "dict.__getitem__", "id": "dict.__getitem___to_utils.orchestrator.Orchestrator.all_to_all_communication", "to": "utils.orchestrator.Orchestrator.all_to_all_communication"}, {"from": "dict.__getitem__", "id": "dict.__getitem___to_utils.orchestrator.Orchestrator.round_robin", "to": "utils.orchestrator.Orchestrator.round_robin"}, {"from": "utils.orchestrator.Orchestrator.proxy_based_communication", "id": "utils.orchestrator.Orchestrator.proxy_based_communication_to_utils.orchestrator.Orchestrator.start_conversation", "to": "utils.orchestrator.Orchestrator.start_conversation"}, {"from": "utils.orchestrator.Orchestrator.group_based_communication", "id": "utils.orchestrator.Orchestrator.group_based_communication_to_utils.orchestrator.Orchestrator.start_conversation", "to": "utils.orchestrator.Orchestrator.start_conversation"}, {"from": "utils.orchestrator.Orchestrator.two_way_communication", "id": "utils.orchestrator.Orchestrator.two_way_communication_to_utils.orchestrator.Orchestrator.start_conversation", "to": "utils.orchestrator.Orchestrator.start_conversation"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_utils.orchestrator.Orchestrator.all_to_all_communication", "to": "utils.orchestrator.Orchestrator.all_to_all_communication"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_BaseException.__init__", "to": "BaseException.__init__"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_utils.orchestrator.Orchestrator.broadcast", "to": "utils.orchestrator.Orchestrator.broadcast"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_utils.orchestrator.Orchestrator.request_and_respond", "to": "utils.orchestrator.Orchestrator.request_and_respond"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_object.__eq__", "to": "object.__eq__"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_utils.orchestrator.Orchestrator.round_robin", "to": "utils.orchestrator.Orchestrator.round_robin"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_utils.orchestrator.Orchestrator.hierarchical_communication", "to": "utils.orchestrator.Orchestrator.hierarchical_communication"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_utils.orchestrator.Orchestrator.get_agent_by_name", "to": "utils.orchestrator.Orchestrator.get_agent_by_name"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_dict.get", "to": "dict.get"}, {"from": "utils.orchestrator.Orchestrator.start_conversation", "id": "utils.orchestrator.Orchestrator.start_conversation_to_agents.core_agents.CoreAgent.initiate_chat", "to": "agents.core_agents.CoreAgent.initiate_chat"}, {"from": "BaseException.__init__", "id": "BaseException.__init___to_utils.orchestrator.Orchestrator.__init__", "to": "utils.orchestrator.Orchestrator.__init__"}, {"from": "BaseException.__init__", "id": "BaseException.__init___to_tools.web_scrapper.HttpClient.send_request", "to": "tools.web_scrapper.HttpClient.send_request"}, {"from": "BaseException.__init__", "id": "BaseException.__init___to_llms_config.LlmConfiguration._find_and_load_config", "to": "llms_config.LlmConfiguration._find_and_load_config"}, {"from": "utils.orchestrator.Orchestrator.__init__", "id": "utils.orchestrator.Orchestrator.__init___to_int.__lt__", "to": "int.__lt__"}, {"from": "utils.orchestrator.Orchestrator.__init__", "id": "utils.orchestrator.Orchestrator.__init___to_agents.core_agents.CoreAgent.initiate_chat", "to": "agents.core_agents.CoreAgent.initiate_chat"}, {"from": "tools.web_scrapper.URLManager.normalize_url", "id": "tools.web_scrapper.URLManager.normalize_url_to_urllib.parse.ParseResult.geturl", "to": "urllib.parse.ParseResult.geturl"}, {"from": "tools.web_scrapper.URLManager.normalize_url", "id": "tools.web_scrapper.URLManager.normalize_url_to_tools.web_scrapper.URLManager.mark_visited", "to": "tools.web_scrapper.URLManager.mark_visited"}, {"from": "tools.web_scrapper.URLManager.normalize_url", "id": "tools.web_scrapper.URLManager.normalize_url_to_tools.web_scrapper.Scraper.parse_and_store_data", "to": "tools.web_scrapper.Scraper.parse_and_store_data"}, {"from": "tools.web_scrapper.URLManager.mark_visited", "id": "tools.web_scrapper.URLManager.mark_visited_to_tools.web_scrapper.Scraper.scrape_url", "to": "tools.web_scrapper.Scraper.scrape_url"}, {"from": "tools.web_scrapper.Scraper.scrape_url", "id": "tools.web_scrapper.Scraper.scrape_url_to_BaseException.__str__", "to": "BaseException.__str__"}, {"from": "tools.web_scrapper.Scraper.scrape_url", "id": "tools.web_scrapper.Scraper.scrape_url_to_tools.web_scrapper.Scraper.parse_and_store_data", "to": "tools.web_scrapper.Scraper.parse_and_store_data"}, {"from": "tools.web_scrapper.Scraper.scrape_url", "id": "tools.web_scrapper.Scraper.scrape_url_to_tools.web_scrapper.Logger.log", "to": "tools.web_scrapper.Logger.log"}, {"from": "tools.web_scrapper.Scraper.scrape_url", "id": "tools.web_scrapper.Scraper.scrape_url_to_tools.web_scrapper.HttpClient.send_request", "to": "tools.web_scrapper.HttpClient.send_request"}, {"from": "tools.web_scrapper.Scraper.scrape_url", "id": "tools.web_scrapper.Scraper.scrape_url_to_tools.web_scrapper.URLManager.is_visited", "to": "tools.web_scrapper.URLManager.is_visited"}, {"from": "BaseException.__str__", "id": "BaseException.__str___to_tools.web_scrapper.HttpClient.send_request", "to": "tools.web_scrapper.HttpClient.send_request"}, {"from": "BaseException.__str__", "id": "BaseException.__str___to_tools.web_constructor.WebConstructorApp.construct_website", "to": "tools.web_constructor.WebConstructorApp.construct_website"}, {"from": "tools.web_scrapper.Scraper.parse_and_store_data", "id": "tools.web_scrapper.Scraper.parse_and_store_data_to_bs4.BeautifulSoup.__init__", "to": "bs4.BeautifulSoup.__init__"}, {"from": "tools.web_scrapper.Scraper.parse_and_store_data", "id": "tools.web_scrapper.Scraper.parse_and_store_data_to_io.TextIOWrapper.__enter__", "to": "io.TextIOWrapper.__enter__"}, {"from": "tools.web_scrapper.Scraper.parse_and_store_data", "id": "tools.web_scrapper.Scraper.parse_and_store_data_to_tools.web_scrapper.Logger.log", "to": "tools.web_scrapper.Logger.log"}, {"from": "tools.web_scrapper.Scraper.parse_and_store_data", "id": "tools.web_scrapper.Scraper.parse_and_store_data_to_io.TextIOBase.write", "to": "io.TextIOBase.write"}, {"from": "tools.web_scrapper.Scraper.parse_and_store_data", "id": "tools.web_scrapper.Scraper.parse_and_store_data_to_bs4.element.Tag.find_all", "to": "bs4.element.Tag.find_all"}, {"from": "tools.web_scrapper.HttpClient.send_request", "id": "tools.web_scrapper.HttpClient.send_request_to_requests.models.Response.raise_for_status", "to": "requests.models.Response.raise_for_status"}, {"from": "tools.web_scrapper.HttpClient.send_request", "id": "tools.web_scrapper.HttpClient.send_request_to_requests.models.Response.text", "to": "requests.models.Response.text"}, {"from": "bs4.BeautifulSoup.__init__", "id": "bs4.BeautifulSoup.__init___to_tools.web_constructor.WebConstructor.construct_page", "to": "tools.web_constructor.WebConstructor.construct_page"}, {"from": "io.TextIOWrapper.__enter__", "id": "io.TextIOWrapper.__enter___to_tools.web_constructor.WebConstructor.construct_website", "to": "tools.web_constructor.WebConstructor.construct_website"}, {"from": "io.TextIOWrapper.__enter__", "id": "io.TextIOWrapper.__enter___to_tools.web_constructor.WebConstructor.construct_page", "to": "tools.web_constructor.WebConstructor.construct_page"}, {"from": "io.TextIOWrapper.__enter__", "id": "io.TextIOWrapper.__enter___to_agents.core_agents.CoreAgent.__init__", "to": "agents.core_agents.CoreAgent.__init__"}, {"from": "io.TextIOBase.write", "id": "io.TextIOBase.write_to_tools.web_constructor.WebConstructor.construct_page", "to": "tools.web_constructor.WebConstructor.construct_page"}, {"from": "bs4.element.Tag.find_all", "id": "bs4.element.Tag.find_all_to_tools.web_constructor.WebConstructor.construct_page", "to": "tools.web_constructor.WebConstructor.construct_page"}, {"from": "tools.web_constructor.WebConstructorApp.construct_website", "id": "tools.web_constructor.WebConstructorApp.construct_website_to_tools.web_constructor.WebConstructor.construct_website", "to": "tools.web_constructor.WebConstructor.construct_website"}, {"from": "tools.web_constructor.WebConstructor.construct_website", "id": "tools.web_constructor.WebConstructor.construct_website_to_hashlib._Hash.hexdigest", "to": "hashlib._Hash.hexdigest"}, {"from": "tools.web_constructor.WebConstructor.construct_website", "id": "tools.web_constructor.WebConstructor.construct_website_to_tools.web_constructor.WebConstructor.construct_page", "to": "tools.web_constructor.WebConstructor.construct_page"}, {"from": "tools.web_constructor.WebConstructor.construct_website", "id": "tools.web_constructor.WebConstructor.construct_website_to_str.encode", "to": "str.encode"}, {"from": "tools.web_constructor.WebConstructor.construct_website", "id": "tools.web_constructor.WebConstructor.construct_website_to_io.TextIOBase.read", "to": "io.TextIOBase.read"}, {"from": "tools.web_constructor.WebConstructor.construct_page", "id": "tools.web_constructor.WebConstructor.construct_page_to_object.__repr__", "to": "object.__repr__"}, {"from": "main.main", "id": "main.main_to_agents.core_agents.CoreAgent.__init__", "to": "agents.core_agents.CoreAgent.__init__"}, {"from": "main.main", "id": "main.main_to_agents.core_agents.CoreAgent.initiate_chat", "to": "agents.core_agents.CoreAgent.initiate_chat"}, {"from": "llms_config.LlmConfiguration._find_and_load_config", "id": "llms_config.LlmConfiguration._find_and_load_config_to_str.__eq__", "to": "str.__eq__"}, {"from": "llms_config.LlmConfiguration._find_and_load_config", "id": "llms_config.LlmConfiguration._find_and_load_config_to_llms_config.LlmConfiguration.__init__", "to": "llms_config.LlmConfiguration.__init__"}, {"from": "llms_config.LlmConfiguration.__init__", "id": "llms_config.LlmConfiguration.__init___to_agents.internet_agent.internet_agent", "to": "agents.internet_agent.internet_agent"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 12, "color": "black"}, "shapeProperties": {"useBorderWithImage": true}}, "edges": {"length": 1050}, "physics": {"stabilization": {"enabled": true, "iterations": 1000}, "hierarchicalRepulsion": {"centralGravity": 0.0, "springLength": 700, "springConstant": 0.01, "nodeDistance": 750, "damping": 0.09}, "solver": "hierarchicalRepulsion", "timestep": 0.5}, "layout": {"hierarchical": {"enabled": true, "blockShifting": true, "parentCentralization": true, "sortMethod": "directed"}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

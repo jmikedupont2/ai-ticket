@@ -1,0 +1,1 @@
+{"nodes": [{"color": "#97c2fc", "id": "object.__new__", "label": "object.__new__", "shape": "dot"}, {"color": "#97c2fc", "id": "llms_config.LlmConfiguration.__new__", "label": "llms_config.LlmConfiguration.__new__", "shape": "dot"}], "edges": [{"id": "object.__new___to_llms_config.LlmConfiguration.__new__", "from": "object.__new__", "to": "llms_config.LlmConfiguration.__new__"}]}

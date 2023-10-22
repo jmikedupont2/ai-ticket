@@ -13,3 +13,546 @@
 [submodule "vendor/Auto-GPT-Benchmarks"]
 	path = vendor/Auto-GPT-Benchmarks
 	url = https://github.com/Significant-Gravitas/Auto-GPT-Benchmarks
+[submodule "vendor/act_base"]
+	path = vendor/act_base
+	url = https://github.com/meta-introspector/act_base/
+[submodule "vendor/python-poetry"]
+	path = vendor/python-poetry
+	url = https://github.com/meta-introspector/python-poetry
+[submodule "vendor/basic_agent"]
+	path = vendor/basic_agent
+	url = https://github.com/meta-introspector/basic_agent
+[submodule "vendor/TheAgency"]
+	path = vendor/TheAgency
+	url = https://github.com/shamantechnology/TheAgency
+[submodule "vendor/mljar-agent"]
+	path = vendor/mljar-agent
+	url = https://github.com/pplonski/mljar-agent
+[submodule "vendor/Swarms-Of-Sparta"]
+	path = vendor/Swarms-Of-Sparta
+	url = https://github.com/Agora-X/Swarms-Of-Sparta
+[submodule "vendor/Jarvis"]
+	path = vendor/Jarvis
+	url = https://github.com/jankomisarczyk/Jarvis
+[submodule "vendor/AutoGPT-trading"]
+	path = vendor/AutoGPT-trading
+	url = https://github.com/enachb/AutoGPT-trading.git
+[submodule "vendor/ScottGPT"]
+	path = vendor/ScottGPT
+	url = https://github.com/scottmas/ScottGPT
+[submodule "vendor/AutoGPTv2"]
+	path = vendor/AutoGPTv2
+	url = https://github.com/taylor-ennen/AutoGPTv2
+[submodule "vendor/beebot"]
+	path = vendor/beebot
+	url = https://github.com/AutoPackAI/beebot.git
+[submodule "vendor/Auto-GPT-Turbo"]
+	path = vendor/Auto-GPT-Turbo
+	url = https://github.com/lc0rp/Auto-GPT-Turbo.git
+[submodule "vendor/smol-developer"]
+	path = vendor/smol-developer
+	url = https://github.com/e2b-dev/smol-developer.git
+[submodule "vendor/Multi-GPT"]
+	path = vendor/Multi-GPT
+	url = https://github.com/sidhq/Multi-GPT
+[submodule "vendor/Auto-GPT-aj"]
+	path = vendor/Auto-GPT-aj
+	url = https://github.com/kaqijiang/Auto-GPT-aj
+[submodule "vendor/Godmode-GPT"]
+	path = vendor/Godmode-GPT
+	url = https://github.com/FOLLGAD/Godmode-GPT
+[submodule "vendor/Auto-GPT-Graph"]
+	path = vendor/Auto-GPT-Graph
+	url = https://github.com/kairess/Auto-GPT-Graph
+[submodule "vendor/BillSchumacher"]
+	path = vendor/BillSchumacher
+	url = https://github.com/BillSchumacher/Auto-GPT
+[submodule "vendor/Auto-GPT-chat-gpt-prompts"]
+	path = vendor/Auto-GPT-chat-gpt-prompts
+	url = https://github.com/chatgpt-prompts/Auto-GPT-chat-gpt-prompts
+[submodule "vendor/MasonBoomPersonalAssistant"]
+	path = vendor/MasonBoomPersonalAssistant
+	url = https://github.com/MasonBoom/AutoGPT.git
+[submodule "vendor/PolyGPT"]
+	path = vendor/PolyGPT
+	url = https://github.com/polywrap/PolyGPT.git
+[submodule "vendor/SuperAGI"]
+	path = vendor/SuperAGI
+	url = https://github.com/SilenNaihin/SuperAGI.git
+[submodule "vendor/babyagi"]
+	path = vendor/babyagi
+	url = https://github.com/SilenNaihin/babyagi.git
+[submodule "vendor/PolyGPT-alpha"]
+	path = vendor/PolyGPT-alpha
+	url = https://github.com/team-tonic-arena-hacks/PolyGPT-alpha
+[submodule "vendor/RedAGPT"]
+	path = vendor/RedAGPT
+	url = https://github.com/shamantechnology/RedAGPT
+[submodule "vendor/osGPT"]
+	path = vendor/osGPT
+	url = https://github.com/jinho-kim-osd/osGPT
+[submodule "vendor/FritzGPT"]
+	path = vendor/FritzGPT
+	url = https://github.com/bsenst/FritzGPT
+[submodule "vendor/Asimov"]
+	path = vendor/Asimov
+	url = https://github.com/murnanedaniel/Asimov
+[submodule "vendor/evo.ninja"]
+	path = vendor/evo.ninja
+	url = https://github.com/polywrap/evo.ninja
+[submodule "vendor/Mutant-AI"]
+	path = vendor/Mutant-AI
+	url = https://github.com/cluna80/Mutant-AI
+[submodule "vendor/gordonwilliamsburg"]
+	path = vendor/gordonwilliamsburg
+	url = https://github.com/gordonwilliamsburg/test
+[submodule "vendor/joslangarica"]
+	path = vendor/joslangarica
+	url = https://github.com/joslangarica/AutoGPT
+[submodule "vendor/isayahc"]
+	path = vendor/isayahc
+	url = https://github.com/isayahc/AutoGPT
+[submodule "vendor/merwanehamadi"]
+	path = vendor/merwanehamadi
+	url = https://github.com/merwanehamadi/Auto-GPT
+[submodule "vendor/HMDCrew"]
+	path = vendor/HMDCrew
+	url = https://github.com/HMDCrew/AutoGPT
+[submodule "vendor/aorwall"]
+	path = vendor/aorwall
+	url = https://github.com/aorwall/AutoGPT
+[submodule "vendor/Agora-X"]
+	path = vendor/Agora-X
+	url = https://github.com/Agora-X/Swarms-Of-Sparta
+[submodule "vendor/IkuOhama"]
+	path = vendor/IkuOhama
+	url = https://github.com/IkuOhama/AutoGPT
+[submodule "vendor/neitheroption"]
+	path = vendor/neitheroption
+	url = https://github.com/neitheroption/GPTAgentTest
+[submodule "vendor/jackyluo-learning"]
+	path = vendor/jackyluo-learning
+	url = https://github.com/jackyluo-learning/AutoGPT
+[submodule "vendor/scottmas"]
+	path = vendor/scottmas
+	url = https://github.com/scottmas/ScottGPT
+[submodule "vendor/reyug9"]
+	path = vendor/reyug9
+	url = https://github.com/reyug9/AutoGPT
+[submodule "vendor/taylor-ennen"]
+	path = vendor/taylor-ennen
+	url = https://github.com/taylor-ennen/AutoGPTv2
+[submodule "vendor/mahmudremal"]
+	path = vendor/mahmudremal
+	url = https://github.com/mahmudremal/AutoGPT
+[submodule "vendor/harishafeez1"]
+	path = vendor/harishafeez1
+	url = https://github.com/harishafeez1/AutoGPT-haris
+[submodule "vendor/pplonski"]
+	path = vendor/pplonski
+	url = https://github.com/pplonski/mljar-agent
+[submodule "vendor/meta-introspector"]
+	path = vendor/meta-introspector
+	url = https://github.com/meta-introspector/Auto-GPT
+[submodule "vendor/georgehaws"]
+	path = vendor/georgehaws
+	url = https://github.com/georgehaws/interhalogen
+[submodule "vendor/a-cires"]
+	path = vendor/a-cires
+	url = https://github.com/a-cires/AutoGPT
+[submodule "vendor/MasonBoom"]
+	path = vendor/MasonBoom
+	url = https://github.com/MasonBoom/AutoGPT
+[submodule "vendor/enachb"]
+	path = vendor/enachb
+	url = https://github.com/enachb/AutoGPT-trading
+[submodule "vendor/micahnz"]
+	path = vendor/micahnz
+	url = https://github.com/micahnz/AutoGPT
+[submodule "vendor/kabbo25"]
+	path = vendor/kabbo25
+	url = https://github.com/kabbo25/AutoGPT
+[submodule "vendor/yodatech1988"]
+	path = vendor/yodatech1988
+	url = https://github.com/yodatech1988/AutoGPT
+[submodule "vendor/jankomisarczyk"]
+	path = vendor/jankomisarczyk
+	url = https://github.com/jankomisarczyk/Jarvis
+[submodule "vendor/NaixingWang"]
+	path = vendor/NaixingWang
+	url = https://github.com/NaixingWang/AutoGPT
+[submodule "vendor/clusterfudge"]
+	path = vendor/clusterfudge
+	url = https://github.com/clusterfudge/Auto-GPT
+[submodule "vendor/vikyw89"]
+	path = vendor/vikyw89
+	url = https://github.com/vikyw89/Auto-GPT
+[submodule "vendor/agent-protocol-client-python"]
+	path = vendor/agent-protocol-client-python
+	url = https://github.com/AI-Engineer-Foundation/agent-protocol-client-python
+[submodule "vendor/agent-protocol-sdk-python"]
+	path = vendor/agent-protocol-sdk-python
+	url = https://github.com/AI-Engineer-Foundation/agent-protocol-sdk-python
+[submodule "vendor/analysis/pyre-check"]
+	path = vendor/analysis/pyre-check
+	url = https://github.com/meta-introspector/pyre-check
+[submodule "vendor/analysis/watchman"]
+	path = vendor/analysis/watchman
+	url = https://github.com/meta-introspector/watchman
+[submodule "vendor/analysis/ast2json"]
+	path = vendor/analysis/ast2json
+	url = https://github.com/Psycojoker/ast2json.git
+[submodule "vendor/analysis/beniget"]
+	path = vendor/analysis/beniget
+	url = https://github.com/meta-introspector/beniget
+[submodule "vendor/analysis/sapp"]
+	path = vendor/analysis/sapp
+	url = https://github.com/meta-introspector/sapp
+[submodule "vendor/BatsyDefenseAi"]
+	path = vendor/BatsyDefenseAi
+	url = https://github.com/Deadsg/BatsyDefenseAi
+[submodule "vendor/RiseInRose"]
+	path = vendor/RiseInRose
+	url = https://github.com/RiseInRose/AutoGPT-ZH
+[submodule "vendor/TutifrutiDEV"]
+	path = vendor/TutifrutiDEV
+	url = https://github.com/TutifrutiDEV/AutoGPT
+[submodule "vendor/ishangirdhar"]
+	path = vendor/ishangirdhar
+	url = https://github.com/ishangirdhar/AlphaCISOAgent
+[submodule "vendor/suyashdube"]
+	path = vendor/suyashdube
+	url = https://github.com/suyashdube/AutoGPTagent
+[submodule "vendor/0713e"]
+	path = vendor/0713e
+	url = https://github.com/0713e/AutoGPT
+[submodule "vendor/bary12"]
+	path = vendor/bary12
+	url = https://github.com/bary12/AutoGPT
+[submodule "vendor/tomkat-cr"]
+	path = vendor/tomkat-cr
+	url = https://github.com/tomkat-cr/AutoGPT
+[submodule "vendor/nekome"]
+	path = vendor/nekome
+	url = https://github.com/nekome/Julie
+[submodule "vendor/Strive-for-excellence"]
+	path = vendor/Strive-for-excellence
+	url = https://github.com/Strive-for-excellence/AutoGPT-zxy
+[submodule "vendor/YoshiyaTatemoto"]
+	path = vendor/YoshiyaTatemoto
+	url = https://github.com/YoshiyaTatemoto/AutoGPT
+[submodule "vendor/Turingforce"]
+	path = vendor/Turingforce
+	url = https://github.com/Turingforce/AutoGPT
+[submodule "vendor/Metameg"]
+	path = vendor/Metameg
+	url = https://github.com/Metameg/AutoGPT
+[submodule "vendor/zsc0108"]
+	path = vendor/zsc0108
+	url = https://github.com/zsc0108/housekeepGPT
+[submodule "vendor/SmartsvXD"]
+	path = vendor/SmartsvXD
+	url = https://github.com/SmartsvXD/Peppino
+[submodule "vendor/Leeheejin"]
+	path = vendor/Leeheejin
+	url = https://github.com/Leeheejin/AutoGPT
+[submodule "vendor/b2ktortechnik"]
+	path = vendor/b2ktortechnik
+	url = https://github.com/b2ktortechnik/Ai-auto-gpt
+[submodule "vendor/greyun"]
+	path = vendor/greyun
+	url = https://github.com/greyun/generator-agent
+[submodule "vendor/ntindle"]
+	path = vendor/ntindle
+	url = https://github.com/ntindle/Tom
+[submodule "vendor/Crock-nic"]
+	path = vendor/Crock-nic
+	url = https://github.com/Crock-nic/AutoGPT
+[submodule "vendor/ZackBradshaw"]
+	path = vendor/ZackBradshaw
+	url = https://github.com/ZackBradshaw/Open-Sourcerer
+[submodule "vendor/pikki622"]
+	path = vendor/pikki622
+	url = https://github.com/pikki622/AutoGPT
+[submodule "vendor/MrPengu"]
+	path = vendor/MrPengu
+	url = https://github.com/MrPengu/AutoGPT
+[submodule "vendor/phsn1015"]
+	path = vendor/phsn1015
+	url = https://github.com/phsn1015/AutoGPT
+[submodule "vendor/CollectionOfAtoms"]
+	path = vendor/CollectionOfAtoms
+	url = https://github.com/CollectionOfAtoms/AutoGPT
+[submodule "vendor/kuraldijital"]
+	path = vendor/kuraldijital
+	url = https://github.com/kuraldijital/AutoGPT
+[submodule "vendor/PopoolaIbrahim"]
+	path = vendor/PopoolaIbrahim
+	url = https://github.com/PopoolaIbrahim/Auto-GPT
+[submodule "vendor/eugenxs"]
+	path = vendor/eugenxs
+	url = https://github.com/eugenxs/AutoGPT
+[submodule "vendor/Shivity2003"]
+	path = vendor/Shivity2003
+	url = https://github.com/Shivity2003/AutoGPT
+[submodule "vendor/chasegalloway"]
+	path = vendor/chasegalloway
+	url = https://github.com/chasegalloway/AutoGPT
+[submodule "vendor/hackgoofer"]
+	path = vendor/hackgoofer
+	url = https://github.com/hackgoofer/Auto-GPT
+[submodule "vendor/the-shawn"]
+	path = vendor/the-shawn
+	url = https://github.com/the-shawn/Auto-GPT
+[submodule "vendor/ox1111"]
+	path = vendor/ox1111
+	url = https://github.com/ox1111/AutoGPT
+[submodule "vendor/ppLorins"]
+	path = vendor/ppLorins
+	url = https://github.com/ppLorins/AutoGPT
+[submodule "vendor/kwassali"]
+	path = vendor/kwassali
+	url = https://github.com/kwassali/AutoGPTKWA
+[submodule "vendor/markcam1"]
+	path = vendor/markcam1
+	url = https://github.com/markcam1/AutoGPT_HackSep_00
+[submodule "vendor/Iyfo"]
+	path = vendor/Iyfo
+	url = https://github.com/Iyfo/AutoGPT
+[submodule "vendor/alex-dna-tech"]
+	path = vendor/alex-dna-tech
+	url = https://github.com/alex-dna-tech/AutoGPT
+[submodule "vendor/martinpeng"]
+	path = vendor/martinpeng
+	url = https://github.com/martinpeng/AutoGPT
+[submodule "vendor/WanlinLi2021"]
+	path = vendor/WanlinLi2021
+	url = https://github.com/WanlinLi2021/AutoGPT-trading
+[submodule "vendor/tyloafer"]
+	path = vendor/tyloafer
+	url = https://github.com/tyloafer/AutoGPT
+[submodule "vendor/neilrjones"]
+	path = vendor/neilrjones
+	url = https://github.com/neilrjones/AutoGPT
+[submodule "vendor/Mind-Interfaces"]
+	path = vendor/Mind-Interfaces
+	url = https://github.com/Mind-Interfaces/AutoGPT
+[submodule "vendor/Say383"]
+	path = vendor/Say383
+	url = https://github.com/Say383/Auto-GPT
+[submodule "vendor/ShadpourBijan"]
+	path = vendor/ShadpourBijan
+	url = https://github.com/ShadpourBijan/Auto-GPT
+[submodule "vendor/cnacha-mfu"]
+	path = vendor/cnacha-mfu
+	url = https://github.com/cnacha-mfu/AutoGPT
+[submodule "vendor/JGuiraud"]
+	path = vendor/JGuiraud
+	url = https://github.com/JGuiraud/TestAutoGPT
+[submodule "vendor/nithiroj"]
+	path = vendor/nithiroj
+	url = https://github.com/nithiroj/AutoGPT
+[submodule "vendor/jackcusick95"]
+	path = vendor/jackcusick95
+	url = https://github.com/jackcusick95/VoidAutoGPT
+[submodule "vendor/Freek-ZIGZAG"]
+	path = vendor/Freek-ZIGZAG
+	url = https://github.com/Freek-ZIGZAG/AutoGPT
+[submodule "vendor/JadeCong"]
+	path = vendor/JadeCong
+	url = https://github.com/JadeCong/AutoGPT
+[submodule "vendor/Bentlybro"]
+	path = vendor/Bentlybro
+	url = https://github.com/Bentlybro/BentlyGPT
+[submodule "vendor/datasci888"]
+	path = vendor/datasci888
+	url = https://github.com/datasci888/AutoGPTHackathon
+[submodule "vendor/AcrearHub"]
+	path = vendor/AcrearHub
+	url = https://github.com/AcrearHub/AutoGPT
+[submodule "vendor/NicoliniDevjunior"]
+	path = vendor/NicoliniDevjunior
+	url = https://github.com/NicoliniDevjunior/Auto-GPT
+[submodule "vendor/996800651"]
+	path = vendor/996800651
+	url = https://github.com/996800651/Auto-GPT
+[submodule "vendor/ph-ausseil"]
+	path = vendor/ph-ausseil
+	url = https://github.com/ph-ausseil/afaas
+[submodule "vendor/prockmanistan"]
+	path = vendor/prockmanistan
+	url = https://github.com/prockmanistan/Auto-GPT
+[submodule "vendor/Gasiorrr"]
+	path = vendor/Gasiorrr
+	url = https://github.com/Gasiorrr/ASCII
+[submodule "vendor/naren3k"]
+	path = vendor/naren3k
+	url = https://github.com/naren3k/Auto-GPT
+[submodule "vendor/dtakahas"]
+	path = vendor/dtakahas
+	url = https://github.com/dtakahas/AutoGPT
+[submodule "vendor/blazzbyte"]
+	path = vendor/blazzbyte
+	url = https://github.com/blazzbyte/AutoGPT
+[submodule "vendor/ghjk0498"]
+	path = vendor/ghjk0498
+	url = https://github.com/ghjk0498/TestAgent
+[submodule "vendor/jmikedupont2"]
+	path = vendor/jmikedupont2
+	url = https://github.com/jmikedupont2/Auto-GPT
+[submodule "vendor/elmcrest"]
+	path = vendor/elmcrest
+	url = https://github.com/elmcrest/AutoGPT
+[submodule "vendor/hamicek"]
+	path = vendor/hamicek
+	url = https://github.com/hamicek/AutoGPT
+[submodule "vendor/Matlan1"]
+	path = vendor/Matlan1
+	url = https://github.com/Matlan1/Hands-free-GPT
+[submodule "vendor/Raff-dev"]
+	path = vendor/Raff-dev
+	url = https://github.com/Raff-dev/AutoGPT
+[submodule "vendor/PicklRiick"]
+	path = vendor/PicklRiick
+	url = https://github.com/PicklRiick/AutoGPT
+[submodule "vendor/AlbertGithubAI"]
+	path = vendor/AlbertGithubAI
+	url = https://github.com/AlbertGithubAI/Auto-GPT
+[submodule "vendor/t-eeeeeee-n"]
+	path = vendor/t-eeeeeee-n
+	url = https://github.com/t-eeeeeee-n/AutoGPT
+[submodule "vendor/michaelsipper"]
+	path = vendor/michaelsipper
+	url = https://github.com/michaelsipper/AIAssistant
+[submodule "vendor/nickscamara"]
+	path = vendor/nickscamara
+	url = https://github.com/nickscamara/AutoGPT
+[submodule "vendor/michaeleck"]
+	path = vendor/michaeleck
+	url = https://github.com/michaeleck/Auto-GPT
+[submodule "vendor/wangshushuo"]
+	path = vendor/wangshushuo
+	url = https://github.com/wangshushuo/AutoGPT
+[submodule "vendor/mkhatri1"]
+	path = vendor/mkhatri1
+	url = https://github.com/mkhatri1/AutoGPT
+[submodule "vendor/virtrujakev"]
+	path = vendor/virtrujakev
+	url = https://github.com/virtrujakev/AutoGPT
+[submodule "vendor/2660890854"]
+	path = vendor/2660890854
+	url = https://github.com/2660890854/Auto-GPT
+[submodule "vendor/fpingham"]
+	path = vendor/fpingham
+	url = https://github.com/fpingham/TravelMate
+[submodule "vendor/loveyoumaxin"]
+	path = vendor/loveyoumaxin
+	url = https://github.com/loveyoumaxin/Auto-GPT
+[submodule "vendor/DedicatedDev"]
+	path = vendor/DedicatedDev
+	url = https://github.com/DedicatedDev/Auto-GPT
+[submodule "vendor/n0prob"]
+	path = vendor/n0prob
+	url = https://github.com/n0prob/AutoGPT
+[submodule "vendor/ShivamTi4F"]
+	path = vendor/ShivamTi4F
+	url = https://github.com/ShivamTi4F/AutoGPT
+[submodule "vendor/SEKHMET1Z"]
+	path = vendor/SEKHMET1Z
+	url = https://github.com/SEKHMET1Z/AutoGPT1
+[submodule "vendor/jm16"]
+	path = vendor/jm16
+	url = https://github.com/jm16/forkAutoGPT
+[submodule "vendor/elder-plinius"]
+	path = vendor/elder-plinius
+	url = https://github.com/elder-plinius/Theseus
+[submodule "vendor/ahmedmiamer"]
+	path = vendor/ahmedmiamer
+	url = https://github.com/ahmedmiamer/ViralWave-AI-Content-Crafter
+[submodule "vendor/nipundev"]
+	path = vendor/nipundev
+	url = https://github.com/nipundev/Auto-GPT
+[submodule "vendor/pollitoiracundo"]
+	path = vendor/pollitoiracundo
+	url = https://github.com/pollitoiracundo/TeamIntlGPT
+[submodule "vendor/HawkClaws"]
+	path = vendor/HawkClaws
+	url = https://github.com/HawkClaws/AutoGPT
+[submodule "vendor/leehua03f3"]
+	path = vendor/leehua03f3
+	url = https://github.com/leehua03f3/AutoLLaMA
+[submodule "vendor/aplomb2"]
+	path = vendor/aplomb2
+	url = https://github.com/aplomb2/Stock_Crypto_Bot
+[submodule "vendor/Provooe"]
+	path = vendor/Provooe
+	url = https://github.com/Provooe/AutoGPT
+[submodule "vendor/darkanubis0100"]
+	path = vendor/darkanubis0100
+	url = https://github.com/darkanubis0100/Auto-GPT
+[submodule "vendor/ido777"]
+	path = vendor/ido777
+	url = https://github.com/ido777/Auto-GPT
+[submodule "vendor/tomi009"]
+	path = vendor/tomi009
+	url = https://github.com/tomi009/AutoGPT
+[submodule "vendor/aabhishekdata"]
+	path = vendor/aabhishekdata
+	url = https://github.com/aabhishekdata/Auto-GPT
+[submodule "vendor/aaron13100"]
+	path = vendor/aaron13100
+	url = https://github.com/aaron13100/AutoGPT
+[submodule "vendor/moinsen-dev"]
+	path = vendor/moinsen-dev
+	url = https://github.com/moinsen-dev/AutoGPT
+[submodule "vendor/CryptoFewka"]
+	path = vendor/CryptoFewka
+	url = https://github.com/CryptoFewka/AutoGPT
+[submodule "vendor/Calebslc"]
+	path = vendor/Calebslc
+	url = https://github.com/Calebslc/AutoGPT
+[submodule "vendor/hooking-software"]
+	path = vendor/hooking-software
+	url = https://github.com/hooking-software/HookingAI
+[submodule "vendor/ijuubs"]
+	path = vendor/ijuubs
+	url = https://github.com/ijuubs/Auto-GPT
+[submodule "vendor/707500190"]
+	path = vendor/707500190
+	url = https://github.com/707500190/Auto-GPT
+[submodule "vendor/zeet-ai"]
+	path = vendor/zeet-ai
+	url = https://github.com/zeet-ai/auto-gpt
+[submodule "vendor/v-ivien"]
+	path = vendor/v-ivien
+	url = https://github.com/v-ivien/Auto-GPT
+[submodule "vendor/PsycIT"]
+	path = vendor/PsycIT
+	url = https://github.com/PsycIT/Auto-GPT
+[submodule "vendor/opensea712"]
+	path = vendor/opensea712
+	url = https://github.com/opensea712/Auto-GPT
+[submodule "vendor/lebsral"]
+	path = vendor/lebsral
+	url = https://github.com/lebsral/Auto-GPT
+[submodule "vendor/Panomica"]
+	path = vendor/Panomica
+	url = https://github.com/Panomica/Auto-GPT
+[submodule "vendor/banuitt"]
+	path = vendor/banuitt
+	url = https://github.com/banuitt/Auto-GPT
+[submodule "vendor/gpt-engineer"]
+	path = vendor/gpt-engineer
+	url = https://github.com/AntonOsika/gpt-engineer
+[submodule "vendor/conversational-agent"]
+	path = vendor/conversational-agent
+	url = https://github.com/readerbench/conversational-agent
+[submodule "vendor/Tonic-AI"]
+	path = vendor/Tonic-AI
+	url = https://github.com/Tonic-AI/AutoGPT
+[submodule "vendor/docker-compose-viz"]
+	path = vendor/docker-compose-viz
+	url = https://github.com/meta-introspector/docker-compose-viz
+[submodule "vendor/pandas-ai"]
+	path = vendor/pandas-ai
+	url = https://github.com/gventuri/pandas-ai/

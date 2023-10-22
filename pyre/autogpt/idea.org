@@ -1,0 +1,187 @@
+#+TITLE: Self-Improving Org File
+
+We are using [[https://github.com/rksm/org-ai][https://github.com/rksm/org-ai]] to interact with the llm using emacs right now.
+
+* Is Emacs the greatest editor?
+
+[AI]: As an AI language model, I don't have personal opinions. However, Emacs is highly regarded by many developers and power users as one of the most powerful and versatile text editors available. It's known for its extensive customizability and support for a wide range of programming languages and tasks. However, the perception of the "greatest" editor is subjective and depends on individual preferences and needs. Many other editors such as Vim, Atom, Sublime Text, and Visual Studio Code are also popular choices and have their own dedicated user bases.
+
+
+* My idea is that we can create a self improving org file that will 
+contain executable code that will send itself to a llm for review.
+
+changes to it will be recorded. Every time you save it will create a new version and analyse it.
+basically :
+  on commit in git as a precommmit hook.
+  in emacs 
+
+also we should add spell checking and all the other emacs modules that will improve on our writing. 
+
+so lets send this file to chatgpt and see what it says.
+please rewrite in org mode. 
+
+
+
+
+* Idea
+The idea is to create a self-improving org file that contains executable code which can be sent to a Language Model (LLM) for review. The org file will record changes made to it and generate new versions every time it is saved. The proposed implementation involves using pre-commit hooks in Git and integrating with Emacs.
+
+* Features
+The self-improving org file will have the following features:
+- Automatic versioning: Every time the file is saved, a new version will be created and analyzed.
+- Continuous improvement: The org file will incorporate modules offered by Emacs, such as spell checking and other writing enhancement tools.
+- Integration with Git: Utilizing a pre-commit hook, the org file will be sent for review before committing changes in Git.
+
+* Execution Steps
+To implement this idea, the following steps can be followed:
+
+1. Set up the pre-commit hook in Git to trigger the evaluation process for the org file before committing changes.
+
+2. Configure Emacs to enable spell checking and other writing improvement modules.
+
+3. Develop the logic to analyze the org file, identifying areas of improvement and generating suggestions based on the analysis.
+
+4. Integrate the Language Model (LLM) with the org file to provide comprehensive feedback on the content, code, and writing style.
+
+5. Implement version control within the org file itself, allowing easy comparison between different versions and tracking of changes over time.
+
+6. Continuously refine the evaluation process by incorporating user feedback and fine-tuning the analysis algorithms.
+
+If implemented successfully, this self-improving org file can serve as a powerful tool for enhancing writing skills, improving code quality, and facilitating the review and learning process.
+
+Let's further explore this idea by interacting with ChatGPT.
+
+
+* Idea
+The idea is to create a self-improving org file that contains executable code which can be sent to a Language Model (LLM) for review. The org file will record changes made to it and generate new versions every time it is saved. The proposed implementation involves using pre-commit hooks in Git and integrating with Emacs.
+
+* Features
+The self-improving org file will have the following features:
+- Automatic versioning: Every time the file is saved, a new version will be created and analyzed.
+- Continuous improvement: The org file will incorporate modules offered by Emacs, such as spell checking and other writing enhancement tools.
+- Integration with Git: Utilizing a pre-commit hook, the org file will be sent for review before committing changes in Git.
+
+* Execution Steps
+To implement this idea, the following steps can be followed:
+
+1. Set up the pre-commit hook in Git to trigger the evaluation process for the org file before committing changes.
+
+2. Configure Emacs to enable spell checking and other writing improvement modules.
+
+# straight el
+
+using straight-el or git, use Emacs to enable spell checking and other writing improvement modules.
+
+To enable spell checking and other writing improvement modules in Emacs using straight.el or git, you can follow the steps below:
+
+1. Install straight.el: 
+   - If you are using straight.el, add the following code to your `init.el` or `.emacs` file to bootstrap straight.el:
+   
+     ```elisp
+     ;; Bootstrap straight.el
+     (defvar bootstrap-version)
+     (let ((bootstrap-file
+            (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+           (bootstrap-version 5))
+       (load bootstrap-file nil 'nomessage))
+     ```
+
+2. Install the desired packages:
+   - For spell checking, you can use the package `flyspell`. To install it, add the following code to your `init.el` or `.emacs` file:
+
+     ```elisp
+     (straight-use-package 'flyspell)
+     (add-hook 'text-mode-hook 'flyspell-mode)
+     (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+     ```
+
+   - If you want additional writing improvement modules, you can install packages like `langtool` (grammar checker) or `writegood-mode` (style checker). To install them, add the following lines to your `init.el` or `.emacs` file after the spell checking setup:
+
+     ```elisp
+     (straight-use-package 'langtool)
+     (straight-use-package 'writegood-mode)
+     ```
+  
+3. Configure the packages:
+   - For `langtool`, you may need to set up the path to the Java executable and the language to use for checking. Add the following lines to your `init.el` or `.emacs` file:
+
+     ```elisp
+     (setq langtool-java-bin "path/to/java") ;; Replace "path/to/java" with the actual path to your Java executable
+     (setq langtool-default-language "<language>") ;; Replace "<language>" with the language you want to check (e.g., "en-US")
+     ```
+
+4. Save the configurations and restart Emacs.
+
+Now, Emacs should have spell checking enabled using `flyspell`, along with any additional writing improvement modules you installed, such as `langtool` and `writegood-mode`. You can use these features to check your spelling, grammar, and style while writing.
+
+
+3. Develop the logic to analyze the org file, identifying areas of improvement and generating suggestions based on the analysis.
+
+4. Integrate the Language Model (LLM) with the org file to provide comprehensive feedback on the content, code, and writing style.
+
+5. Implement version control within the org file itself, allowing easy comparison between different versions and tracking of changes over time.
+
+6. Continuously refine the evaluation process by incorporating user feedback and fine-tuning the analysis algorithms.
+
+If implemented successfully, this self-improving org file can serve as a powerful tool for enhancing writing skills, improving code quality, and facilitating the review and learning process.
+
+
+please help me rewrite this in org mode syntax and suggest emacs modules that will help me.
+
+
+Let's further explore this idea by interacting with ChatGPT.
+
+I want to create an recontextualize function using emacs org mode that will fill the "backpack" of 
+4000 tokens to send to chatgpt. 
+We will send the kid to school and pack him a good lunch of tokens so his brain will be healthy.
+
+The context of message from the agent to the llm contains :
+1. what version of the which agent is running, that includes the author history
+2. previous executions of that agent, history, that includes task information. and success rate.
+3. the definition of success for each individual task, its intended result and how we will measure that 
+and how effective that measurement is. that is our quality system. GMP good manufacturing practices. 
+ISO9000, six sigma, lean , agile. Agile/Scrum contains DOD, definition of done. 
+In bad practice, They have the developers team define the DOD, 
+it should be defined by the product owner. 
+There is a disconnect between the product team and the development team in many cases, 
+scrum master mediates between the dev team and product owner. Kindergarten teacher (scrum master) takes care of the kids(devs) for 
+the parents(product owner). As the child grows, the difficulty and complexity of the definition of done increases until you have 
+autonomous verifiable systems.  This is known as cat herding and yak shaving. 
+
+* Recontextualize Function
+** Description
+   This function fills the "backpack" of 4000 tokens to send to chatgpt in order
+   to provide a good lunch for the kid's brain.
+** Context of Message from Agent to LLM
+   1. Version of the agent running, including author history
+   2. Previous executions of the agent, including task information and success rate
+   3. Definition of success for each individual task, intended result, measurement, and its effectiveness
+** Quality System
+   - GMP (Good Manufacturing Practices)
+   - ISO9000
+   - Six Sigma
+   - Lean
+   - Agile
+   - Agile/Scrum
+     + Definition of Done (DOD)
+     + Inefficient practice of allowing developers to define DOD instead of product owner
+     + Disconnect between product team and development team
+     + Scrum Master as mediator between dev team and product owner
+     + Kindergarten teacher analogy
+** Evolution of Definition of Done (DOD)
+   - Increase in difficulty and complexity as the child (project) grows
+   - Goal to achieve autonomous verifiable systems
+   - Cat herding and yak shaving as challenges in this process
+
+
+Regarding Emacs modules that can help you, here are a few suggestions:
+
+1. `org-mode`: The built-in major mode for editing org mode files.
+2. `org-babel`: Allows executing code within org mode buffers.
+3. `org-capture`: Provides quick capturing of notes and tasks.
+4. `org-agenda`: Helps organize and manage your tasks and agenda.
+5. `org-publish`: Useful for publishing org mode files to different formats (e.g., HTML).
+6. `org-ref`: Adds citation and reference management capabilities to org mode.
+7. `org-trello`: Integrates Trello functionality into org mode.
+
+These modules can enhance your experience with org mode and assist you in organizing and manipulating your content effectively.
