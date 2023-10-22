@@ -264,7 +264,7 @@ def main(infile):
     dag = networkx.DiGraph()
     for r in ind:
         #(caller,callee) =
-        parts = r["name"].split("-")
+        parts = r["name"].split("|")
         caller = parts[0]
         callee = parts[1]
         count = int(r["count"])

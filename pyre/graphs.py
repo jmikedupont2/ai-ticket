@@ -195,12 +195,9 @@ def graph_interactive_network(
     dag = dag.to_undirected()
     #largest_components = sorted(nx.strongly_connected_components(dag), key=len, reverse=True)[:size]
     largest_components = sorted(nx.connected_components(dag), key=len, reverse=True)[:size]
-    for index in range(size):
+    #print(len(largest_components))
+    for index,comp in enumerate(largest_components):
         name= f'Component{index}'
-        if index not in largest_components:
-            print("index",index)
-            continue
-        comp = largest_components[index] 
         component=dag.subgraph(comp)
         nt = Network(notebook=True, width="100%", height="800px",
                      #directed=True
@@ -268,7 +265,7 @@ def main(infile):
     dag = networkx.DiGraph()
     for r in ind:
         #(caller,callee) =
-        parts = r["name"].split("-")
+        parts = r["name"].split("|")
         if len(parts)<2:
             print('error',r)
             count = int(r["count"])
