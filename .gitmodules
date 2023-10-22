@@ -550,3 +550,6 @@
 [submodule "vendor/Tonic-AI"]
 	path = vendor/Tonic-AI
 	url = https://github.com/Tonic-AI/AutoGPT
+[submodule "vendor/docker-compose-viz"]
+	path = vendor/docker-compose-viz
+	url = https://github.com/meta-introspector/docker-compose-viz
