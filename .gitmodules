@@ -547,3 +547,6 @@
 [submodule "vendor/conversational-agent"]
 	path = vendor/conversational-agent
 	url = https://github.com/readerbench/conversational-agent
+[submodule "vendor/Tonic-AI"]
+	path = vendor/Tonic-AI
+	url = https://github.com/Tonic-AI/AutoGPT
