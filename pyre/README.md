@@ -65,3 +65,36 @@ produces a report with module and called function
 
 # calls_generic.py
 like call2.py but takes a name
+
+# csv to htaml
+```
+pip install csvtotable
+```
+
+
+convert all to html
+```
+for x in *.csv; do echo $x; csvtotable --overwrite  $x $x.html; done
+```
+
+
+# pivot!
+
+```
+cargo install clipivot
+```
+
+```
+for x in *.csv; do echo $x; csvtotable $x $x.html; done
+```
+
+```
+clipivot  sum -c name --val count ./function_calls3.csv > function_calls_by_project.csv
+```
+
+
+```
+
+clipivot  sum -r func -c name --val count ./function_calls3.csv > function_calls_by_project.csv
+
+```
