@@ -88,8 +88,8 @@
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "beebot.body.body.Body.setup", "label": "beebot.body.body.Body.setup", "shape": "dot"}, {"color": "#97c2fc", "id": "beebot.body.body.Body.save", "label": "beebot.body.body.Body.save", "shape": "dot"}]);
-                  edges = new vis.DataSet([{"from": "beebot.body.body.Body.setup", "id": "beebot.body.body.Body.setup_to_beebot.body.body.Body.save", "to": "beebot.body.body.Body.save"}]);
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "beebot.body.body.Body.save", "label": "beebot.body.body.Body.save", "shape": "dot"}, {"color": "#97c2fc", "id": "beebot.body.body.Body.setup", "label": "beebot.body.body.Body.setup", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "beebot.body.body.Body.save", "id": "beebot.body.body.Body.save_to_beebot.body.body.Body.setup", "to": "beebot.body.body.Body.setup"}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
