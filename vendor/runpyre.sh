@@ -1,7 +1,7 @@
 
 #set -e 
 
-for D in *
+for D in PolyGPT-alpha Tonic-AI
 do
     if [ -d "${D}" ]; then
         echo "${D}"   # your processing here
