@@ -1,5 +1,17 @@
 #+TITLE: Self-Improving Org File
 
+We are using [[https://github.com/rksm/org-ai][https://github.com/rksm/org-ai]] to interact with the llm using emacs right now.
+
+#+begin_ai
+rewrite this in org mode syntax:
+We are using https://github.com/rksm/org-ai to interact with the llm using emacs right now. 
+
+[AI]: We are using [[https://github.com/rksm/org-ai][https://github.com/rksm/org-ai]] to interact with the llm using emacs right now.
+
+[ME]: 
+#+end_ai
+
+
 #+begin_ai
 Is Emacs the greatest editor?
 
