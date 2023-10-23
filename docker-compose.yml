@@ -1,37 +1,81 @@
 version: '3'
 services:
-
-  ai_ticket:
-    image: ai_ticket
+    
+  act_base: #root base of action
+    build: vendor/act_base
+    image: h4ckermike/act_base
+    
+  poetry_base: # use poetry
+    image: h4ckermike/poetry_base
     build:
-      context: .
+      context: vendor/python-poetry/build
+      args:
+        BASE_IMAGE: h4ckermike/act_base
+        POETRY_VERSION: 1.6.1
     #entrypoint: /bin/bash
     #stdin_open: true # docker run -i
     #tty: true        # docker run -t
 
-  autogpt:
-    #entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y"
-    entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment' "
+    depends_on:
+      - act_base
+    
+  ai_ticket: # the ticket to unite
+    image: h4ckermike/ai_ticket
+    build:
+      context: .
+      args:
+        BASE_IMAGE: h4ckermike/poetry_base
+    depends_on:
+      - poetry_base
+    
+  basic_agent: #basic agent
+    image: h4ckermike/basic_agent
+    build:
+      context: vendor/basic_agent/
+      args:
+        BASE_IMAGE: h4ckermike/ai_ticket
+    depends_on:
+      - ai_ticket
+
+  mockopenai: # interface
+    depends_on:
+      - ai_ticket
+    environment:
+      - GITHUB_PAT=${GITHUB_PAT}
+      - GITHUB_REPO=${GITHUB_REPO}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    image: h4ckermike/mockopenai
+    build:
+      context: vendor/lollms/
+      args:
+        BASE_IMAGE: h4ckermike/ai_ticket
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - ./vendor/lollms/:/app/ #mount the source in for editing without reboot
+     
+    ports:
+      -  "5000:8080"
+
+  autogpt: #the beast
+    entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment'  "
+
 
     # uncomment thse next 3 lines for debugging
     #entrypoint: /bin/bash
     #stdin_open: true # docker run -i
     #tty: true        # docker run -t
+    environment:
+      - GITHUB_PAT="${GITHUB_PAT}"
+      - GITHUB_REPO="jmikedupont2/ai-ticket"
+      - OPENAI_API_KEY=your-openai-api-key
+      - OPENAI_API_BASE=http://mockopenai:8080/v1
     build:
       context: vendor/Auto-GPT/
+      dockerfile: slim/Dockerfile
+      args:
+        BASE_IMAGE: h4ckermike/basic_agent
+
     depends_on:
+      - basic_agent
       - mockopenai
-
-  mockopenai:
-    depends_on:
-      - ai_ticket
-
-    environment:
-      - GITHUB_PAT=${GITHUB_PAT}
-      - GITHUB_REPO=${GITHUB_REPO}
-
-    build:
-      context: vendor/lollms/
-    ports:
-      -  "5000:5000"
-
+    image: h4ckermike/autogpt
