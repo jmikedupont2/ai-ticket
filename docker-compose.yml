@@ -1,37 +1,46 @@
 version: '3'
 services:
 
-  ai_ticket:
-    image: ai_ticket
-    build:
-      context: .
-    #entrypoint: /bin/bash
-    #stdin_open: true # docker run -i
-    #tty: true        # docker run -t
+  # ai_ticket:
+  #   image: ai_ticket
+  #   build:
+  #     context: .
+  #   #entrypoint: /bin/bash
+  #   #stdin_open: true # docker run -i
+  #   #tty: true        # docker run -t
 
-  autogpt:
-    #entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y"
-    entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment' "
+  # autogpt:
+  #   #entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y"
+  #   entrypoint: bash -c "poetry run pip install /opt/ai-ticket && poetry run autogpt --install-plugin-deps --skip-news -y   --ai-name 'meta-autogpt'  --ai-role 'you will introspect autogpt and reveal its internals via reflection and comprehension'  --ai-goal 'Observe your behaviour'    --ai-goal 'Reflect over your outcomes'  --ai-goal 'Orient yourself to your knowledge'     --ai-goal 'Decide on your next step'     --ai-goal 'Act on your chosen next experiment' "
 
-    # uncomment thse next 3 lines for debugging
-    #entrypoint: /bin/bash
-    #stdin_open: true # docker run -i
-    #tty: true        # docker run -t
-    build:
-      context: vendor/Auto-GPT/
-    depends_on:
-      - mockopenai
+  #   # uncomment thse next 3 lines for debugging
+  #   #entrypoint: /bin/bash
+  #   #stdin_open: true # docker run -i
+  #   #tty: true        # docker run -t
+  #   build:
+  #     context: vendor/Auto-GPT/
+  #   depends_on:
+  #     - mockopenai
 
-  mockopenai:
-    depends_on:
-      - ai_ticket
+  # mockopenai:
+  #   depends_on:
+  #     - ai_ticket
 
-    environment:
-      - GITHUB_PAT=${GITHUB_PAT}
-      - GITHUB_REPO=${GITHUB_REPO}
+  #   environment:
+  #     - GITHUB_PAT=${GITHUB_PAT}
+  #     - GITHUB_REPO=${GITHUB_REPO}
 
-    build:
-      context: vendor/lollms/
-    ports:
-      -  "5000:5000"
+  #   build:
+  #     context: vendor/lollms/
+  #   ports:
+  #     -  "5000:5000"
+
+  autogpt-standalone:
+    image:  h4ckermike/autogpt-standalone
+    build:      
+       context: vendor/Auto-GPT/
+       dockerfile: slim/Dockerfile
+       args:
+         OFFICIAL_PYTHON_IMAGE: h4ckermike/ai_ticket:latest
+
 

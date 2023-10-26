@@ -10,15 +10,27 @@ on:
 jobs:
 
   build-and-publish-docker:
-
-    runs-on: h4ckermike/act_base:latest
+    runs-on: ubuntu-latest
+    #runs-on: h4ckermike/act_base:latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: meta-introspector/checkout@v3
+      with :
+        submodules: true
+        
     - name: Build the Docker imaage
-      run: docker-compose build 
+      run: docker-compose build autogpt-standalone
+      
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: "h4ckermike"
+        password: ${{ secrets.DOCKER }}
+        logout : 'false'
+
     - name: Build the Docker imaage
-      run: docker-compose push
+      
+      run: docker-compose push autogpt-standalone
       env:
-        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        DOCKER_HUB_USERNAME: "h4ckermike"
+        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER }}
