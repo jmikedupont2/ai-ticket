@@ -1,4 +1,4 @@
-# ai-ticket
+# AI-Ticket
 The AI Ticket system to handle the AI with tickets.
 Human Powered AI-Ops to Help you with the last mile of your AI code generated system.
 
@@ -36,3 +36,26 @@ Welcome to our innovative user-driven workflow, designed to empower you to inter
    - Be mindful of providing timely and appropriate responses to prevent workflow stalls.
 
 This user-driven ticket-based workflow offers flexibility, control, and a unique way to collaborate with our system. Dive in, generate tickets, and explore the possibilities of this interactive and dynamic approach.
+
+
+# Infrastructure
+
+The docker images are organized like this :
+
+* act_base is the foundation of all actions. 
+* poetry_base is contains the poetry magic layer with shared containers.
+
+# Importing new agents
+
+we start with the results of the download of the change stats Auto-GPT/stats/filtered_result2.csv
+
+
+# Running
+
+`sudo docker-compose build`
+`sudo docker-compose up mockopenai`
+`sudo docker-compose run auto-gpt-chat-gpt-prompts `
+
+
+# Example of verbose build
+`sudo docker-compose --progress=plain  --log-level DEBUG --ansi=never  --verbose build  ghostcoder` 
