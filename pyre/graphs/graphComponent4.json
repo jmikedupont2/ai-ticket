@@ -1,0 +1,1 @@
+{"nodes": [{"color": "#97c2fc", "id": "GPT", "label": "GPT", "shape": "dot"}, {"color": "#97c2fc", "id": "core_plugins.Auto", "label": "core_plugins.Auto", "shape": "dot"}], "edges": [{"id": "GPT_to_core_plugins.Auto", "from": "GPT", "to": "core_plugins.Auto"}]}

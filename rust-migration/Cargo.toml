@@ -1,0 +1,39 @@
+[package]
+name = "ai-ticket"
+version = "2.0.0"
+edition = "2021"
+
+[dependencies]
+# P2P networking (replaces GitHub API)
+libp2p = "0.53"
+libp2p-kad = "0.45"
+libp2p-gossipsub = "0.46"
+libp2p-mdns = "0.45"
+
+# Web server (ZOS GUI)
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["fs", "cors"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# Storage
+sled = "0.34"
+
+# Crypto
+ed25519-dalek = "2.1"
+sha2 = "0.10"
+
+# ZK proofs
+risc0-zkvm = "0.21"
+
+# CLI
+clap = { version = "4.5", features = ["derive"] }
+
+# Error handling
+anyhow = "1.0"
