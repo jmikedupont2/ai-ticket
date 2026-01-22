@@ -197,3 +197,116 @@ ai-ticket p2p sync
 - Week 4: ZK proofs
 
 **Total freedom. No gatekeepers. Pure math.** 🚀
+
+## LiteLLM Integration
+
+**Location**: `/home/mdupont/projects/agentartificial/devops/vendor/litellm`  
+**Your fork**: https://github.com/jmikedupont2/openlightllm
+
+### What is LiteLLM?
+
+Unified LLM API proxy that:
+- Calls all LLM APIs using OpenAI format
+- Supports: Gemini, Claude, GPT-4, Bedrock, HuggingFace, etc.
+- Built-in rate limiting and budgets
+- Automatic fallback logic
+- Your own proxy server
+
+### Integration with AI-Ticket
+
+```rust
+// OLD: Direct Gemini calls (rate limited)
+gemini_api::generate(prompt)
+
+// NEW: LiteLLM proxy (unlimited, multi-provider)
+litellm_client::complete(prompt)
+// → Tries Gemini
+// → Falls back to Claude
+// → Falls back to GPT-4
+// → Falls back to local model
+```
+
+### Architecture Update
+
+```
+AI-Ticket (Rust)
+    ↓
+LiteLLM Proxy (Your server)
+    ↓
+┌─────────────────────────────────┐
+│  Gemini  │  Claude  │  GPT-4   │
+│  Local   │  Bedrock │  Azure   │
+└─────────────────────────────────┘
+```
+
+### Benefits
+
+✅ **No Single Provider Lock-in** - Use any LLM  
+✅ **Automatic Fallback** - If one fails, try next  
+✅ **Rate Limit Management** - Built-in  
+✅ **Cost Tracking** - Per-key budgets  
+✅ **OpenAI Format** - Standard interface  
+
+### Setup
+
+```bash
+# Start LiteLLM proxy
+cd /home/mdupont/projects/agentartificial/devops/vendor/litellm
+litellm --config config.yaml
+
+# Configure AI-Ticket to use it
+export LITELLM_URL=http://localhost:4000
+ai-ticket serve --llm-proxy $LITELLM_URL
+```
+
+### Config Example
+
+```yaml
+# litellm config.yaml
+model_list:
+  - model_name: gpt-4
+    litellm_params:
+      model: gemini/gemini-pro
+      api_key: $GEMINI_KEY
+  
+  - model_name: gpt-4
+    litellm_params:
+      model: claude-3-opus
+      api_key: $CLAUDE_KEY
+  
+  - model_name: gpt-4
+    litellm_params:
+      model: gpt-4
+      api_key: $OPENAI_KEY
+
+router_settings:
+  fallbacks: true
+  retry_policy: exponential_backoff
+```
+
+### Rust Integration
+
+```toml
+[dependencies]
+reqwest = "0.11"  # HTTP client for LiteLLM
+```
+
+```rust
+// src/llm.rs
+pub async fn generate(prompt: &str) -> Result<String> {
+    let client = reqwest::Client::new();
+    let res = client
+        .post("http://localhost:4000/chat/completions")
+        .json(&json!({
+            "model": "gpt-4",
+            "messages": [{"role": "user", "content": prompt}]
+        }))
+        .send()
+        .await?;
+    
+    let data: Value = res.json().await?;
+    Ok(data["choices"][0]["message"]["content"].as_str().unwrap().to_string())
+}
+```
+
+**No more Gemini rate limits. Multi-provider fallback. Your own proxy.** 🚀
