@@ -1,0 +1,18 @@
+[package]
+name = "ai-ticket"
+version = "2.0.0"
+edition = "2021"
+authors = ["AI-Ticket Team"]
+
+[dependencies]
+octocrab = "0.38"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+axum = "0.7"
+tower = "0.4"
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+
+[dev-dependencies]
+tempfile = "3.8"

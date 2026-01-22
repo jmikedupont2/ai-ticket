@@ -1,0 +1,42 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [ feature/zos-rust-migration ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Rust
+      uses: dtolnay/rust-toolchain@stable
+    
+    - name: Cache cargo
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+          rust-migration/target/
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    
+    - name: Build
+      working-directory: rust-migration
+      run: cargo build --release
+    
+    - name: Test
+      working-directory: rust-migration
+      run: cargo test
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ai-ticket
+        path: rust-migration/target/release/ai-ticket
